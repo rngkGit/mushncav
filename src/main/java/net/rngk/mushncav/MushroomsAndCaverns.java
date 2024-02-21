@@ -2,6 +2,8 @@ package net.rngk.mushncav;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.rngk.mushncav.item.ModItemGroups;
+import net.rngk.mushncav.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,5 +21,7 @@ public class MushroomsAndCaverns implements ModInitializer {
 		// Proceed with mild caution.
 
 		LOGGER.info("Hello Fabric world!");
+		ModItems.registerModItems();
+		ModItemGroups.registerItemGroups();
 	}
 }
