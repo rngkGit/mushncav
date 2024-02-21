@@ -8,6 +8,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.rngk.mushncav.MushroomsAndCaverns;
+import net.rngk.mushncav.block.ModBlocks;
 
 public class ModItemGroups {
     public static final ItemGroup MUSHNCAVE_GROUP = Registry.register(Registries.ITEM_GROUP, new Identifier(MushroomsAndCaverns.MOD_ID, "mushncav"),
@@ -22,6 +23,9 @@ public class ModItemGroups {
                         entries.add(ModItems.GLOWING_MUSHROOM_STICK);
                         entries.add(ModItems.GLOWING_SAPHIRE_SHARD);
                         entries.add(ModItems.GLOWING_SAPHIRE_CRYSTAL);
+
+                        entries.add(ModBlocks.FUNGI_TREE_LOG);
+                        entries.add(ModBlocks.FUNGI_TREE_LEAVES);
                     }).build());
     public static void registerItemGroups(){
         MushroomsAndCaverns.LOGGER.info("Registering item groups for " + MushroomsAndCaverns.MOD_ID);

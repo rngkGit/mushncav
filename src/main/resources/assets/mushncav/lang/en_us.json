@@ -1,12 +1,15 @@
 {
-  "item.mushncav.fungistick": "Fungi Stick",
-  "item.mushncav.amethystmushroomstick": "Amethyst Mushroom Stick",
-  "item.mushncav.glowingmushroomstick": "Glowing Mushroom Stick",
-  "item.mushncav.fungibone": "Fungi Bone",
-  "item.mushncav.mushroombone": "Mushroom Bone",
-  "item.mushncav.glowingsaphireshard": "Glowing Saphire Shard",
-  "item.mushncav.glowingsaphirecrystal": "Glowing Saphire Crystal",
-  "item.mushncav.magicstone": "Magic Stone",
+  "item.mushncav.fungi_stick": "Fungi Stick",
+  "item.mushncav.amethyst_mushroom_stick": "Amethyst Mushroom Stick",
+  "item.mushncav.glowing_mushroom_stick": "Glowing Mushroom Stick",
+  "item.mushncav.fungi_bone": "Fungi Bone",
+  "item.mushncav.mushroom_bone": "Mushroom Bone",
+  "item.mushncav.glowing_saphire_shard": "Glowing Saphire Shard",
+  "item.mushncav.glowing_saphire_crystal": "Glowing Saphire Crystal",
+  "item.mushncav.magic_stone": "Magic Stone",
+
+  "block.mushncav.fungi_tree_log": "Fungi Tree Log",
+  "block.mushncav.fungi_tree_leaves": "Fungi Tree Leaves",
 
   "itemgroup.mushncav": "Mushrooms and Caverns"
 }

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mushncav:item/fungibone"
+    "layer0": "mushncav:item/mushroom_bone"
   }
 }

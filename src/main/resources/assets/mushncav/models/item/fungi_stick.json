@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "mushncav:item/magicstone"
+    "layer0": "mushncav:item/fungi_stick"
   }
 }
