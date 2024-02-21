@@ -1,4 +1,11 @@
 {
+  "item.mushncav.fungistick": "Fungi Stick",
+  "item.mushncav.amethystmushroomstick": "Amethyst Mushroom Stick",
+  "item.mushncav.glowingmushroomstick": "Glowing Mushroom Stick",
+  "item.mushncav.fungibone": "Fungi Bone",
+  "item.mushncav.mushroombone": "Mushroom Bone",
+  "item.mushncav.glowingsaphireshard": "Glowing Saphire Shard",
+  "item.mushncav.glowingsaphirecrystal": "Glowing Saphire Crystal",
   "item.mushncav.magicstone": "Magic Stone",
 
   "itemgroup.mushncav": "Mushrooms and Caverns"
