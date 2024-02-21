@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "mushncav",
+	"version": "${version}",
+	"name": "Mushrooms and Caverns",
+	"description": "Mod that introduces new biomes, blocks, and more!",
+	"authors": [
+		"rngk"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/mushncav/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.rngk.mushncav.MushroomsAndCaverns"
+		],
+		"client": [
+			"net.rngk.mushncav.MushroomsAndCavernsClient"
+		],
+		"fabric-datagen": [
+			"net.rngk.mushncav.MushroomsAndCavernsDataGenerator"
+		]
+	},
+	"mixins": [
+		"mushncav.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
