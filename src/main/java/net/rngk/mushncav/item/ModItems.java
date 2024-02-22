@@ -21,6 +21,7 @@ public class ModItems {
     public static final Item GLOWING_SAPHIRE_SHARD = registerItem("glowing_saphire_shard", new Item(new FabricItemSettings()));
     public static final Item GLOWING_SAPHIRE_CRYSTAL = registerItem("glowing_saphire_crystal", new Item(new FabricItemSettings()));
     public static final Item MAGIC_STONE = registerItem("magic_stone", new Item(new FabricItemSettings()));
+    public static final Item FUNGI_APPLE = registerItem("fungi_apple", new Item(new FabricItemSettings().food(ModFoodComponents.FUNGI_APPLE)));
 
     /*private static void addItemsToIngredientTab(FabricItemGroupEntries entries){
         //add stuff to the existing ingredients tab, this code is for reference and probally wont be used ever, but Ill leave it here.

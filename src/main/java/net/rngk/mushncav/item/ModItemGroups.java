@@ -24,6 +24,8 @@ public class ModItemGroups {
                         entries.add(ModItems.GLOWING_SAPHIRE_SHARD);
                         entries.add(ModItems.GLOWING_SAPHIRE_CRYSTAL);
 
+                        entries.add(ModItems.FUNGI_APPLE);
+
                         entries.add(ModBlocks.FUNGI_TREE_LOG);
                         entries.add(ModBlocks.FUNGI_TREE_LEAVES);
 
