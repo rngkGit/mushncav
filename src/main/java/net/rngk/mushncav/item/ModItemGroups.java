@@ -26,6 +26,9 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.FUNGI_TREE_LOG);
                         entries.add(ModBlocks.FUNGI_TREE_LEAVES);
+
+                        entries.add(ModBlocks.GLOWING_SAPHIRE_ORE);
+                        entries.add(ModBlocks.DEEPSLATE_GLOWING_SAPHIRE_ORE);
                     }).build());
     public static void registerItemGroups(){
         MushroomsAndCaverns.LOGGER.info("Registering item groups for " + MushroomsAndCaverns.MOD_ID);

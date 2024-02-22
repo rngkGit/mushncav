@@ -10,6 +10,8 @@
 
   "block.mushncav.fungi_tree_log": "Fungi Tree Log",
   "block.mushncav.fungi_tree_leaves": "Fungi Tree Leaves",
+  "block.mushncav.glowing_saphire_ore": "Glowing Saphire Ore",
+  "block.mushncav.deepslate_glowing_saphire_ore": "Deepslate Glowing Saphire Ore",
 
   "itemgroup.mushncav": "Mushrooms and Caverns"
 }
