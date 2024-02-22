@@ -18,13 +18,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     public void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ModBlocks.GLOWING_SAPHIRE_ORE)
-                .add(ModBlocks.DEEPSLATE_GLOWING_SAPHIRE_ORE);
+                .add(ModBlocks.GLOWING_SAPPHIRE_ORE)
+                .add(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE);
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 ;
         getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.GLOWING_SAPHIRE_ORE)
-                .add(ModBlocks.DEEPSLATE_GLOWING_SAPHIRE_ORE);
+                .add(ModBlocks.GLOWING_SAPPHIRE_ORE)
+                .add(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE);
         getOrCreateTagBuilder(BlockTags.NEEDS_DIAMOND_TOOL)
                 ;
         getOrCreateTagBuilder(TagKey.of(RegistryKeys.BLOCK, new Identifier("fabric", "needs_tool_level_4")))

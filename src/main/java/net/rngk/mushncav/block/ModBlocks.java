@@ -18,8 +18,8 @@ public class ModBlocks {
     public static final Block FUNGI_TREE_LEAVES = registerBlock("fungi_tree_leaves", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
 
     //Ores
-    public static final Block GLOWING_SAPHIRE_ORE = registerBlock("glowing_saphire_ore", new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.STONE).strength(2f)));
-    public static final Block DEEPSLATE_GLOWING_SAPHIRE_ORE = registerBlock("deepslate_glowing_saphire_ore", new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4f)));
+    public static final Block GLOWING_SAPPHIRE_ORE = registerBlock("glowing_saphire_ore", new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.STONE).strength(2f)));
+    public static final Block DEEPSLATE_GLOWING_SAPPHIRE_ORE = registerBlock("deepslate_glowing_saphire_ore", new ExperienceDroppingBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4f)));
 
     private static Block registerBlock(String name, Block block){
         registerBlockItem(name, block);

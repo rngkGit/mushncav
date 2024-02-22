@@ -21,16 +21,16 @@ public class ModItemGroups {
                         entries.add(ModItems.FUNGI_STICK);
                         entries.add(ModItems.AMETHYST_MUSHROOM_STICK);
                         entries.add(ModItems.GLOWING_MUSHROOM_STICK);
-                        entries.add(ModItems.GLOWING_SAPHIRE_SHARD);
-                        entries.add(ModItems.GLOWING_SAPHIRE_CRYSTAL);
+                        entries.add(ModItems.GLOWING_SAPPHIRE_SHARD);
+                        entries.add(ModItems.GLOWING_SAPPHIRE_CRYSTAL);
 
                         entries.add(ModItems.FUNGI_APPLE);
 
                         entries.add(ModBlocks.FUNGI_TREE_LOG);
                         entries.add(ModBlocks.FUNGI_TREE_LEAVES);
 
-                        entries.add(ModBlocks.GLOWING_SAPHIRE_ORE);
-                        entries.add(ModBlocks.DEEPSLATE_GLOWING_SAPHIRE_ORE);
+                        entries.add(ModBlocks.GLOWING_SAPPHIRE_ORE);
+                        entries.add(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE);
                     }).build());
     public static void registerItemGroups(){
         MushroomsAndCaverns.LOGGER.info("Registering item groups for " + MushroomsAndCaverns.MOD_ID);

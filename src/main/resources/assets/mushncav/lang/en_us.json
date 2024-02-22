@@ -4,14 +4,14 @@
   "item.mushncav.glowing_mushroom_stick": "Glowing Mushroom Stick",
   "item.mushncav.fungi_bone": "Fungi Bone",
   "item.mushncav.mushroom_bone": "Mushroom Bone",
-  "item.mushncav.glowing_saphire_shard": "Glowing Saphire Shard",
-  "item.mushncav.glowing_saphire_crystal": "Glowing Saphire Crystal",
+  "item.mushncav.glowing_sapphire_shard": "Glowing Sapphire Shard",
+  "item.mushncav.glowing_sapphire_crystal": "Glowing Sapphire Crystal",
   "item.mushncav.magic_stone": "Magic Stone",
 
   "block.mushncav.fungi_tree_log": "Fungi Tree Log",
   "block.mushncav.fungi_tree_leaves": "Fungi Tree Leaves",
-  "block.mushncav.glowing_saphire_ore": "Glowing Saphire Ore",
-  "block.mushncav.deepslate_glowing_saphire_ore": "Deepslate Glowing Saphire Ore",
+  "block.mushncav.glowing_sapphire_ore": "Glowing Sapphire Ore",
+  "block.mushncav.deepslate_glowing_sapphire_ore": "Deepslate Glowing Sapphire Ore",
 
   "itemgroup.mushncav": "Mushrooms and Caverns"
 }

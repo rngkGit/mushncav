@@ -17,8 +17,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FUNGI_TREE_LOG);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FUNGI_TREE_LEAVES);
 
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLOWING_SAPHIRE_ORE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_GLOWING_SAPHIRE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLOWING_SAPPHIRE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE);
     }
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
@@ -28,8 +28,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.FUNGI_APPLE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MAGIC_STONE, Models.GENERATED);
         itemModelGenerator.register(ModItems.GLOWING_MUSHROOM_STICK, Models.GENERATED);
-        itemModelGenerator.register(ModItems.GLOWING_SAPHIRE_CRYSTAL, Models.GENERATED);
-        itemModelGenerator.register(ModItems.GLOWING_SAPHIRE_SHARD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GLOWING_SAPPHIRE_CRYSTAL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GLOWING_SAPPHIRE_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.MUSHROOM_BONE, Models.GENERATED);
     }
 }
