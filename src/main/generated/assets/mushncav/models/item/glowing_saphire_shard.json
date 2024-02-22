@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mushncav:item/glowing_saphire_shard"
+  }
+}

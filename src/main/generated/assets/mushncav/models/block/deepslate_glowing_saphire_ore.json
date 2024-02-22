@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "mushncav:block/deepslate_glowing_saphire_ore"
+  }
+}
