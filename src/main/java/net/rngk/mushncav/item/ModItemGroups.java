@@ -31,6 +31,8 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.GLOWING_SAPPHIRE_ORE);
                         entries.add(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE);
+
+                        entries.add(ModBlocks.GLOWING_SAPPHIRE_BLOCK);
                     }).build());
     public static void registerItemGroups(){
         MushroomsAndCaverns.LOGGER.info("Registering item groups for " + MushroomsAndCaverns.MOD_ID);

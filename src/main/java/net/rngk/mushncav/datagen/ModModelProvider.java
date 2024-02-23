@@ -19,6 +19,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLOWING_SAPPHIRE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE);
+
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLOWING_SAPPHIRE_BLOCK);
     }
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
