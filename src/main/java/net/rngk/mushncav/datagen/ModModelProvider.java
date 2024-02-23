@@ -22,11 +22,11 @@ public class ModModelProvider extends FabricModelProvider {
     }
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(ModItems.AMETHYST_MUSHROOM_STICK, Models.GENERATED);
         itemModelGenerator.register(ModItems.FUNGI_BONE, Models.GENERATED);
         itemModelGenerator.register(ModItems.FUNGI_STICK, Models.GENERATED);
         itemModelGenerator.register(ModItems.FUNGI_APPLE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MAGIC_STONE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.AMETHYST_MUSHROOM_STICK, Models.GENERATED);
         itemModelGenerator.register(ModItems.GLOWING_MUSHROOM_STICK, Models.GENERATED);
         itemModelGenerator.register(ModItems.GLOWING_SAPPHIRE_CRYSTAL, Models.GENERATED);
         itemModelGenerator.register(ModItems.GLOWING_SAPPHIRE_SHARD, Models.GENERATED);

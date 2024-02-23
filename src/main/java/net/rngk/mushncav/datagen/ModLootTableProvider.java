@@ -27,6 +27,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.FUNGI_TREE_LEAVES);
 
         addDrop(ModBlocks.GLOWING_SAPPHIRE_ORE, manyOreLikeDrops(ModBlocks.GLOWING_SAPPHIRE_ORE, ModItems.GLOWING_SAPPHIRE_SHARD));
+        addDrop(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE, manyOreLikeDrops(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE, ModItems.GLOWING_SAPPHIRE_SHARD));
     }
     public LootTable.Builder manyOreLikeDrops(Block drop, Item item) {
         return BlockLootTableGenerator.dropsWithSilkTouch(drop, (LootPoolEntry.Builder)this.applyExplosionDecay(drop, ((LeafEntry.Builder) ItemEntry.builder(item).apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 5.0f)))).apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))));

@@ -18,8 +18,8 @@ public class ModItems {
     //public static final Item FUNGI_APPLE = registerItem("fungiapple", new Item(new FabricItemSettings()));
     public static final Item FUNGI_BONE = registerItem("fungi_bone", new Item(new FabricItemSettings()));
     public static final Item MUSHROOM_BONE = registerItem("mushroom_bone", new Item(new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_SHARD = registerItem("glowing_saphire_shard", new Item(new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_CRYSTAL = registerItem("glowing_saphire_crystal", new Item(new FabricItemSettings()));
+    public static final Item GLOWING_SAPPHIRE_SHARD = registerItem("glowing_sapphire_shard", new Item(new FabricItemSettings()));
+    public static final Item GLOWING_SAPPHIRE_CRYSTAL = registerItem("glowing_sapphire_crystal", new Item(new FabricItemSettings()));
     public static final Item MAGIC_STONE = registerItem("magic_stone", new Item(new FabricItemSettings()));
     public static final Item FUNGI_APPLE = registerItem("fungi_apple", new Item(new FabricItemSettings().food(ModFoodComponents.FUNGI_APPLE)));
 

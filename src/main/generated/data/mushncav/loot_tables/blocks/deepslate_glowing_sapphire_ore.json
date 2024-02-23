@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "mushncav:glowing_saphire_ore"
+              "name": "mushncav:deepslate_glowing_sapphire_ore"
             },
             {
               "type": "minecraft:item",
@@ -47,7 +47,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "mushncav:glowing_saphire_shard"
+              "name": "mushncav:glowing_sapphire_shard"
             }
           ]
         }

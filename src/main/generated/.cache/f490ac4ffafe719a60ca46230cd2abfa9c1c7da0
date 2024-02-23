@@ -1,6 +1,6 @@
-// 1.20.4	2024-02-22T15:15:35.826451	Mushrooms and Caverns/Tags for minecraft:block
+// 1.20.4	2024-02-22T20:10:45.48937	Mushrooms and Caverns/Tags for minecraft:block
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data/minecraft/tags/blocks/needs_diamond_tool.json
-2b3dca58dedfa79033475520b52a626c86c1da63 data/minecraft/tags/blocks/mineable/pickaxe.json
+8a31e65947fdca6d9c7354bafe2be1e2466b59ad data/minecraft/tags/blocks/mineable/pickaxe.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data/fabric/tags/blocks/needs_tool_level_4.json
+8a31e65947fdca6d9c7354bafe2be1e2466b59ad data/minecraft/tags/blocks/needs_iron_tool.json
 8a23702b05296c8af5014d6aa6e9265ded85c7d9 data/minecraft/tags/blocks/needs_stone_tool.json
-2b3dca58dedfa79033475520b52a626c86c1da63 data/minecraft/tags/blocks/needs_iron_tool.json

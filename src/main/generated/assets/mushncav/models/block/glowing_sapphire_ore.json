@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "mushncav:block/glowing_saphire_ore"
+    "all": "mushncav:block/glowing_sapphire_ore"
   }
 }
