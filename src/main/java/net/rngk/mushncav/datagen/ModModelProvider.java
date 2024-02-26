@@ -31,7 +31,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MAGIC_STONE, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMETHYST_MUSHROOM_STICK, Models.GENERATED);
         itemModelGenerator.register(ModItems.GLOWING_MUSHROOM_STICK, Models.GENERATED);
-        itemModelGenerator.register(ModItems.GLOWING_SAPPHIRE_CRYSTAL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GLOWING_SAPPHIRE_STONE, Models.GENERATED);
         itemModelGenerator.register(ModItems.GLOWING_SAPPHIRE_SHARD, Models.GENERATED);
         itemModelGenerator.register(ModItems.MUSHROOM_BONE, Models.GENERATED);
     }

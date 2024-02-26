@@ -9,6 +9,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.rngk.mushncav.MushroomsAndCaverns;
+import net.rngk.mushncav.item.custom.MagicStone;
 
 public class ModItems {
     //Items (unorganized, I will do that later)
@@ -19,8 +20,8 @@ public class ModItems {
     public static final Item FUNGI_BONE = registerItem("fungi_bone", new Item(new FabricItemSettings()));
     public static final Item MUSHROOM_BONE = registerItem("mushroom_bone", new Item(new FabricItemSettings()));
     public static final Item GLOWING_SAPPHIRE_SHARD = registerItem("glowing_sapphire_shard", new Item(new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_CRYSTAL = registerItem("glowing_sapphire_crystal", new Item(new FabricItemSettings()));
-    public static final Item MAGIC_STONE = registerItem("magic_stone", new Item(new FabricItemSettings()));
+    public static final Item GLOWING_SAPPHIRE_STONE = registerItem("glowing_sapphire_stone", new Item(new FabricItemSettings()));
+    public static final Item MAGIC_STONE = registerItem("magic_stone", new MagicStone(new FabricItemSettings()));
     public static final Item FUNGI_APPLE = registerItem("fungi_apple", new Item(new FabricItemSettings().food(ModFoodComponents.FUNGI_APPLE)));
 
     private static Item registerItem(String name, Item item){

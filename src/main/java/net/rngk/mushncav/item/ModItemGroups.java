@@ -22,7 +22,7 @@ public class ModItemGroups {
                         entries.add(ModItems.AMETHYST_MUSHROOM_STICK);
                         entries.add(ModItems.GLOWING_MUSHROOM_STICK);
                         entries.add(ModItems.GLOWING_SAPPHIRE_SHARD);
-                        entries.add(ModItems.GLOWING_SAPPHIRE_CRYSTAL);
+                        entries.add(ModItems.GLOWING_SAPPHIRE_STONE);
 
                         entries.add(ModItems.FUNGI_APPLE);
 
