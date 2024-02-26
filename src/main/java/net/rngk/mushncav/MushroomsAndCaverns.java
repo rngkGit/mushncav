@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.rngk.mushncav.block.ModBlocks;
 import net.rngk.mushncav.item.ModItemGroups;
 import net.rngk.mushncav.item.ModItems;
+import net.rngk.mushncav.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,5 +27,7 @@ public class MushroomsAndCaverns implements ModInitializer {
 		ModBlocks.registerModBlocks();
 
 		ModItemGroups.registerItemGroups();
+
+		ModWorldGeneration.generateModWorldGen();
 	}
 }

@@ -9,5 +9,6 @@ public class MushroomsAndCavernsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient(){
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FUNGI_TREE_LEAVES, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FUNGI_TREE_SAPLING, RenderLayer.getCutout());
     }
 }

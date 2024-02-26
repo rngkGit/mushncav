@@ -29,6 +29,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.FUNGI_TREE_LOG);
                         entries.add(ModBlocks.FUNGI_TREE_WOOD);
                         entries.add(ModBlocks.FUNGI_TREE_LEAVES);
+                        entries.add(ModBlocks.FUNGI_TREE_SAPLING);
                         entries.add(ModBlocks.FUNGI_GRASS_BLOCK);
                         entries.add(ModBlocks.FUNGI_DIRT);
 

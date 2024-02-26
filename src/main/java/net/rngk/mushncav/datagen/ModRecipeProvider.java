@@ -18,20 +18,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     }
     @Override
     public void generate(RecipeExporter exporter) {
-        //Smelting
-        //offerSmelting(exporter, NAME, RecipeCategory.MISC, ModItems., 0.7f, 200, "group");
-        //offerBlasting^^
 
-        //Recipes
-        /*ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ITEM, 1)
-                .pattern("###")
-                .pattern("###")
-                .pattern("###")
-                .input('#', Item)
-                //unlocking recipe
-                .criterion(hasItem(Item. ), conditionsFromItem(Item.))
-                //name
-                .offerTo(exporter, new Identifier(getRecipeName(Item.)));
-         */
     }
 }

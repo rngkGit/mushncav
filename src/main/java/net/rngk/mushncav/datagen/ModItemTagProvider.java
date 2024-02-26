@@ -14,10 +14,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     }
     @Override
     public void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(ItemTags.PLANKS)
-                ;
-        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
-                .add(ModBlocks.FUNGI_TREE_LOG.asItem())
-                .add(ModBlocks.FUNGI_TREE_WOOD.asItem());
+
     }
 }
