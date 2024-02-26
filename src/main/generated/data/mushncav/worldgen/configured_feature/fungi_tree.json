@@ -5,14 +5,14 @@
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:dirt"
+        "Name": "mushncav:fungi_dirt"
       }
     },
     "foliage_placer": {
       "type": "minecraft:blob_foliage_placer",
       "height": 2,
-      "offset": 1,
-      "radius": 2
+      "offset": 2,
+      "radius": 3
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -35,9 +35,9 @@
     },
     "trunk_placer": {
       "type": "minecraft:straight_trunk_placer",
-      "base_height": 5,
-      "height_rand_a": 4,
-      "height_rand_b": 3
+      "base_height": 12,
+      "height_rand_a": 7,
+      "height_rand_b": 6
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
