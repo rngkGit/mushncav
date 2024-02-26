@@ -11,7 +11,10 @@
   "item.mushncav.fungi_apple": "Fungi Apple",
 
   "block.mushncav.fungi_tree_log": "Fungi Tree Log",
+  "block.mushncav.fungi_tree_wood": "Fungi Tree Wood",
   "block.mushncav.fungi_tree_leaves": "Fungi Tree Leaves",
+  "block.mushncav.fungi_grass_block": "Fungi Grass Block",
+  "block.mushncav.fungi_dirt": "Fungi Dirt",
   "block.mushncav.glowing_sapphire_ore": "Glowing Sapphire Ore",
   "block.mushncav.deepslate_glowing_sapphire_ore": "Deepslate Glowing Sapphire Ore",
   "block.mushncav.glowing_sapphire_block": "Glowing Sapphire Block",

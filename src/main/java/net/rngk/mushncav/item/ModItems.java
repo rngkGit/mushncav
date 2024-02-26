@@ -23,18 +23,11 @@ public class ModItems {
     public static final Item MAGIC_STONE = registerItem("magic_stone", new Item(new FabricItemSettings()));
     public static final Item FUNGI_APPLE = registerItem("fungi_apple", new Item(new FabricItemSettings().food(ModFoodComponents.FUNGI_APPLE)));
 
-    /*private static void addItemsToIngredientTab(FabricItemGroupEntries entries){
-        //add stuff to the existing ingredients tab, this code is for reference and probally wont be used ever, but Ill leave it here.
-        entries.add(MAGIC_STONE);
-    }*/
-
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM, new Identifier(MushroomsAndCaverns.MOD_ID, name), item);
     }
 
     public static void registerModItems(){
         MushroomsAndCaverns.LOGGER.info("Registering mod items for " + MushroomsAndCaverns.MOD_ID);
-
-        //ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ModItems::addItemsToIngredientTab);
     }
 }

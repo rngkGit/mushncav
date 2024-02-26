@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "snowy=false": [
+      { "model": "mushncav:block/fungi_grass_block" },
+      { "model": "mushncav:block/fungi_grass_block", "y": 90 },
+      { "model": "mushncav:block/fungi_grass_block", "y": 180 },
+      { "model": "mushncav:block/fungi_grass_block", "y": 270 }
+    ],
+    "snowy=true":  { "model": "mushncav:block/fungi_grass_block_snow" }
+  }
+}

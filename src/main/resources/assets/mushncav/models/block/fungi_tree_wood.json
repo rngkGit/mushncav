@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "mushncav:block/fungi_tree_log",
+    "side": "mushncav:block/fungi_tree_log"
+  }
+}

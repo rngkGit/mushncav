@@ -7,12 +7,14 @@ import net.rngk.mushncav.datagen.*;
 public class MushroomsAndCavernsDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
-		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
+		/*FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
+
+		If I ever feel like using data gen
 
 		pack.addProvider(ModBlockTagProvider::new);
 		pack.addProvider(ModItemTagProvider::new);
 		pack.addProvider(ModLootTableProvider::new);
 		pack.addProvider(ModModelProvider::new);
-		pack.addProvider(ModRecipeProvider::new);
+		pack.addProvider(ModRecipeProvider::new);*/
 	}
 }

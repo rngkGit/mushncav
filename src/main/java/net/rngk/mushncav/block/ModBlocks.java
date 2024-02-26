@@ -2,9 +2,7 @@ package net.rngk.mushncav.block;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ExperienceDroppingBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -12,12 +10,17 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.rngk.mushncav.MushroomsAndCaverns;
+import net.rngk.mushncav.block.custom.FungiGrassBlock;
 import net.rngk.mushncav.block.custom.GlowingSapphireBlock;
 import net.rngk.mushncav.block.custom.GlowingSapphireOreBlock;
 
 public class ModBlocks {
-    public static final Block FUNGI_TREE_LOG = registerBlock("fungi_tree_log", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
-    public static final Block FUNGI_TREE_LEAVES = registerBlock("fungi_tree_leaves", new Block(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK)));
+    public static final Block FUNGI_TREE_LOG = registerBlock("fungi_tree_log", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+    public static final Block FUNGI_TREE_WOOD = registerBlock("fungi_tree_wood", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
+    public static final Block FUNGI_TREE_LEAVES = registerBlock("fungi_tree_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).nonOpaque()));
+    //public static final Block FUNGI_TREE_SAPLING = registerBlock("fungi_tree_sapling", new SaplingBlock(FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+    public static final Block FUNGI_GRASS_BLOCK = registerBlock("fungi_grass_block", new FungiGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
+    public static final Block FUNGI_DIRT = registerBlock("fungi_dirt", new Block(FabricBlockSettings.copyOf(Blocks.DIRT)));
     public static final Block GLOWING_SAPPHIRE_BLOCK = registerBlock("glowing_sapphire_block", new GlowingSapphireBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(11)));
 
     //Ores
