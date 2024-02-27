@@ -5,24 +5,17 @@
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:dirt"
+        "Name": "mushncav:fungi_tree_wood",
+        "Properties": {
+          "axis": "y"
+        }
       }
     },
     "foliage_placer": {
-      "type": "minecraft:cherry_foliage_placer",
-      "corner_hole_chance": 0.1,
-      "hanging_leaves_chance": 0.3,
-      "hanging_leaves_extension_chance": 0.1,
-      "height": 4,
+      "type": "minecraft:jungle_foliage_placer",
+      "height": 2,
       "offset": 0,
-      "radius": {
-        "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 5,
-          "min_inclusive": 4
-        }
-      },
-      "wide_bottom_layer_hole_chance": 0.1
+      "radius": 4
     },
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
@@ -39,8 +32,8 @@
     "ignore_vines": false,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",
-      "limit": 3,
-      "lower_size": 0,
+      "limit": 1,
+      "lower_size": 1,
       "upper_size": 2
     },
     "root_placer": {
@@ -76,32 +69,16 @@
       "trunk_offset_y": {
         "type": "minecraft:uniform",
         "value": {
-          "max_inclusive": 5,
-          "min_inclusive": 2
+          "max_inclusive": 9,
+          "min_inclusive": 5
         }
       }
     },
     "trunk_placer": {
-      "type": "minecraft:upwards_branching_trunk_placer",
-      "base_height": 8,
-      "can_grow_through": "#mushncav:dirt",
-      "extra_branch_length": {
-        "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 6,
-          "min_inclusive": 3
-        }
-      },
-      "extra_branch_steps": {
-        "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 6,
-          "min_inclusive": 3
-        }
-      },
-      "height_rand_a": 4,
-      "height_rand_b": 6,
-      "place_branch_per_log_probability": 0.15
+      "type": "minecraft:mega_jungle_trunk_placer",
+      "base_height": 16,
+      "height_rand_a": 2,
+      "height_rand_b": 24
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",

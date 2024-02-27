@@ -1,5 +1,5 @@
 {
-  "feature": "mushncav:fungi_tree",
+  "feature": "mushncav:huge_fungi_tree",
   "placement": [
     {
       "type": "minecraft:count",
@@ -7,11 +7,11 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "data": 2,
-            "weight": 1
+            "data": 128,
+            "weight": 0
           },
           {
-            "data": 7,
+            "data": 256,
             "weight": 1
           }
         ]

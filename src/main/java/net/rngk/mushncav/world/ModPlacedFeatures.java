@@ -21,13 +21,15 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> GLOWING_SAPPHIRE_ORE_PLACED_KEY = registerKey("glowing_sapphire_ore_placed");
 
     public static final RegistryKey<PlacedFeature> FUNGI_TREE_PLACED_KEY = registerKey("fungi_tree_placed");
+    public static final RegistryKey<PlacedFeature> HUGE_FUNGI_TREE_PLACED_KEY = registerKey("huge_fungi_tree_placed");
 
     public static void boostrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
         register(context, GLOWING_SAPPHIRE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_SAPPHIRE_ORE_KEY), ModOrePlacement.modifiersWithCount(3, //Veins per chunk
                 HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(90))));
-        register(context, FUNGI_TREE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FUNGI_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(4, 0.5f, 3), ModBlocks.FUNGI_TREE_SAPLING));
+        register(context, FUNGI_TREE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FUNGI_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(2, 0.5f, 5), ModBlocks.FUNGI_TREE_SAPLING));
+        register(context, HUGE_FUNGI_TREE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HUGE_FUNGI_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(128, 1f, 128), ModBlocks.FUNGI_TREE_SAPLING));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
