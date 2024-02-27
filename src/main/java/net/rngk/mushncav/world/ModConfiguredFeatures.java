@@ -55,14 +55,6 @@ public class ModConfiguredFeatures {
         RegistryEntryLookup<Block> registryEntryLookup = context.getRegistryLookup(RegistryKeys.BLOCK);
 
         register(context, GLOWING_SAPPHIRE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldGlowingSapphireOres, 12));
-        /*register(context, FUNGI_TREE_KEY, Feature.TREE,
-                new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.FUNGI_TREE_LOG),
-                        new FungiTreeTrunkPlacer(18, 4, 8), BlockStateProvider.of(ModBlocks.FUNGI_TREE_LEAVES),
-                        new BlobFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(2), 2),
-                        Optional.of(new FungiTreeRootPlacer(UniformIntProvider.create(1, 3), BlockStateProvider.of(ModBlocks.FUNGI_TREE_WOOD), Optional.empty(), new FungiTreeRootPlacement(registryEntryLookup.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.FUNGI_GRASS_BLOCK, ModBlocks.FUNGI_TREE_WOOD), BlockStateProvider.of(ModBlocks.FUNGI_TREE_WOOD), 8, 15, 0.2f))),
-                        new TwoLayersFeatureSize(1, 0, 2))
-                        .dirtProvider(BlockStateProvider.of(ModBlocks.FUNGI_DIRT))
-                .build()); just in case this goes horrible*/
         register(context, FUNGI_TREE_KEY, Feature.TREE,
                 new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.FUNGI_TREE_LOG),
                         new UpwardsBranchingTrunkPlacer(16, 4, 7, UniformIntProvider.create(1, 6), 0.5f, UniformIntProvider.create(0, 1), registryEntryLookup.getOrThrow(ModTags.Blocks.DIRT)), BlockStateProvider.of(ModBlocks.FUNGI_TREE_LEAVES),
