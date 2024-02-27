@@ -1,47 +1,29 @@
 package net.rngk.mushncav.world;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.PropaguleBlock;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
-import net.minecraft.registry.entry.RegistryEntryListCodec;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
 import net.minecraft.world.gen.foliage.RandomSpreadFoliagePlacer;
 import net.minecraft.world.gen.root.*;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
-import net.minecraft.world.gen.treedecorator.AttachedToLeavesTreeDecorator;
-import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
-import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import net.minecraft.world.gen.trunk.UpwardsBranchingTrunkPlacer;
 import net.rngk.mushncav.MushroomsAndCaverns;
 import net.rngk.mushncav.block.ModBlocks;
 import net.rngk.mushncav.util.ModTags;
-import net.rngk.mushncav.world.tree.custom.FungiTreeRootPlacement;
-import net.rngk.mushncav.world.tree.custom.FungiTreeRootPlacer;
-import net.rngk.mushncav.world.tree.custom.FungiTreeTrunkPlacer;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiConsumer;
 
 public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_SAPPHIRE_ORE_KEY = registerKey("glowing_sapphire_ore");
