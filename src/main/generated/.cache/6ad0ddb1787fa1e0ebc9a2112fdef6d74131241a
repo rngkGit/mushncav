@@ -1,6 +1,6 @@
-// 1.20.4	2024-02-26T11:40:06.873092	Mushrooms and Caverns/null
+// 1.20.4	2024-02-26T18:14:05.325034	Mushrooms and Caverns/null
 32ab909cae1dd1ee6b8b7eb6e3b20455667f6642 data/mushncav/worldgen/configured_feature/glowing_sapphire_ore.json
 f9b71928bc8d1afff82cc8f514c6d7c9ee07d3d1 data/mushncav/worldgen/placed_feature/glowing_sapphire_ore_placed.json
 5ca0e669fb36a5fe92380f6221e760a0f66f3dfe data/mushncav/worldgen/biome/fungi_forest.json
 063c064eb5df13440405709b4a73c44624997d08 data/mushncav/worldgen/placed_feature/fungi_tree_placed.json
-cacaea802a4c1870977941d62bff9e9a6f9967ef data/mushncav/worldgen/configured_feature/fungi_tree.json
+01327c51d428a546bb2ba2012e9840e5ebb7d537 data/mushncav/worldgen/configured_feature/fungi_tree.json

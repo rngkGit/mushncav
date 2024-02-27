@@ -6,6 +6,7 @@ import net.rngk.mushncav.block.ModBlocks;
 import net.rngk.mushncav.item.ModItemGroups;
 import net.rngk.mushncav.item.ModItems;
 import net.rngk.mushncav.world.gen.ModWorldGeneration;
+import net.rngk.mushncav.world.tree.ModTrunkPlacerTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,6 +28,8 @@ public class MushroomsAndCaverns implements ModInitializer {
 		ModBlocks.registerModBlocks();
 
 		ModItemGroups.registerItemGroups();
+
+		ModTrunkPlacerTypes.register();
 
 		ModWorldGeneration.generateModWorldGen();
 	}
