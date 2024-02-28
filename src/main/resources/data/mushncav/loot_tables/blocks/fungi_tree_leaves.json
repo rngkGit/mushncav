@@ -123,7 +123,7 @@
               "function": "minecraft:explosion_decay"
             }
           ],
-          "name": "minecraft:stick"
+          "name": "mushncav:fungi_stick"
         }
       ],
       "rolls": 1.0
