@@ -58,10 +58,10 @@ public class ModConfiguredFeatures {
         register(context, FUNGI_MUSHROOM_KEY, Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM),
-                        new CherryTrunkPlacer(4, 2, 5, ConstantIntProvider.create(2), UniformIntProvider.create(3, 5), UniformIntProvider.create(-1, 0), ConstantIntProvider.create(2)),
+                        new StraightTrunkPlacer(4, 0, 1),
                         BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_BLOCK),
-                        new CherryFoliagePlacer(UniformIntProvider.create(2, 4), ConstantIntProvider.create(0), ConstantIntProvider.create(4), 0.1f, 0.2f, 0.3f, 0.1f),
-                        Optional.of(new MangroveRootPlacer(UniformIntProvider.create(2, 3), BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM), Optional.empty(), new MangroveRootPlacement(registryEntryLookup.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.FUNGI_GRASS_BLOCK, ModBlocks.FUNGI_MUSHROOM_STEM), BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM), 5, 8, 0.4f))),
+                        new CherryFoliagePlacer(UniformIntProvider.create(4, 6), UniformIntProvider.create(0, 2), ConstantIntProvider.create(4), 0.8f, 0.2f, 1f, 0.75f),
+                        Optional.of(new MangroveRootPlacer(UniformIntProvider.create(1, 3), BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM), Optional.empty(), new MangroveRootPlacement(registryEntryLookup.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.FUNGI_GRASS_BLOCK, ModBlocks.FUNGI_MUSHROOM_STEM), BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM), 4, 8, 0.4f))),
                         new TwoLayersFeatureSize(2, 1, 2)
                 ).dirtProvider(BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM)).build());
     }
