@@ -39,13 +39,13 @@ public class ModConfiguredFeatures {
         register(context, FUNGI_TREE_KEY, Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(ModBlocks.FUNGI_TREE_LOG),
-                        new CherryTrunkPlacer(8, 4, 6, UniformIntProvider.create(2, 3), UniformIntProvider.create(3, 5), UniformIntProvider.create(-1, 0), ConstantIntProvider.create(2)),
+                        new CherryTrunkPlacer(6, 1, 2, UniformIntProvider.create(2, 3), UniformIntProvider.create(2, 3), UniformIntProvider.create(-1, 0), ConstantIntProvider.create(2)),
                         BlockStateProvider.of(ModBlocks.FUNGI_TREE_LEAVES),
                         /*new RandomSpreadFoliagePlacer(ConstantIntProvider.create(5), ConstantIntProvider.create(0), ConstantIntProvider.create(4), 120),*/
                         new CherryFoliagePlacer(UniformIntProvider.create(3, 4), ConstantIntProvider.create(1), ConstantIntProvider.create(4), 0.1f, 0.25f, 0.4f, 0.25f),
                         Optional.of(new MangroveRootPlacer(UniformIntProvider.create(2, 5), BlockStateProvider.of(ModBlocks.FUNGI_TREE_WOOD), Optional.empty(), new MangroveRootPlacement(registryEntryLookup.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.FUNGI_GRASS_BLOCK, ModBlocks.FUNGI_TREE_WOOD), BlockStateProvider.of(ModBlocks.FUNGI_TREE_WOOD), 8, 12, 0.3f))),
                         new TwoLayersFeatureSize(3, 0, 2)
-                ).build());
+                ).dirtProvider(BlockStateProvider.of(ModBlocks.FUNGI_TREE_WOOD)).build());
         register(context, HUGE_FUNGI_TREE_KEY, Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(ModBlocks.FUNGI_TREE_LOG),
@@ -61,7 +61,7 @@ public class ModConfiguredFeatures {
                         new StraightTrunkPlacer(4, 0, 1),
                         BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_BLOCK),
                         new CherryFoliagePlacer(UniformIntProvider.create(4, 6), UniformIntProvider.create(0, 2), ConstantIntProvider.create(4), 0.8f, 0.2f, 1f, 0.75f),
-                        Optional.of(new MangroveRootPlacer(UniformIntProvider.create(1, 3), BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM), Optional.empty(), new MangroveRootPlacement(registryEntryLookup.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.FUNGI_GRASS_BLOCK, ModBlocks.FUNGI_MUSHROOM_STEM), BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM), 4, 8, 0.4f))),
+                        Optional.of(new MangroveRootPlacer(UniformIntProvider.create(1, 3), BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM), Optional.empty(), new MangroveRootPlacement(registryEntryLookup.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.FUNGI_GRASS_BLOCK, ModBlocks.FUNGI_MUSHROOM_STEM), BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM), 6, 9, 0.4f))),
                         new TwoLayersFeatureSize(2, 1, 2)
                 ).dirtProvider(BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM)).build());
     }

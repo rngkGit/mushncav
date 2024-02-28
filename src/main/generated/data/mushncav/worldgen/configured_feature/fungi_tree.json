@@ -5,7 +5,10 @@
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:dirt"
+        "Name": "mushncav:fungi_tree_wood",
+        "Properties": {
+          "axis": "y"
+        }
       }
     },
     "foliage_placer": {
@@ -83,7 +86,7 @@
     },
     "trunk_placer": {
       "type": "minecraft:cherry_trunk_placer",
-      "base_height": 8,
+      "base_height": 6,
       "branch_count": {
         "type": "minecraft:uniform",
         "value": {
@@ -95,16 +98,16 @@
       "branch_horizontal_length": {
         "type": "minecraft:uniform",
         "value": {
-          "max_inclusive": 5,
-          "min_inclusive": 3
+          "max_inclusive": 3,
+          "min_inclusive": 2
         }
       },
       "branch_start_offset_from_top": {
         "max_inclusive": 0,
         "min_inclusive": -1
       },
-      "height_rand_a": 4,
-      "height_rand_b": 6
+      "height_rand_a": 1,
+      "height_rand_b": 2
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",

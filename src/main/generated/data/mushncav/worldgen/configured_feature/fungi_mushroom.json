@@ -59,8 +59,8 @@
       "type": "minecraft:mangrove_root_placer",
       "mangrove_root_placement": {
         "can_grow_through": "#mushncav:dirt",
-        "max_root_length": 8,
-        "max_root_width": 4,
+        "max_root_length": 9,
+        "max_root_width": 6,
         "muddy_roots_in": [
           "mushncav:fungi_grass_block",
           "mushncav:fungi_mushroom_stem"
