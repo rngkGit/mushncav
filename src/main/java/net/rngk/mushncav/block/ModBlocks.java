@@ -21,6 +21,9 @@ public class ModBlocks {
     public static final Block FUNGI_TREE_WOOD = registerBlock("fungi_tree_wood", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
     public static final Block FUNGI_TREE_LEAVES = registerBlock("fungi_tree_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).nonOpaque()));
     public static final Block FUNGI_TREE_SAPLING = registerBlock("fungi_tree_sapling", new FungiSaplingBlock(ModSaplingGenerators.FUNGI_TREE, FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING)));
+    public static final Block FUNGI_MUSHROOM_STEM = registerBlock("fungi_mushroom_stem", new PillarBlock(FabricBlockSettings.copyOf(Blocks.MUSHROOM_STEM)));
+    public static final Block FUNGI_MUSHROOM_BLOCK = registerBlock("fungi_mushroom_block", new MushroomBlock(FabricBlockSettings.copyOf(Blocks.RED_MUSHROOM_BLOCK)));
+    public static final Block FUNGI_MUSHROOM = registerBlock("fungi_mushroom", new FungiSaplingBlock(ModSaplingGenerators.FUNGI_MUSHROOM, FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING)));
     public static final Block FUNGI_GRASS_BLOCK = registerBlock("fungi_grass_block", new FungiGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
     public static final Block FUNGI_DIRT = registerBlock("fungi_dirt", new Block(FabricBlockSettings.copyOf(Blocks.DIRT)));
     public static final Block GLOWING_SAPPHIRE_BLOCK = registerBlock("glowing_sapphire_block", new GlowingSapphireBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(11)));

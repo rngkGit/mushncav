@@ -9,7 +9,8 @@ import net.rngk.mushncav.world.biome.ModBiomes;
 
 public class ModTreeGeneration {
     public static void generateTrees() {
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.FUNGI_FOREST), GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.FUNGI_TREE_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.FUNGI_FOREST), GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.FUNGI_MUSHROOM_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.FUNGI_FOREST), GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.HUGE_FUNGI_TREE_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.FUNGI_FOREST), GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.FUNGI_TREE_PLACED_KEY);
     }
 }

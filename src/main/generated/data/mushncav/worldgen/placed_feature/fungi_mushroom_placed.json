@@ -1,5 +1,5 @@
 {
-  "feature": "mushncav:huge_fungi_tree",
+  "feature": "mushncav:fungi_mushroom",
   "placement": [
     {
       "type": "minecraft:count",
@@ -8,10 +8,10 @@
         "distribution": [
           {
             "data": 32,
-            "weight": 1
+            "weight": 0
           },
           {
-            "data": 48,
+            "data": 64,
             "weight": 1
           }
         ]
@@ -36,7 +36,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "mushncav:fungi_tree_sapling",
+          "Name": "mushncav:fungi_mushroom",
           "Properties": {
             "stage": "0"
           }

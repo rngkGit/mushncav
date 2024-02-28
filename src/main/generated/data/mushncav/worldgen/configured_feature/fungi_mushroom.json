@@ -5,21 +5,24 @@
     "dirt_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "minecraft:dirt"
+        "Name": "mushncav:fungi_mushroom_stem",
+        "Properties": {
+          "axis": "y"
+        }
       }
     },
     "foliage_placer": {
       "type": "minecraft:cherry_foliage_placer",
       "corner_hole_chance": 0.1,
-      "hanging_leaves_chance": 0.4,
-      "hanging_leaves_extension_chance": 0.25,
+      "hanging_leaves_chance": 0.3,
+      "hanging_leaves_extension_chance": 0.1,
       "height": 4,
-      "offset": 1,
+      "offset": 0,
       "radius": {
         "type": "minecraft:uniform",
         "value": {
           "max_inclusive": 4,
-          "min_inclusive": 3
+          "min_inclusive": 2
         }
       },
       "wide_bottom_layer_hole_chance": 0.1
@@ -27,11 +30,14 @@
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "mushncav:fungi_tree_leaves",
+        "Name": "mushncav:fungi_mushroom_block",
         "Properties": {
-          "distance": "7",
-          "persistent": "false",
-          "waterlogged": "false"
+          "down": "true",
+          "east": "true",
+          "north": "true",
+          "south": "true",
+          "up": "true",
+          "west": "true"
         }
       }
     },
@@ -39,35 +45,35 @@
     "ignore_vines": false,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",
-      "limit": 3,
-      "lower_size": 0,
+      "limit": 2,
+      "lower_size": 1,
       "upper_size": 2
     },
     "root_placer": {
       "type": "minecraft:mangrove_root_placer",
       "mangrove_root_placement": {
         "can_grow_through": "#mushncav:dirt",
-        "max_root_length": 12,
-        "max_root_width": 8,
+        "max_root_length": 8,
+        "max_root_width": 5,
         "muddy_roots_in": [
           "mushncav:fungi_grass_block",
-          "mushncav:fungi_tree_wood"
+          "mushncav:fungi_mushroom_stem"
         ],
         "muddy_roots_provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "mushncav:fungi_tree_wood",
+            "Name": "mushncav:fungi_mushroom_stem",
             "Properties": {
               "axis": "y"
             }
           }
         },
-        "random_skew_chance": 0.3
+        "random_skew_chance": 0.4
       },
       "root_provider": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "mushncav:fungi_tree_wood",
+          "Name": "mushncav:fungi_mushroom_stem",
           "Properties": {
             "axis": "y"
           }
@@ -76,21 +82,15 @@
       "trunk_offset_y": {
         "type": "minecraft:uniform",
         "value": {
-          "max_inclusive": 5,
+          "max_inclusive": 3,
           "min_inclusive": 2
         }
       }
     },
     "trunk_placer": {
       "type": "minecraft:cherry_trunk_placer",
-      "base_height": 8,
-      "branch_count": {
-        "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 3,
-          "min_inclusive": 2
-        }
-      },
+      "base_height": 4,
+      "branch_count": 2,
       "branch_end_offset_from_top": 2,
       "branch_horizontal_length": {
         "type": "minecraft:uniform",
@@ -103,13 +103,13 @@
         "max_inclusive": 0,
         "min_inclusive": -1
       },
-      "height_rand_a": 4,
-      "height_rand_b": 6
+      "height_rand_a": 2,
+      "height_rand_b": 5
     },
     "trunk_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "mushncav:fungi_tree_log",
+        "Name": "mushncav:fungi_mushroom_stem",
         "Properties": {
           "axis": "y"
         }
