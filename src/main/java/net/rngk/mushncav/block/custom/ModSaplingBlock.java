@@ -10,7 +10,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldView;
 import net.rngk.mushncav.util.ModTags;
 
-public class FungiSaplingBlock extends SaplingBlock {
+public class ModSaplingBlock extends SaplingBlock {
     @Override
     public boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
         return floor.isIn(BlockTags.DIRT) || floor.isIn(ModTags.Blocks.DIRT) || floor.isOf(Blocks.FARMLAND);
@@ -20,7 +20,7 @@ public class FungiSaplingBlock extends SaplingBlock {
         BlockPos blockPos = pos.down();
         return canPlantOnTop(world.getBlockState(blockPos), world, blockPos);
     }
-    public FungiSaplingBlock(SaplingGenerator generator, Settings settings) {
+    public ModSaplingBlock(SaplingGenerator generator, Settings settings) {
         super(generator, settings);
     }
 }

@@ -27,6 +27,8 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> FUNGI_TREE_KEY = registerKey("fungi_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HUGE_FUNGI_TREE_KEY = registerKey("huge_fungi_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FUNGI_MUSHROOM_KEY = registerKey("fungi_mushroom");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_KEY = registerKey("glowing_mushroom");
+
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
         RuleTest deepslateReplacables = new TagMatchRuleTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
@@ -64,6 +66,15 @@ public class ModConfiguredFeatures {
                         Optional.of(new MangroveRootPlacer(UniformIntProvider.create(1, 3), BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM), Optional.empty(), new MangroveRootPlacement(registryEntryLookup.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.FUNGI_GRASS_BLOCK, ModBlocks.FUNGI_MUSHROOM_STEM), BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM), 6, 9, 0.4f))),
                         new TwoLayersFeatureSize(2, 1, 2)
                 ).dirtProvider(BlockStateProvider.of(ModBlocks.FUNGI_MUSHROOM_STEM)).build());
+        register(context, GLOWING_MUSHROOM_KEY, Feature.TREE,
+                new TreeFeatureConfig.Builder(
+                        BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_STEM),
+                        new StraightTrunkPlacer(4, 0, 1),
+                        BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_BLOCK),
+                        new CherryFoliagePlacer(UniformIntProvider.create(4, 6), UniformIntProvider.create(0, 2), ConstantIntProvider.create(4), 0.8f, 0.2f, 1f, 0.75f),
+                        Optional.of(new MangroveRootPlacer(UniformIntProvider.create(1, 3), BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_STEM), Optional.empty(), new MangroveRootPlacement(registryEntryLookup.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK, ModBlocks.GLOWING_MUSHROOM_STEM), BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_STEM), 6, 9, 0.4f))),
+                        new TwoLayersFeatureSize(2, 1, 2)
+                ).dirtProvider(BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_STEM)).build());
     }
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(MushroomsAndCaverns.MOD_ID, name));

@@ -10,22 +10,29 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.rngk.mushncav.MushroomsAndCaverns;
-import net.rngk.mushncav.block.custom.FungiGrassBlock;
-import net.rngk.mushncav.block.custom.FungiSaplingBlock;
-import net.rngk.mushncav.block.custom.GlowingSapphireBlock;
-import net.rngk.mushncav.block.custom.GlowingSapphireOreBlock;
+import net.rngk.mushncav.block.custom.*;
 import net.rngk.mushncav.world.tree.ModSaplingGenerators;
 
 public class ModBlocks {
+    //Fungi Blocks
     public static final Block FUNGI_TREE_LOG = registerBlock("fungi_tree_log", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
     public static final Block FUNGI_TREE_WOOD = registerBlock("fungi_tree_wood", new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_WOOD)));
     public static final Block FUNGI_TREE_LEAVES = registerBlock("fungi_tree_leaves", new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).nonOpaque()));
-    public static final Block FUNGI_TREE_SAPLING = registerBlock("fungi_tree_sapling", new FungiSaplingBlock(ModSaplingGenerators.FUNGI_TREE, FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING)));
+    public static final Block FUNGI_TREE_SAPLING = registerBlock("fungi_tree_sapling", new ModSaplingBlock(ModSaplingGenerators.FUNGI_TREE, FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING)));
     public static final Block FUNGI_MUSHROOM_STEM = registerBlock("fungi_mushroom_stem", new PillarBlock(FabricBlockSettings.copyOf(Blocks.MUSHROOM_STEM)));
     public static final Block FUNGI_MUSHROOM_BLOCK = registerBlock("fungi_mushroom_block", new MushroomBlock(FabricBlockSettings.copyOf(Blocks.RED_MUSHROOM_BLOCK)));
-    public static final Block FUNGI_MUSHROOM = registerBlock("fungi_mushroom", new FungiSaplingBlock(ModSaplingGenerators.FUNGI_MUSHROOM, FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING)));
+    public static final Block FUNGI_MUSHROOM = registerBlock("fungi_mushroom", new ModSaplingBlock(ModSaplingGenerators.FUNGI_MUSHROOM, FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING)));
     public static final Block FUNGI_GRASS_BLOCK = registerBlock("fungi_grass_block", new FungiGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
     public static final Block FUNGI_DIRT = registerBlock("fungi_dirt", new Block(FabricBlockSettings.copyOf(Blocks.DIRT)));
+
+    //Glowing Mushroom Blocks
+    public static final Block GLOWING_MUSHROOM_STEM = registerBlock("glowing_mushroom_stem", new PillarBlock(FabricBlockSettings.copyOf(Blocks.MUSHROOM_STEM)));
+    public static final Block GLOWING_MUSHROOM_BLOCK = registerBlock("glowing_mushroom_block", new PillarBlock(FabricBlockSettings.copyOf(Blocks.RED_MUSHROOM_BLOCK)));
+    public static final Block GLOWING_MUSHROOM = registerBlock("glowing_mushroom", new ModSaplingBlock(ModSaplingGenerators.GLOWING_MUSHROOM, FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING)));
+    public static final Block GLOWING_MUSHROOM_GRASS_BLOCK = registerBlock("glowing_mushroom_grass_block", new GlowingMushroomGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
+    public static final Block GLOWING_MUSHROOM_DIRT = registerBlock("glowing_mushroom_dirt", new Block(FabricBlockSettings.copyOf(FabricBlockSettings.copyOf(Blocks.DIRT))));
+
+    //Uhh, other block stuff
     public static final Block GLOWING_SAPPHIRE_BLOCK = registerBlock("glowing_sapphire_block", new GlowingSapphireBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(11)));
 
     //Ores

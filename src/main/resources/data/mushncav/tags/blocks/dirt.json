@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "mushncav:fungi_dirt",
-    "mushncav:fungi_grass_block"
+    "mushncav:fungi_grass_block",
+    "mushncav:glowing_mushroom_dirt",
+    "mushncav:glowing_mushroom_grass_block"
   ]
 }

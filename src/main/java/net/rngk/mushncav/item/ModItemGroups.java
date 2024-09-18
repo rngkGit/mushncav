@@ -36,6 +36,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.FUNGI_GRASS_BLOCK);
                         entries.add(ModBlocks.FUNGI_DIRT);
 
+                        entries.add(ModBlocks.GLOWING_MUSHROOM);
+
                         entries.add(ModBlocks.GLOWING_SAPPHIRE_ORE);
                         entries.add(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE);
 

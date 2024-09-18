@@ -6,10 +6,7 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.YOffset;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.PlacedFeature;
-import net.minecraft.world.gen.feature.PlacedFeatures;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.rngk.mushncav.MushroomsAndCaverns;
@@ -23,6 +20,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> FUNGI_TREE_PLACED_KEY = registerKey("fungi_tree_placed");
     public static final RegistryKey<PlacedFeature> HUGE_FUNGI_TREE_PLACED_KEY = registerKey("huge_fungi_tree_placed");
     public static final RegistryKey<PlacedFeature> FUNGI_MUSHROOM_PLACED_KEY = registerKey("fungi_mushroom_placed");
+    public static final RegistryKey<PlacedFeature> GLOWING_MUSHROOM_PLACED_KEY = registerKey("glowing_mushroom_placed");
 
     public static void boostrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -32,6 +30,8 @@ public class ModPlacedFeatures {
         register(context, FUNGI_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FUNGI_MUSHROOM_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(32, 1f, 32), ModBlocks.FUNGI_MUSHROOM));
         register(context, HUGE_FUNGI_TREE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HUGE_FUNGI_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(32, .5f, 16), ModBlocks.FUNGI_TREE_SAPLING));
         register(context, FUNGI_TREE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FUNGI_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(16, 0.25f, 16), ModBlocks.FUNGI_TREE_SAPLING));
+        register(context, GLOWING_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(64, 1f, 64), ModBlocks.GLOWING_MUSHROOM));
+        //register(context, GLOWING_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive());
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
