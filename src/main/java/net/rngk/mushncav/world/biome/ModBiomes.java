@@ -57,8 +57,12 @@ public class ModBiomes {
         DefaultBiomeFeatures.addForestFlowers(biomeBuilder);
         DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
 
+        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_NORMAL);
+
         DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
+
+        //biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.GRASS_BONEMEAL);
 
         return new Biome.Builder()
                 .precipitation(true)
@@ -93,8 +97,13 @@ public class ModBiomes {
         DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
 
         //biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.TREES_PLAINS); adds oak trees
+
+        //DefaultBiomeFeatures.addLushCavesDecoration(biomeBuilder);
+
         DefaultBiomeFeatures.addForestFlowers(biomeBuilder);
         DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
+
+        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_NORMAL);
 
         DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
