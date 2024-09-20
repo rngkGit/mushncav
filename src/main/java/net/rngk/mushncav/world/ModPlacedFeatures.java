@@ -1,37 +1,66 @@
 package net.rngk.mushncav.world;
 
+import com.google.common.collect.ImmutableList;
+import net.minecraft.block.Block;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.world.gen.YOffset;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placementmodifier.HeightRangePlacementModifier;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
+import net.minecraft.world.gen.placementmodifier.*;
 import net.rngk.mushncav.MushroomsAndCaverns;
 import net.rngk.mushncav.block.ModBlocks;
 
 import java.util.List;
 
 public class ModPlacedFeatures {
+    //private static final PlacementModifier NOT_IN_SURFACE_WATER_MODIFIER = SurfaceWaterDepthFilterPlacementModifier.of(0);
+
+    // Ores
     public static final RegistryKey<PlacedFeature> GLOWING_SAPPHIRE_ORE_PLACED_KEY = registerKey("glowing_sapphire_ore_placed");
 
+    // Trees
     public static final RegistryKey<PlacedFeature> FUNGI_TREE_PLACED_KEY = registerKey("fungi_tree_placed");
     public static final RegistryKey<PlacedFeature> HUGE_FUNGI_TREE_PLACED_KEY = registerKey("huge_fungi_tree_placed");
     public static final RegistryKey<PlacedFeature> FUNGI_MUSHROOM_PLACED_KEY = registerKey("fungi_mushroom_placed");
     public static final RegistryKey<PlacedFeature> GLOWING_MUSHROOM_PLACED_KEY = registerKey("glowing_mushroom_placed");
 
+    // Grass
+    public static final RegistryKey<PlacedFeature> GLOWING_MUSHROOM_VEGETATION_PLACED_KEY = registerKey("glowing_mushroom_vegetation_placed");
+
+
+    // Extra stuff
+    private static ImmutableList.Builder<PlacementModifier> undergroundTreeModifiersBuilder(PlacementModifier countModifier) {
+        return ((ImmutableList.Builder)((ImmutableList.Builder)((ImmutableList.Builder)((ImmutableList.Builder)ImmutableList.builder().add(countModifier)).add(SquarePlacementModifier.of()))/*.add(NOT_IN_SURFACE_WATER_MODIFIER)*/).add(PlacedFeatures.BOTTOM_TO_120_RANGE)).add(BiomePlacementModifier.of());
+    }
+
+    /*public static List<PlacementModifier> undergroundTreeModifiersWithWouldSurvive(PlacementModifier modifier, Block block) {
+        return ((ImmutableList.Builder)undergroundTreeModifiersBuilder(modifier).add((PlacementModifier) BlockFilterPlacementModifier.of(BlockPredicate.wouldSurvive(block.getDefaultState(), BlockPos.ORIGIN)))).build();
+    }*/
+
     public static void boostrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
+        // Ores
         register(context, GLOWING_SAPPHIRE_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_SAPPHIRE_ORE_KEY), ModOrePlacement.modifiersWithCount(3, //Veins per chunk
                 HeightRangePlacementModifier.uniform(YOffset.fixed(-80), YOffset.fixed(90))));
+
+        // Trees
         register(context, FUNGI_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FUNGI_MUSHROOM_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(32, 1f, 32), ModBlocks.FUNGI_MUSHROOM));
         register(context, HUGE_FUNGI_TREE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HUGE_FUNGI_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(32, .5f, 16), ModBlocks.FUNGI_TREE_SAPLING));
         register(context, FUNGI_TREE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FUNGI_TREE_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(16, 0.25f, 16), ModBlocks.FUNGI_TREE_SAPLING));
-        register(context, GLOWING_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(64, 1f, 64), ModBlocks.GLOWING_MUSHROOM));
-        //register(context, GLOWING_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_KEY), VegetationPlacedFeatures.treeModifiersWithWouldSurvive());
+        //register(context, GLOWING_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_KEY), undergroundTreeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(128, 0.25f, 128), ModBlocks.GLOWING_MUSHROOM));
+        register(context, GLOWING_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_KEY), undergroundTreeModifiersBuilder(PlacedFeatures.createCountExtraModifier(128, 1f, 128)).build());
+
+
+        // Grass
+        register(context, GLOWING_MUSHROOM_VEGETATION_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_VEGETATION_KEY), List.of(CountPlacementModifier.of(250), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of()));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
