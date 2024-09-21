@@ -1,5 +1,5 @@
 # Mushrooms and Caverns Mod
-Welcome to the Mushrooms and Caverns Mod! This Minecraft mod for version 1.20.4 (Fabric) introduces a whole new underground ecosystem with unique biomes, blocks, items, and mobs. Explore glowing mushroom forests, mine rare ores, and survive among new creatures!
+Welcome to the Mushrooms and Caverns Mod! This Minecraft mod for version 1.20.4 (Fabric) introduces a whole new vast ecosystem with unique biomes, blocks, items, and mobs. Explore glowing mushroom forests, mine rare ores, and survive among new creatures!
 
 ## Features
 ### 🏞️ New Surface Biomes
