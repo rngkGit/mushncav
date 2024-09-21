@@ -81,7 +81,7 @@ public class ModPlacedFeatures {
         //register(context, GLOWING_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_KEY), undergroundTreeModifiersWithWouldSurvive(CountPlacementModifier.of(new WeightedListIntProvider(DataPool.<IntProvider>builder().add(ConstantIntProvider.create(192), 0).add(ConstantIntProvider.create(256), 1).build())), ModBlocks.GLOWING_MUSHROOM));
 
 
-        // Grass
+        // Glowing Mushroom Vegetation Stuff
         register(context, GLOWING_MUSHROOM_VEGETATION_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_VEGETATION_KEY), List.of(CountPlacementModifier.of(250), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of()));
     }
 
