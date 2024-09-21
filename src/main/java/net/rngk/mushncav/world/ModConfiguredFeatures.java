@@ -94,7 +94,7 @@ public class ModConfiguredFeatures {
                         new StraightTrunkPlacer(4, 0, 1),
                         BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_BLOCK),
                         new CherryFoliagePlacer(UniformIntProvider.create(4, 6), UniformIntProvider.create(0, 2), ConstantIntProvider.create(4), 0.8f, 0.2f, 1f, 0.75f),
-                        Optional.of(new MangroveRootPlacer(UniformIntProvider.create(1, 3), BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_STEM), Optional.empty(), new MangroveRootPlacement(registryEntryLookupBlock.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK, ModBlocks.GLOWING_MUSHROOM_STEM), BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_STEM), 6, 9, 0.4f))),
+                        Optional.of(new MangroveRootPlacer(UniformIntProvider.create(1, 3), BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_STEM), Optional.empty(), new MangroveRootPlacement(registryEntryLookupBlock.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK, ModBlocks.GLOWING_MUSHROOM_STEM), BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_STEM), 4, 7, 0.2f))),
                         new TwoLayersFeatureSize(2, 1, 2)
                 ).dirtProvider(BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_STEM)).build());
 
