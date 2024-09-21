@@ -5,7 +5,7 @@ Welcome to the Mushrooms and Caverns Mod! This Minecraft mod for version 1.20.4 
 ### 🏞️ New Surface Biomes
 Fungi Forest: Near the scapes of the water, the Fungi Forest appears! Explore new trees, mushrooms, mobs, and more.
 ### New Underground Biomes
-Glowing Mushroom: Discover this underground wonder filled with towering, bioluminescent mushrooms and lush vegetation.
+Glowing Mushroom: Discover this underground wonder filled bioluminescent mushrooms and lush vegetation.
 Amethyst Mushroom Biome: In Development
 ### New Blocks & Items
 Ores: Mine new rare ores, perfect for crafting unique gear and items. New ores include:
@@ -13,7 +13,7 @@ Ores: Mine new rare ores, perfect for crafting unique gear and items. New ores i
 Blocks: With new biomes comes new blocks to discover! New blocks include:
 * Fungi Dirt & Fungi Grass: A new kind of soil with an odd colour.
 * Bioluminescent Blocks: Glowing mushroom blocks creates an astounding natural light source perfect for your base.
-Items: These new biomes introduce some new strange items. New items incude:
+Items: These new biomes introduce some new strange items. New items include:
 * Mushroom Sticks: Collect and use these flexible sticks for crafting.
 More of everything coming soon! I am still developing this mod, this is just what I have right now :)
 ### New Entities
