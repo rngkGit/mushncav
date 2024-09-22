@@ -106,6 +106,7 @@ public class ModBiomes {
         DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
 
         biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_MUSHROOM_VEGETATION_PLACED_KEY);
+        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_MUSHROOM_VEGETATION_CEILING_PLACED_KEY);
 
         DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);

@@ -41,8 +41,9 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> FUNGI_MUSHROOM_KEY = registerKey("fungi_mushroom");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_KEY = registerKey("glowing_mushroom");
 
-    // Grass
+    // Glowing Mushroom Biome Stuff
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_VEGETATION_KEY = registerKey("glowing_mushroom_vegetation");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_VEGETATION_CEILING_KEY = registerKey("glowing_mushroom_vegetation_ceiling");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_GRASS_KEY = registerKey("glowing_grass");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
@@ -100,7 +101,7 @@ public class ModConfiguredFeatures {
 
 
 
-        // Grass
+        // Mushroom Biome Stuff
         /*register(context, GLOWING_MUSHROOM_GRASS_KEY, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(
                 BlockTags.DIRT,
                 BlockStateProvider.of(Blocks.SHORT_GRASS.getDefaultState()),
@@ -125,6 +126,18 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK),
                 PlacedFeatures.createEntry(registryEntryLookupConfiguredFeature.getOrThrow(GLOWING_MUSHROOM_GRASS_KEY), new PlacementModifier[0]),
                 VerticalSurfaceType.FLOOR,
+                ConstantIntProvider.create(1),
+                0.0f,
+                5,
+                0.9f,
+                UniformIntProvider.create(5, 9),
+                0.4f
+        ));
+        register(context, GLOWING_MUSHROOM_VEGETATION_CEILING_KEY, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(
+                BlockTags.MOSS_REPLACEABLE,
+                BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK),
+                PlacedFeatures.createEntry(registryEntryLookupConfiguredFeature.getOrThrow(GLOWING_MUSHROOM_GRASS_KEY), new PlacementModifier[0]),
+                VerticalSurfaceType.CEILING,
                 ConstantIntProvider.create(1),
                 0.0f,
                 5,

@@ -30,7 +30,7 @@ public class ModBlocks {
     public static final Block GLOWING_MUSHROOM_BLOCK = registerBlock("glowing_mushroom_block", new PillarBlock(FabricBlockSettings.copyOf(Blocks.RED_MUSHROOM_BLOCK).luminance(9)));
     public static final Block GLOWING_MUSHROOM = registerBlock("glowing_mushroom", new ModSaplingBlock(ModSaplingGenerators.GLOWING_MUSHROOM, FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING).luminance(5)));
     public static final Block GLOWING_MUSHROOM_GRASS_BLOCK = registerBlock("glowing_mushroom_grass_block", new GlowingMushroomGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
-    public static final Block GLOWING_MUSHROOM_DIRT = registerBlock("glowing_mushroom_dirt", new Block(FabricBlockSettings.copyOf(FabricBlockSettings.copyOf(Blocks.DIRT))));
+    //public static final Block GLOWING_MUSHROOM_DIRT = registerBlock("glowing_mushroom_dirt", new Block(FabricBlockSettings.copyOf(FabricBlockSettings.copyOf(Blocks.DIRT)))); nah I don't need no dirt :P
 
     //Uhh, other block stuff
     public static final Block GLOWING_SAPPHIRE_BLOCK = registerBlock("glowing_sapphire_block", new GlowingSapphireBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(11)));
