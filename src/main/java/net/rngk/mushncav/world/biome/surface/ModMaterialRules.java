@@ -13,14 +13,14 @@ public class ModMaterialRules {
 
     // Glowing Mushroom
     private static final MaterialRules.MaterialRule GLOWING_MUSHROOM_GRASS_BLOCK = makeStateRule(ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK);
-    private static final MaterialRules.MaterialRule GLOWING_MUSHROOM_DIRT = makeStateRule(ModBlocks.GLOWING_MUSHROOM_DIRT);
+    //private static final MaterialRules.MaterialRule GLOWING_MUSHROOM_DIRT = makeStateRule(ModBlocks.GLOWING_MUSHROOM_DIRT);
 
     public static MaterialRules.MaterialRule makeRules() {
         MaterialRules.MaterialCondition isAtOrAboveWaterLevel = MaterialRules.water(-1, 0);
         MaterialRules.MaterialCondition surface = MaterialRules.surface();
 
         MaterialRules.MaterialRule grassSurface = MaterialRules.sequence(MaterialRules.condition(isAtOrAboveWaterLevel, FUNGI_GRASS_BLOCK), FUNGI_DIRT);
-        MaterialRules.MaterialRule glowingMushroomGrassUnderground = MaterialRules.sequence(MaterialRules.condition(isAtOrAboveWaterLevel, GLOWING_MUSHROOM_GRASS_BLOCK), GLOWING_MUSHROOM_DIRT);
+        //MaterialRules.MaterialRule glowingMushroomGrassUnderground = MaterialRules.sequence(MaterialRules.condition(isAtOrAboveWaterLevel, GLOWING_MUSHROOM_GRASS_BLOCK), GLOWING_MUSHROOM_DIRT);
 
         return MaterialRules.sequence(
                 // Fungi Forest rules
@@ -35,7 +35,7 @@ public class ModMaterialRules {
                 MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(ModBiomes.GLOWING_MUSHROOMS),
 
                     // Underground grass
-                    MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, glowingMushroomGrassUnderground)
+                    MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, GLOWING_MUSHROOM_GRASS_BLOCK)
 
                 ))
         );
