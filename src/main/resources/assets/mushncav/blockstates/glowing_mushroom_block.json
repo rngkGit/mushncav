@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "mushncav:block/glowing_mushroom_block"
+      },
+      {
+        "model": "mushncav:block/glowing_mushroom_block",
+        "y": 90
+      },
+      {
+        "model": "mushncav:block/glowing_mushroom_block",
+        "y": 180
+      },
+      {
+        "model": "mushncav:block/glowing_mushroom_block",
+        "y": 270
+      }
+    ]
+  }
+}

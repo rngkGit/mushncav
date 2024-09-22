@@ -35,7 +35,7 @@ public class ModMaterialRules {
                 MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(ModBiomes.GLOWING_MUSHROOMS),
 
                     // Underground grass
-                    MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, grassSurface)
+                    MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, glowingMushroomGrassUnderground)
 
                 ))
         );

@@ -122,7 +122,7 @@ public class ModConfiguredFeatures {
         ));
         register(context, GLOWING_MUSHROOM_VEGETATION_KEY, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(
                 BlockTags.DIRT,
-                BlockStateProvider.of(ModBlocks.FUNGI_GRASS_BLOCK),
+                BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK),
                 PlacedFeatures.createEntry(registryEntryLookupConfiguredFeature.getOrThrow(GLOWING_MUSHROOM_GRASS_KEY), new PlacementModifier[0]),
                 VerticalSurfaceType.FLOOR,
                 ConstantIntProvider.create(1),

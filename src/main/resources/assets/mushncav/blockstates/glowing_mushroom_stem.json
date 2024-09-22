@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mushncav:block/glowing_mushroom_stem",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "mushncav:block/glowing_mushroom_stem"
+    },
+    "axis=z": {
+      "model": "mushncav:block/glowing_mushroom_stem",
+      "x": 90
+    }
+  }
+}

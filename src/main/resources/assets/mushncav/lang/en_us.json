@@ -7,7 +7,6 @@
   "item.mushncav.glowing_sapphire_shard": "Glowing Sapphire Shard",
   "item.mushncav.glowing_sapphire_stone": "Glowing Sapphire Stone",
   "item.mushncav.magic_stone": "§bMagic Stone",
-
   "item.mushncav.fungi_apple": "Fungi Apple",
 
   "block.mushncav.fungi_tree_log": "Fungi Tree Log",
@@ -19,6 +18,12 @@
   "block.mushncav.fungi_mushroom": "Fungi Mushroom",
   "block.mushncav.fungi_grass_block": "Fungi Grass Block",
   "block.mushncav.fungi_dirt": "Fungi Dirt",
+
+  "block.mushncav.glowing_mushroom": "Glowing Mushroom",
+  "block.mushncav.glowing_mushroom_grass_block": "Glowing Mushroom Grass Block",
+  "block.mushncav.glowing_mushroom_block": "Glowing Mushroom Block",
+  "block.mushncav.glowing_mushroom_stem": "Glowing Mushroom Stem",
+
   "block.mushncav.glowing_sapphire_ore": "Glowing Sapphire Ore",
   "block.mushncav.deepslate_glowing_sapphire_ore": "Deepslate Glowing Sapphire Ore",
   "block.mushncav.glowing_sapphire_block": "Glowing Sapphire Block",
