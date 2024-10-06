@@ -41,6 +41,8 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GLOWING_MUSHROOM_BLOCK);
                         entries.add(ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK);
 
+                        entries.add(ModItems.GLOWING_BLUEBERRY);
+
                         entries.add(ModBlocks.GLOWING_SAPPHIRE_ORE);
                         entries.add(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE);
 

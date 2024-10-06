@@ -1,8 +1,6 @@
 package net.rngk.mushncav.world;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
 import net.minecraft.registry.*;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryList;
@@ -13,19 +11,26 @@ import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DataPool;
 import net.minecraft.util.collection.WeightedList;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.VerticalSurfaceType;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
+import net.minecraft.util.math.intprovider.WeightedListIntProvider;
+import net.minecraft.world.gen.blockpredicate.BlockPredicate;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.root.*;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.stateprovider.RandomizedIntBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.trunk.*;
 import net.rngk.mushncav.MushroomsAndCaverns;
 import net.rngk.mushncav.block.ModBlocks;
+import net.rngk.mushncav.block.custom.GlowingMushroomVines;
+import net.rngk.mushncav.block.custom.GlowingMushroomVinesHeadBlock;
 import net.rngk.mushncav.util.ModTags;
 
 import java.util.List;
@@ -45,6 +50,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_VEGETATION_KEY = registerKey("glowing_mushroom_vegetation");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_VEGETATION_CEILING_KEY = registerKey("glowing_mushroom_vegetation_ceiling");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_GRASS_KEY = registerKey("glowing_grass");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_VINES_KEY = registerKey("glowing_mushroom_vines");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -122,7 +128,7 @@ public class ModConfiguredFeatures {
                 .build())
         ));
         register(context, GLOWING_MUSHROOM_VEGETATION_KEY, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(
-                BlockTags.DIRT,
+                BlockTags.MOSS_REPLACEABLE,
                 BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK),
                 PlacedFeatures.createEntry(registryEntryLookupConfiguredFeature.getOrThrow(GLOWING_MUSHROOM_GRASS_KEY), new PlacementModifier[0]),
                 VerticalSurfaceType.FLOOR,
@@ -133,17 +139,22 @@ public class ModConfiguredFeatures {
                 UniformIntProvider.create(5, 9),
                 0.4f
         ));
+
+        MushroomsAndCaverns.LOGGER.info("Available properties for GLOWING_MUSHROOM_VINES: {}", ModBlocks.GLOWING_MUSHROOM_VINES.getStateManager().getProperties());
+        WeightedBlockStateProvider weightedBlockStateProvider = new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(ModBlocks.GLOWING_MUSHROOM_VINES_PLANT.getDefaultState(), 4).add(ModBlocks.GLOWING_MUSHROOM_VINES_PLANT.getDefaultState().with(CaveVines.BERRIES, true), 1));
+        RandomizedIntBlockStateProvider randomizedIntBlockStateProvider = new RandomizedIntBlockStateProvider(new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(ModBlocks.GLOWING_MUSHROOM_VINES.getDefaultState(), 4).add(ModBlocks.GLOWING_MUSHROOM_VINES.getDefaultState().with(GlowingMushroomVines.BERRIES, true), 1)), GlowingMushroomVinesHeadBlock.AGE, UniformIntProvider.create(23, 25));
+        register(context, GLOWING_MUSHROOM_VINES_KEY, Feature.BLOCK_COLUMN, new BlockColumnFeatureConfig(List.of(BlockColumnFeatureConfig.createLayer(new WeightedListIntProvider(DataPool.<IntProvider>builder().add(UniformIntProvider.create(0, 3), 5).add(UniformIntProvider.create(1, 7), 1).build()), weightedBlockStateProvider), BlockColumnFeatureConfig.createLayer(ConstantIntProvider.create(1), randomizedIntBlockStateProvider)), Direction.DOWN, BlockPredicate.IS_AIR, true));
         register(context, GLOWING_MUSHROOM_VEGETATION_CEILING_KEY, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(
                 BlockTags.MOSS_REPLACEABLE,
                 BlockStateProvider.of(ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK),
-                PlacedFeatures.createEntry(registryEntryLookupConfiguredFeature.getOrThrow(GLOWING_MUSHROOM_GRASS_KEY), new PlacementModifier[0]),
+                PlacedFeatures.createEntry(registryEntryLookupConfiguredFeature.getOrThrow(GLOWING_MUSHROOM_VINES_KEY), new PlacementModifier[0]),
                 VerticalSurfaceType.CEILING,
-                ConstantIntProvider.create(1),
+                UniformIntProvider.create(1, 2),
                 0.0f,
                 5,
-                0.9f,
-                UniformIntProvider.create(5, 9),
-                0.4f
+                0.08f,
+                UniformIntProvider.create(4, 7),
+                0.3f
         ));
     }
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {

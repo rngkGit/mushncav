@@ -29,15 +29,15 @@ public class ModMaterialRules {
                     // Default to a grass and dirt surface only
                     MaterialRules.condition(surface, MaterialRules.sequence(MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, grassSurface), MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR_WITH_SURFACE_DEPTH, FUNGI_DIRT)))
 
-                )),
+                ))
 
                 // Glowing Mushroom rules
-                MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(ModBiomes.GLOWING_MUSHROOMS),
+                /*MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(ModBiomes.GLOWING_MUSHROOMS),
 
                     // Underground grass
                     MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, GLOWING_MUSHROOM_GRASS_BLOCK)
 
-                ))
+                ))*/
         );
     }
 
