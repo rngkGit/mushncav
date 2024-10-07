@@ -29,6 +29,7 @@ import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.trunk.*;
 import net.rngk.mushncav.MushroomsAndCaverns;
 import net.rngk.mushncav.block.ModBlocks;
+import net.rngk.mushncav.block.custom.GlowingBlueberryBushBlock;
 import net.rngk.mushncav.block.custom.GlowingMushroomVines;
 import net.rngk.mushncav.block.custom.GlowingMushroomVinesHeadBlock;
 import net.rngk.mushncav.util.ModTags;
@@ -51,6 +52,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_VEGETATION_CEILING_KEY = registerKey("glowing_mushroom_vegetation_ceiling");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_GRASS_KEY = registerKey("glowing_grass");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_MUSHROOM_VINES_KEY = registerKey("glowing_mushroom_vines");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> GLOWING_BLUEBERRY_BUSH_KEY = registerKey("glowing_blueberry_bush");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplacables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -60,6 +62,8 @@ public class ModConfiguredFeatures {
 
         RegistryEntryLookup<Block> registryEntryLookupBlock = context.getRegistryLookup(RegistryKeys.BLOCK);
         RegistryEntryLookup<ConfiguredFeature<?, ?>> registryEntryLookupConfiguredFeature = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
+
+
 
         // Ores
         register(context, GLOWING_SAPPHIRE_ORE_KEY, Feature.ORE, new OreFeatureConfig(overworldGlowingSapphireOres, 12));
@@ -122,9 +126,14 @@ public class ModConfiguredFeatures {
         ));*/
         /*register(context, GLOWING_MUSHROOM_GRASS_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(32, PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of(Blocks.SHORT_GRASS.getDefaultState())))
         ));*/
+        register(context, GLOWING_BLUEBERRY_BUSH_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(BlockStateProvider.of((BlockState)ModBlocks.GLOWING_BLUEBERRY_BUSH.getDefaultState().with(GlowingBlueberryBushBlock.AGE, 3))), List.of(ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK)));
         register(context, GLOWING_MUSHROOM_GRASS_KEY, Feature.SIMPLE_BLOCK, new SimpleBlockFeatureConfig(new WeightedBlockStateProvider(DataPool.<BlockState>builder()
-                .add(Blocks.SHORT_GRASS.getDefaultState(), 50)
-                .add(Blocks.TALL_GRASS.getDefaultState(), 10)
+                //.add(Blocks.AIR.getDefaultState(), 1)
+                //.add(Blocks.SHORT_GRASS.getDefaultState(), 50)
+                //.add(Blocks.TALL_GRASS.getDefaultState(), 10)
+                .add(ModBlocks.GLOWING_SHORT_GRASS.getDefaultState(), 50)
+                .add(ModBlocks.GLOWING_TALL_GRASS.getDefaultState(), 10)
+                .add(ModBlocks.GLOWING_BLUEBERRY_BUSH.getDefaultState().with(GlowingBlueberryBushBlock.AGE, 3), 5)
                 .build())
         ));
         register(context, GLOWING_MUSHROOM_VEGETATION_KEY, Feature.VEGETATION_PATCH, new VegetationPatchFeatureConfig(
@@ -140,7 +149,7 @@ public class ModConfiguredFeatures {
                 0.4f
         ));
 
-        MushroomsAndCaverns.LOGGER.info("Available properties for GLOWING_MUSHROOM_VINES: {}", ModBlocks.GLOWING_MUSHROOM_VINES.getStateManager().getProperties());
+        //MushroomsAndCaverns.LOGGER.info("Available properties for GLOWING_MUSHROOM_VINES: {}", ModBlocks.GLOWING_MUSHROOM_VINES.getStateManager().getProperties());
         WeightedBlockStateProvider weightedBlockStateProvider = new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(ModBlocks.GLOWING_MUSHROOM_VINES_PLANT.getDefaultState(), 4).add(ModBlocks.GLOWING_MUSHROOM_VINES_PLANT.getDefaultState().with(CaveVines.BERRIES, true), 1));
         RandomizedIntBlockStateProvider randomizedIntBlockStateProvider = new RandomizedIntBlockStateProvider(new WeightedBlockStateProvider(DataPool.<BlockState>builder().add(ModBlocks.GLOWING_MUSHROOM_VINES.getDefaultState(), 4).add(ModBlocks.GLOWING_MUSHROOM_VINES.getDefaultState().with(GlowingMushroomVines.BERRIES, true), 1)), GlowingMushroomVinesHeadBlock.AGE, UniformIntProvider.create(23, 25));
         register(context, GLOWING_MUSHROOM_VINES_KEY, Feature.BLOCK_COLUMN, new BlockColumnFeatureConfig(List.of(BlockColumnFeatureConfig.createLayer(new WeightedListIntProvider(DataPool.<IntProvider>builder().add(UniformIntProvider.create(0, 3), 5).add(UniformIntProvider.create(1, 7), 1).build()), weightedBlockStateProvider), BlockColumnFeatureConfig.createLayer(ConstantIntProvider.create(1), randomizedIntBlockStateProvider)), Direction.DOWN, BlockPredicate.IS_AIR, true));

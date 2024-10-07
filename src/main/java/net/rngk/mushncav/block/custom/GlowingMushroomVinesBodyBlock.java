@@ -42,7 +42,7 @@ public class GlowingMushroomVinesBodyBlock extends AbstractPlantBlock implements
 
     @Override
     public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
-        return new ItemStack(ModItems.GLOWING_BLUEBERRY);
+        return new ItemStack(ModItems.GLOWING_GRAPES);
     }
 
     @Override

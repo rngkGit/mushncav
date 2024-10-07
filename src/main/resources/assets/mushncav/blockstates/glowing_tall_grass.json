@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "mushncav:block/glowing_tall_grass_bottom"
+    },
+    "half=upper": {
+      "model": "mushncav:block/glowing_tall_grass_top"
+    }
+  }
+}

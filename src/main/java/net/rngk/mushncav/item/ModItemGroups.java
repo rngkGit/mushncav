@@ -40,8 +40,10 @@ public class ModItemGroups {
                         entries.add(ModBlocks.GLOWING_MUSHROOM_STEM);
                         entries.add(ModBlocks.GLOWING_MUSHROOM_BLOCK);
                         entries.add(ModBlocks.GLOWING_MUSHROOM_GRASS_BLOCK);
+                        entries.add(ModBlocks.GLOWING_SHORT_GRASS);
+                        entries.add(ModBlocks.GLOWING_TALL_GRASS);
 
-                        entries.add(ModItems.GLOWING_BLUEBERRY);
+                        entries.add(ModItems.GLOWING_GRAPES);
 
                         entries.add(ModBlocks.GLOWING_SAPPHIRE_ORE);
                         entries.add(ModBlocks.DEEPSLATE_GLOWING_SAPPHIRE_ORE);

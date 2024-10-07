@@ -21,9 +21,12 @@
 
   "block.mushncav.glowing_mushroom": "Glowing Mushroom",
   "block.mushncav.glowing_mushroom_grass_block": "Glowing Mushroom Grass Block",
+  "block.mushncav.glowing_short_grass": "Glowing Grass",
+  "block.mushncav.glowing_tall_grass": "Glowing Tall Grass",
   "block.mushncav.glowing_mushroom_block": "Glowing Mushroom Block",
   "block.mushncav.glowing_mushroom_stem": "Glowing Mushroom Stem",
 
+  "item.mushncav.glowing_grapes": "Glowing Grapes",
   "item.mushncav.glowing_blueberry": "Glowing Blueberry",
 
   "block.mushncav.glowing_sapphire_ore": "Glowing Sapphire Ore",

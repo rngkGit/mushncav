@@ -108,8 +108,11 @@ public class ModBiomes {
         biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_MUSHROOM_VEGETATION_PLACED_KEY);
         biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_MUSHROOM_VEGETATION_CEILING_PLACED_KEY);
 
+        //biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_BLUEBERRY_BUSH_PLACED_KEY);
+
         DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);
+
 
         //biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_MUSHROOM_PLACED_KEY);
 
@@ -124,7 +127,7 @@ public class ModBiomes {
                         .waterFogColor(0x152aeb)
                         .skyColor(0x5a3fab)
                         .grassColor(0x152aeb)
-                        .foliageColor(0x152aeb)
+                        //.foliageColor(0x152aeb)
                         .fogColor(0x152aeb)
                         .moodSound(BiomeMoodSound.CAVE)
                         /*.music(MusicType.createIngameMusic(RegistryEntry.of(ModSounds.BAR_BRAWL)))*/.build())

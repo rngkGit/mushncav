@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/tinted_cross",
+  "textures": {
+    "cross": "mushncav:block/glowing_tall_grass_top"
+  }
+}

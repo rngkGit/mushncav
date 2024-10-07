@@ -22,12 +22,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.ToIntFunction;
 
 public interface GlowingMushroomVines {
-    public static final VoxelShape SHAPE = Block.createCuboidShape(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
+    public static final VoxelShape SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
     public static final BooleanProperty BERRIES = Properties.BERRIES;
 
     public static ActionResult pickBerries(@Nullable Entity picker, BlockState state, World world, BlockPos pos) {
         if (state.get(BERRIES).booleanValue()) {
-            Block.dropStack(world, pos, new ItemStack(ModItems.GLOWING_BLUEBERRY, 3));
+            Block.dropStack(world, pos, new ItemStack(ModItems.GLOWING_GRAPES, 1));
             float f = MathHelper.nextBetween(world.random, 0.8f, 1.2f);
             world.playSound(null, pos, SoundEvents.BLOCK_CAVE_VINES_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, f);
             BlockState blockState = (BlockState)state.with(BERRIES, false);

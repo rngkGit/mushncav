@@ -32,15 +32,12 @@ public class ModBlocks {
     public static final Block GLOWING_MUSHROOM_BLOCK = registerBlock("glowing_mushroom_block", new PillarBlock(FabricBlockSettings.copyOf(Blocks.RED_MUSHROOM_BLOCK).luminance(9)));
     public static final Block GLOWING_MUSHROOM = registerBlock("glowing_mushroom", new ModSaplingBlock(ModSaplingGenerators.GLOWING_MUSHROOM, FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING).luminance(5)));
     public static final Block GLOWING_MUSHROOM_GRASS_BLOCK = registerBlock("glowing_mushroom_grass_block", new GlowingMushroomGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
-    //public static final Block GLOWING_MUSHROOM_DIRT = registerBlock("glowing_mushroom_dirt", new Block(FabricBlockSettings.copyOf(FabricBlockSettings.copyOf(Blocks.DIRT)))); nah I don't need no dirt :P
     public static final Block GLOWING_MUSHROOM_VINES_PLANT = registerBlock("glowing_mushroom_vines_plant", new GlowingMushroomVinesBodyBlock(AbstractBlock.Settings.create().mapColor(MapColor.BLUE).noCollision().luminance(CaveVines.getLuminanceSupplier(14)).breakInstantly().sounds(BlockSoundGroup.CAVE_VINES).pistonBehavior(PistonBehavior.DESTROY)));
     public static final Block GLOWING_MUSHROOM_VINES = registerBlock("glowing_mushroom_vines", new GlowingMushroomVinesHeadBlock(AbstractBlock.Settings.create().mapColor(MapColor.BLUE).ticksRandomly().noCollision().luminance(CaveVines.getLuminanceSupplier(14)).breakInstantly().sounds(BlockSoundGroup.CAVE_VINES).pistonBehavior(PistonBehavior.DESTROY)));
-
-
-    //Uhh, other block stuff
+    public static final Block GLOWING_BLUEBERRY_BUSH = registerBlock("glowing_blueberry_bush", new GlowingBlueberryBushBlock(AbstractBlock.Settings.create().mapColor(MapColor.BLUE).ticksRandomly().noCollision().sounds(BlockSoundGroup.SWEET_BERRY_BUSH).pistonBehavior(PistonBehavior.DESTROY)));
+    public static final Block GLOWING_SHORT_GRASS = registerBlock("glowing_short_grass", new ShortPlantBlock(FabricBlockSettings.copyOf(Blocks.SHORT_GRASS)));
+    public static final Block GLOWING_TALL_GRASS = registerBlock("glowing_tall_grass", new TallPlantBlock(FabricBlockSettings.copyOf(Blocks.TALL_GRASS)));
     public static final Block GLOWING_SAPPHIRE_BLOCK = registerBlock("glowing_sapphire_block", new GlowingSapphireBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).luminance(15)));
-
-    //Ores
     public static final Block GLOWING_SAPPHIRE_ORE = registerBlock("glowing_sapphire_ore", new GlowingSapphireOreBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.STONE).strength(2f).luminance(9)));
     public static final Block DEEPSLATE_GLOWING_SAPPHIRE_ORE = registerBlock("deepslate_glowing_sapphire_ore", new GlowingSapphireOreBlock(UniformIntProvider.create(2, 5), FabricBlockSettings.copyOf(Blocks.DEEPSLATE).strength(4f).luminance(9)));
 

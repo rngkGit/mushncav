@@ -28,7 +28,8 @@ public class ModItems {
 
     // Glowing Mushroom Stuff
     public static final Item GLOWING_MUSHROOM_STICK = registerItem("glowing_mushroom_stick", new Item(new FabricItemSettings()));
-    public static final Item GLOWING_BLUEBERRY = registerItem("glowing_blueberry", (Item)new AliasedBlockItem(ModBlocks.GLOWING_MUSHROOM_VINES, new Item.Settings().food(ModFoodComponents.GLOWING_BLUEBERRY)));
+    public static final Item GLOWING_GRAPES = registerItem("glowing_grapes", (Item)new AliasedBlockItem(ModBlocks.GLOWING_MUSHROOM_VINES, new Item.Settings().food(ModFoodComponents.GLOWING_GRAPES)));
+    public static final Item GLOWING_BLUEBERRY = registerItem("glowing_blueberry", (Item)new AliasedBlockItem(ModBlocks.GLOWING_BLUEBERRY_BUSH, new Item.Settings().food(ModFoodComponents.GLOWING_BLUEBERRY)));
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM, new Identifier(MushroomsAndCaverns.MOD_ID, name), item);

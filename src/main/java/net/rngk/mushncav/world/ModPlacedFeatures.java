@@ -42,12 +42,13 @@ public class ModPlacedFeatures {
     // Grass
     public static final RegistryKey<PlacedFeature> GLOWING_MUSHROOM_VEGETATION_PLACED_KEY = registerKey("glowing_mushroom_vegetation_placed");
     public static final RegistryKey<PlacedFeature> GLOWING_MUSHROOM_VEGETATION_CEILING_PLACED_KEY = registerKey("glowing_mushroom_vegetation_ceiling_placed");
+    public static final RegistryKey<PlacedFeature> GLOWING_BLUEBERRY_BUSH_PLACED_KEY = registerKey("glowing_blueberry_bush_placed");
 
 
     // Extra stuff
-    private static ImmutableList.Builder<PlacementModifier> undergroundTreeModifiersBuilder(PlacementModifier countModifier) {
-        return ((ImmutableList.Builder)((ImmutableList.Builder)((ImmutableList.Builder)((ImmutableList.Builder)ImmutableList.builder().add(countModifier)).add(SquarePlacementModifier.of()))/*.add(NOT_IN_SURFACE_WATER_MODIFIER)*/).add(PlacedFeatures.BOTTOM_TO_120_RANGE)).add(BiomePlacementModifier.of());
-    }
+    //private static ImmutableList.Builder<PlacementModifier> undergroundTreeModifiersBuilder(PlacementModifier countModifier) {
+        //return ((ImmutableList.Builder)((ImmutableList.Builder)((ImmutableList.Builder)((ImmutableList.Builder)ImmutableList.builder().add(countModifier)).add(SquarePlacementModifier.of()))/*.add(NOT_IN_SURFACE_WATER_MODIFIER)*/).add(PlacedFeatures.BOTTOM_TO_120_RANGE)).add(BiomePlacementModifier.of());
+    //}
 
     private static ImmutableList.Builder<PlacementModifier> undergroundTreeModifiersBuilder2(PlacementModifier countModifier) {
         return (ImmutableList.Builder)ImmutableList.builder()
@@ -85,6 +86,7 @@ public class ModPlacedFeatures {
         // Glowing Mushroom Vegetation Stuff
         register(context, GLOWING_MUSHROOM_VEGETATION_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_VEGETATION_KEY), List.of(CountPlacementModifier.of(250), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(1)), BiomePlacementModifier.of()));
         register(context, GLOWING_MUSHROOM_VEGETATION_CEILING_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_MUSHROOM_VEGETATION_CEILING_KEY), List.of(CountPlacementModifier.of(125), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, EnvironmentScanPlacementModifier.of(Direction.UP, BlockPredicate.solid(), BlockPredicate.IS_AIR, 12), RandomOffsetPlacementModifier.vertically(ConstantIntProvider.create(-1)), BiomePlacementModifier.of()));
+        register(context, GLOWING_BLUEBERRY_BUSH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.GLOWING_BLUEBERRY_BUSH_KEY), List.of(CountPlacementModifier.of(50), SquarePlacementModifier.of(), PlacedFeatures.BOTTOM_TO_120_RANGE, BiomePlacementModifier.of()));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
