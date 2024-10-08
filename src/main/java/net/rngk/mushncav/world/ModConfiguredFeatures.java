@@ -32,6 +32,7 @@ import net.rngk.mushncav.block.custom.GlowingBlueberryBushBlock;
 import net.rngk.mushncav.block.custom.GlowingMushroomVines;
 import net.rngk.mushncav.block.custom.GlowingMushroomVinesHeadBlock;
 import net.rngk.mushncav.util.ModTags;
+import net.rngk.mushncav.world.tree.FungiTreeDecorator;
 
 import java.util.List;
 import java.util.Optional;
@@ -79,7 +80,7 @@ public class ModConfiguredFeatures {
                         new CherryFoliagePlacer(UniformIntProvider.create(3, 4), ConstantIntProvider.create(1), ConstantIntProvider.create(4), 0.1f, 0.25f, 0.4f, 0.25f),
                         Optional.of(new MangroveRootPlacer(UniformIntProvider.create(2, 5), BlockStateProvider.of(ModBlocks.FUNGI_TREE_WOOD), Optional.empty(), new MangroveRootPlacement(registryEntryLookupBlock.getOrThrow(ModTags.Blocks.DIRT), RegistryEntryList.of(Block::getRegistryEntry, ModBlocks.FUNGI_GRASS_BLOCK, ModBlocks.FUNGI_TREE_WOOD), BlockStateProvider.of(ModBlocks.FUNGI_TREE_WOOD), 8, 12, 0.3f))),
                         new TwoLayersFeatureSize(3, 0, 2)
-                ).dirtProvider(BlockStateProvider.of(ModBlocks.FUNGI_TREE_WOOD)).decorators(ImmutableList.of(new CocoaBeansTreeDecorator(0.2f))).build());
+                ).dirtProvider(BlockStateProvider.of(ModBlocks.FUNGI_TREE_WOOD)).decorators(ImmutableList.of(new FungiTreeDecorator(0.9f))).build());
         register(context, HUGE_FUNGI_TREE_KEY, Feature.TREE,
                 new TreeFeatureConfig.Builder(
                         BlockStateProvider.of(ModBlocks.FUNGI_TREE_LOG),
