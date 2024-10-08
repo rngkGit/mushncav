@@ -25,6 +25,7 @@ public class ModItems {
     public static final Item GLOWING_SAPPHIRE_STONE = registerItem("glowing_sapphire_stone", new Item(new FabricItemSettings()));
     public static final Item MAGIC_STONE = registerItem("magic_stone", new MagicStone(new FabricItemSettings()));
     public static final Item FUNGI_APPLE = registerItem("fungi_apple", new Item(new FabricItemSettings().food(ModFoodComponents.FUNGI_APPLE)));
+    public static final Item FUNGI = registerItem("fungi", (Item)new AliasedBlockItem(ModBlocks.FUNGI_BLOCK, new Item.Settings()));
 
     // Glowing Mushroom Stuff
     public static final Item GLOWING_MUSHROOM_STICK = registerItem("glowing_mushroom_stick", new Item(new FabricItemSettings()));

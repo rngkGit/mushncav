@@ -35,6 +35,7 @@ public class ModItemGroups {
                         entries.add(ModBlocks.FUNGI_MUSHROOM);
                         entries.add(ModBlocks.FUNGI_GRASS_BLOCK);
                         entries.add(ModBlocks.FUNGI_DIRT);
+                        entries.add(ModItems.FUNGI);
 
                         entries.add(ModBlocks.GLOWING_MUSHROOM);
                         entries.add(ModBlocks.GLOWING_MUSHROOM_STEM);

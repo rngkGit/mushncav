@@ -10,6 +10,7 @@ import net.rngk.mushncav.MushroomsAndCaverns;
 public class ModTags {
     public static class Blocks {
         public static final TagKey<Block> DIRT = createTag("dirt");
+        public static final TagKey<Block> FUNGI_LOGS = createTag("fungi_logs");
 
         private static TagKey<Block> createTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(MushroomsAndCaverns.MOD_ID, name));

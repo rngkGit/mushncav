@@ -26,6 +26,7 @@ public class ModBlocks {
     public static final Block FUNGI_MUSHROOM = registerBlock("fungi_mushroom", new ModSaplingBlock(ModSaplingGenerators.FUNGI_MUSHROOM, FabricBlockSettings.copyOf(Blocks.JUNGLE_SAPLING)));
     public static final Block FUNGI_GRASS_BLOCK = registerBlock("fungi_grass_block", new FungiGrassBlock(FabricBlockSettings.copyOf(Blocks.GRASS_BLOCK)));
     public static final Block FUNGI_DIRT = registerBlock("fungi_dirt", new Block(FabricBlockSettings.copyOf(Blocks.DIRT)));
+    public static final Block FUNGI_BLOCK = registerBlock("fungi_block", new FungiBlock(FabricBlockSettings.copyOf(Blocks.COCOA)));
 
     //Glowing Mushroom Blocks
     public static final Block GLOWING_MUSHROOM_STEM = registerBlock("glowing_mushroom_stem", new PillarBlock(FabricBlockSettings.copyOf(Blocks.MUSHROOM_STEM)));

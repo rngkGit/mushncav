@@ -7,7 +7,7 @@
         {
           "type": "minecraft:item",
           "name": "minecraft:enchanted_golden_apple",
-          "weight": 2
+          "weight": 1
         }
       ],
       "rolls": {
