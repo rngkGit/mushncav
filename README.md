@@ -11,9 +11,9 @@ The mod will be updated to later versions of Minecraft once a full version comes
 * Fungi Forest: Near the scapes of the water, the Fungi Forest appears! Explore new trees, mushrooms, mobs, and more.
 ![2024-10-10_22 56 37](https://github.com/user-attachments/assets/adb5d8a6-b3cf-4d54-bd49-c7e1edd38b75)
 ### New Underground Biomes
-* Glowing Mushroom: Discover this underground wonder filled bioluminescent mushrooms and lush vegetation. Find new fruits and structures along the way!
+* Glowing Mushrooms: Discover this underground wonder filled bioluminescent mushrooms and lush vegetation. Find new fruits and structures along the way!
 ![2024-10-10_22 59 36](https://github.com/user-attachments/assets/b4fe676e-1e01-4cf5-a1e2-9afc1dc7ef91)
-* Amethyst Mushroom Biome: In Development
+* Amethyst Mushrooms: In Development
 ### New Blocks, Ores, & Items
 Blocks/Ores: With new biomes comes new blocks to discover! New blocks and ores include:
 * Fungi Dirt & Fungi Grass: A new kind of soil with an odd colour.
