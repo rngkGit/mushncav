@@ -11,6 +11,7 @@ The mod will be updated to later versions of Minecraft once a full version comes
 * Fungi Forest: Near the scapes of the water, the Fungi Forest appears! Explore new trees, mushrooms, mobs, and more.
 ### New Underground Biomes
 * Glowing Mushroom: Discover this underground wonder filled bioluminescent mushrooms and lush vegetation. Find new fruits and structures along the way!
+![Screenshot of biome](https://github.com/user-attachments/assets/4cfa6d22-bd8e-4170-a2b9-523224813cba)
 * Amethyst Mushroom Biome: In Development
 ### New Blocks, Ores, & Items
 Blocks/Ores: With new biomes comes new blocks to discover! New blocks and ores include:
@@ -25,9 +26,6 @@ Items: These new biomes introduce some new strange items. New items include:
 More of everything coming soon! I am still developing this mod, this is just what I have right now :)
 ### New Entities
 * Secret, for now. Mwahahaha :)
-### Custom Trees
-* Underground Glowing Mushrooms with glowing caps providing helpful light.
-* Fungi Trees with infected aged roots
 ## Installation
 Download the source code for the main branch and extract the folder.
 Open the project folder using your IDE (I am using IntelliJ IDEA CE).
