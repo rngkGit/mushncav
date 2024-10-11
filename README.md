@@ -9,6 +9,7 @@ The mod will be updated to later versions of Minecraft once a full version comes
 ## Features
 ### New Surface Biomes
 * Fungi Forest: Near the scapes of the water, the Fungi Forest appears! Explore new trees, mushrooms, mobs, and more.
+![2024-10-10_22 56 37](https://github.com/user-attachments/assets/adb5d8a6-b3cf-4d54-bd49-c7e1edd38b75)
 ### New Underground Biomes
 * Glowing Mushroom: Discover this underground wonder filled bioluminescent mushrooms and lush vegetation. Find new fruits and structures along the way!
 ![Screenshot of biome](https://github.com/user-attachments/assets/4cfa6d22-bd8e-4170-a2b9-523224813cba)
