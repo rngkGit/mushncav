@@ -1,0 +1,136 @@
+{
+    "ambientocclusion": false,
+    "textures": {
+        "particle": "mushncav:block/fungi_block_stage0",
+        "cocoa": "mushncav:block/fungi_block_stage0"
+    },
+    "elements": [
+        {
+            "from": [
+                5,
+                2,
+                12
+            ],
+            "to": [
+                9,
+                4,
+                14
+            ],
+            "faces": {
+                "north": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        9,
+                        4,
+                        13,
+                        6
+                    ]
+                },
+                "west": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        11,
+                        4,
+                        13,
+                        6
+                    ]
+                },
+                "east": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        11,
+                        4,
+                        13,
+                        6
+                    ]
+                },
+                "down": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        2
+                    ]
+                },
+                "up": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        0,
+                        0,
+                        4,
+                        2
+                    ]
+                }
+            }
+        },
+        {
+            "from": [
+                3,
+                2,
+                14
+            ],
+            "to": [
+                11,
+                4,
+                16
+            ],
+            "faces": {
+                "down": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        0,
+                        0,
+                        8,
+                        2
+                    ]
+                },
+                "up": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        0,
+                        0,
+                        8,
+                        2
+                    ]
+                },
+                "north": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        8,
+                        4,
+                        16,
+                        6
+                    ]
+                },
+                "south": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        8,
+                        4,
+                        16,
+                        6
+                    ]
+                },
+                "west": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        11,
+                        4,
+                        13,
+                        6
+                    ]
+                },
+                "east": {
+                    "texture": "#cocoa",
+                    "uv": [
+                        11,
+                        4,
+                        13,
+                        6
+                    ]
+                }
+            }
+        }
+    ]
+}

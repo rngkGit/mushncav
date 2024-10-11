@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "mushncav:glowing_short_grass"
+          },
+          "weight": 50
+        },
+        {
+          "data": {
+            "Name": "mushncav:glowing_tall_grass",
+            "Properties": {
+              "half": "lower"
+            }
+          },
+          "weight": 10
+        },
+        {
+          "data": {
+            "Name": "mushncav:glowing_blueberry_bush",
+            "Properties": {
+              "age": "3"
+            }
+          },
+          "weight": 5
+        }
+      ]
+    }
+  }
+}

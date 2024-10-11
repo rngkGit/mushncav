@@ -1,4 +1,4 @@
-package net.rngk.mushncav.world.tree.custom;
+package net.rngk.mushncav.world.tree;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
@@ -11,7 +11,7 @@ import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacer;
 import net.minecraft.world.gen.trunk.TrunkPlacerType;
-import net.rngk.mushncav.world.tree.ModTrunkPlacerTypes;
+import net.rngk.mushncav.world.tree.custom.ModTrunkPlacerTypes;
 
 import java.util.List;
 import java.util.function.BiConsumer;
