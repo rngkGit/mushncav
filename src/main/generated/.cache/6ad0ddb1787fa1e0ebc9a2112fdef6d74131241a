@@ -1,4 +1,4 @@
-// 1.20.4	2024-10-08T21:01:09.364732	Mushrooms and Caverns/null
+// 1.20.4	2024-10-28T00:16:52.289583	Mushrooms and Caverns/null
 e58cc2525f7c6e4cb821fae77c25d6c1429fc629 data/mushncav/worldgen/configured_feature/glowing_mushroom_vines.json
 e7d984fd0a8a469c7ac557dfa4f5c596b70c9cb1 data/mushncav/worldgen/configured_feature/fungi_tree.json
 27b34f574cbfc92da6c9655dbd5d99d155b13c1c data/mushncav/worldgen/placed_feature/glowing_mushroom_placed.json
@@ -8,7 +8,7 @@ e7d984fd0a8a469c7ac557dfa4f5c596b70c9cb1 data/mushncav/worldgen/configured_featu
 40b63573cafbac5c00d98aee2f2d4c087cdff952 data/mushncav/worldgen/placed_feature/huge_fungi_tree_placed.json
 8ae18356cf905bae791ceaedd5783c8f85f453db data/mushncav/worldgen/configured_feature/glowing_grass.json
 5bad985c39b9304ce6ede150937e7778a2490316 data/mushncav/worldgen/configured_feature/huge_fungi_tree.json
-ba25e58ec4ce245d8ab7bfb6e81a8e0b78c3336e data/mushncav/worldgen/biome/fungi_forest.json
+24b9319614495d27d184f492996551810493081a data/mushncav/worldgen/biome/fungi_forest.json
 9beea88aa94b2a1e392221c9a196bc8c6213f844 data/mushncav/worldgen/configured_feature/glowing_mushroom.json
 97462d60ee01366e2d22fa12fff36f5db00fc622 data/mushncav/worldgen/placed_feature/glowing_blueberry_bush_placed.json
 5a90ff3816441e0f26f1ae2c38bc1b9a5ebe9613 data/mushncav/worldgen/biome/glowing_mushrooms.json

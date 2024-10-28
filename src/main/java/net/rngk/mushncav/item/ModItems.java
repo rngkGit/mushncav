@@ -17,10 +17,9 @@ import net.rngk.mushncav.item.custom.MagicStone;
 
 public class ModItems {
     public static final Item FUNGI_STICK = registerItem("fungi_stick", new Item(new FabricItemSettings()));
-    public static final Item AMETHYST_MUSHROOM_STICK = registerItem("amethyst_mushroom_stick", new Item(new FabricItemSettings()));
-    //public static final Item FUNGI_APPLE = registerItem("fungiapple", new Item(new FabricItemSettings()));
-    public static final Item FUNGI_BONE = registerItem("fungi_bone", new Item(new FabricItemSettings()));
-    public static final Item MUSHROOM_BONE = registerItem("mushroom_bone", new Item(new FabricItemSettings()));
+    //public static final Item AMETHYST_MUSHROOM_STICK = registerItem("amethyst_mushroom_stick", new Item(new FabricItemSettings()));
+    //public static final Item FUNGI_BONE = registerItem("fungi_bone", new Item(new FabricItemSettings()));
+    //public static final Item MUSHROOM_BONE = registerItem("mushroom_bone", new Item(new FabricItemSettings()));
     public static final Item GLOWING_SAPPHIRE_SHARD = registerItem("glowing_sapphire_shard", new Item(new FabricItemSettings()));
     public static final Item GLOWING_SAPPHIRE_STONE = registerItem("glowing_sapphire_stone", new Item(new FabricItemSettings()));
     public static final Item MAGIC_STONE = registerItem("magic_stone", new MagicStone(new FabricItemSettings()));
@@ -28,7 +27,7 @@ public class ModItems {
     public static final Item FUNGI = registerItem("fungi", (Item)new AliasedBlockItem(ModBlocks.FUNGI_BLOCK, new Item.Settings()));
 
     // Glowing Mushroom Stuff
-    public static final Item GLOWING_MUSHROOM_STICK = registerItem("glowing_mushroom_stick", new Item(new FabricItemSettings()));
+    //public static final Item GLOWING_MUSHROOM_STICK = registerItem("glowing_mushroom_stick", new Item(new FabricItemSettings()));
     public static final Item GLOWING_GRAPES = registerItem("glowing_grapes", (Item)new AliasedBlockItem(ModBlocks.GLOWING_MUSHROOM_VINES, new Item.Settings().food(ModFoodComponents.GLOWING_GRAPES)));
     public static final Item GLOWING_BLUEBERRY = registerItem("glowing_blueberry", (Item)new AliasedBlockItem(ModBlocks.GLOWING_BLUEBERRY_BUSH, new Item.Settings().food(ModFoodComponents.GLOWING_BLUEBERRY)));
 

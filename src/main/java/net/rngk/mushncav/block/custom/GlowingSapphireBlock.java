@@ -15,7 +15,7 @@ public class GlowingSapphireBlock extends Block {
     }
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        GlowingSapphireBlock.spawnParticles(world, pos);
+        //GlowingSapphireBlock.spawnParticles(world, pos);
     }
     private static void spawnParticles(World world, BlockPos pos) {
         double d = 0.5625;

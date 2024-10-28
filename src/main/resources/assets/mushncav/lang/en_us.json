@@ -1,13 +1,7 @@
 {
-  "item.mushncav.fungi_stick": "Fungi Stick",
-  "item.mushncav.amethyst_mushroom_stick": "Amethyst Mushroom Stick",
-  "item.mushncav.glowing_mushroom_stick": "Glowing Mushroom Stick",
-  "item.mushncav.fungi_bone": "Fungi Bone",
-  "item.mushncav.mushroom_bone": "Mushroom Bone",
-  "item.mushncav.glowing_sapphire_shard": "Glowing Sapphire Shard",
-  "item.mushncav.glowing_sapphire_stone": "Glowing Sapphire Stone",
+  "itemgroup.mushncav": "Mushrooms and Caverns",
+
   "item.mushncav.magic_stone": "§bMagic Stone",
-  "item.mushncav.fungi_apple": "Fungi Apple",
 
   "block.mushncav.fungi_tree_log": "Fungi Tree Log",
   "block.mushncav.fungi_tree_wood": "Fungi Tree Wood",
@@ -18,20 +12,25 @@
   "block.mushncav.fungi_mushroom": "Fungi Mushroom",
   "block.mushncav.fungi_grass_block": "Fungi Grass Block",
   "block.mushncav.fungi_dirt": "Fungi Dirt",
+  "item.mushncav.fungi": "Fungi",
+  "item.mushncav.fungi_bone": "Fungi Bone",
+  "item.mushncav.fungi_stick": "Fungi Stick",
+  "item.mushncav.fungi_apple": "Fungi Apple",
 
+  "block.mushncav.glowing_sapphire_ore": "Glowing Sapphire Ore",
+  "block.mushncav.deepslate_glowing_sapphire_ore": "Deepslate Glowing Sapphire Ore",
+  "block.mushncav.glowing_sapphire_block": "Glowing Sapphire Block",
   "block.mushncav.glowing_mushroom": "Glowing Mushroom",
   "block.mushncav.glowing_mushroom_grass_block": "Glowing Mushroom Grass Block",
   "block.mushncav.glowing_short_grass": "Glowing Grass",
   "block.mushncav.glowing_tall_grass": "Glowing Tall Grass",
   "block.mushncav.glowing_mushroom_block": "Glowing Mushroom Block",
   "block.mushncav.glowing_mushroom_stem": "Glowing Mushroom Stem",
-
   "item.mushncav.glowing_grapes": "Glowing Grapes",
   "item.mushncav.glowing_blueberry": "Glowing Blueberry",
+  "item.mushncav.glowing_mushroom_stick": "Glowing Mushroom Stick",
+  "item.mushncav.glowing_sapphire_shard": "Glowing Sapphire Shard",
+  "item.mushncav.glowing_sapphire_stone": "Glowing Sapphire Stone",
 
-  "block.mushncav.glowing_sapphire_ore": "Glowing Sapphire Ore",
-  "block.mushncav.deepslate_glowing_sapphire_ore": "Deepslate Glowing Sapphire Ore",
-  "block.mushncav.glowing_sapphire_block": "Glowing Sapphire Block",
-
-  "itemgroup.mushncav": "Mushrooms and Caverns"
+  "item.mushncav.amethyst_mushroom_stick": "Amethyst Mushroom Stick"
 }

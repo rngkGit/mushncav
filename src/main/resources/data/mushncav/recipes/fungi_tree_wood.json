@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": {
+            "item": "mushncav:fungi_tree_log"
+        }
+    },
+    "result": {
+        "item": "mushncav:fungi_tree_wood",
+        "count": 3
+    }
+}

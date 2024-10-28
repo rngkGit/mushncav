@@ -59,7 +59,7 @@ public class ModBiomes {
         DefaultBiomeFeatures.addForestFlowers(biomeBuilder);
         DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
 
-        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_NORMAL);
+        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
 
         DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
         DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder);

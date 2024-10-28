@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#",
+        "R"
+    ],
+    "key": {
+        "#": {
+            "item": "mushncav:glowing_sapphire_stone"
+        },
+        "R": {
+            "item": "minecraft:redstone"
+        }
+    },
+    "result": {
+        "item": "mushncav:magic_stone",
+        "count": 1
+    }
+}

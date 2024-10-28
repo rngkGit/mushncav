@@ -16,11 +16,11 @@ public class ModItemGroups {
                     .icon(() -> new ItemStack(ModItems.MAGIC_STONE)).entries((displayContext, entries) -> {
                         //In order
                         entries.add(ModItems.MAGIC_STONE);
-                        entries.add(ModItems.FUNGI_BONE);
-                        entries.add(ModItems.MUSHROOM_BONE);
+                        //entries.add(ModItems.FUNGI_BONE);
+                        //entries.add(ModItems.MUSHROOM_BONE);
                         entries.add(ModItems.FUNGI_STICK);
-                        entries.add(ModItems.AMETHYST_MUSHROOM_STICK);
-                        entries.add(ModItems.GLOWING_MUSHROOM_STICK);
+                        //entries.add(ModItems.AMETHYST_MUSHROOM_STICK);
+                        //entries.add(ModItems.GLOWING_MUSHROOM_STICK);
                         entries.add(ModItems.GLOWING_SAPPHIRE_SHARD);
                         entries.add(ModItems.GLOWING_SAPPHIRE_STONE);
 

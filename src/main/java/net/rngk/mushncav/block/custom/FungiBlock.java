@@ -20,10 +20,26 @@ public class FungiBlock extends HorizontalFacingBlock implements Fertilizable {
     public static final MapCodec<FungiBlock> CODEC = FungiBlock.createCodec(FungiBlock::new);
     public static final IntProperty AGE = Properties.AGE_2;
     public static final IntProperty COUNT = IntProperty.of("count", 1, 4);
-    protected static final VoxelShape[] AGE_TO_EAST_SHAPE = new VoxelShape[]{Block.createCuboidShape(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), Block.createCuboidShape(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), Block.createCuboidShape(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)};
-    protected static final VoxelShape[] AGE_TO_WEST_SHAPE = new VoxelShape[]{Block.createCuboidShape(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), Block.createCuboidShape(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), Block.createCuboidShape(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)};
-    protected static final VoxelShape[] AGE_TO_NORTH_SHAPE = new VoxelShape[]{Block.createCuboidShape(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), Block.createCuboidShape(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), Block.createCuboidShape(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)};
-    protected static final VoxelShape[] AGE_TO_SOUTH_SHAPE = new VoxelShape[]{Block.createCuboidShape(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), Block.createCuboidShape(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), Block.createCuboidShape(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)};
+    // COUNT 1 AGE 1-3
+    protected static final VoxelShape[] AGE_TO_EAST_SHAPE_1 = new VoxelShape[]{Block.createCuboidShape(12.0, 2.0, 6.0, 16.0, 4.0, 12.0), Block.createCuboidShape(12.0, 2.0, 5.0, 16.0, 4.0, 13.0), Block.createCuboidShape(10.0, 2.0, 4.0, 16.0, 4.0, 14.0)};
+    protected static final VoxelShape[] AGE_TO_WEST_SHAPE_1 = new VoxelShape[]{Block.createCuboidShape(0.0, 2.0, 4.0, 4.0, 4.0, 10.0), Block.createCuboidShape(0.0, 2.0, 3.0, 4.0, 4.0, 11.0), Block.createCuboidShape(0.0, 2.0, 2.0, 6.0, 4.0, 12.0)};
+    protected static final VoxelShape[] AGE_TO_NORTH_SHAPE_1 = new VoxelShape[]{Block.createCuboidShape(6.0, 2.0, 0.0, 12.0, 4.0, 4.0), Block.createCuboidShape(5.0, 2.0, 0.0, 13.0, 4.0, 4.0), Block.createCuboidShape(4.0, 2.0, 0.0, 14.0, 4.0, 6.0)};
+    protected static final VoxelShape[] AGE_TO_SOUTH_SHAPE_1 = new VoxelShape[]{Block.createCuboidShape(4.0, 2.0, 12.0, 10.0, 4.0, 16.0), Block.createCuboidShape(3.0, 2.0, 12.0, 11.0, 4.0, 16.0), Block.createCuboidShape(2.0, 2.0, 10.0, 12.0, 4.0, 16.0)};
+    // COUNT 2 AGE 1-3
+    protected static final VoxelShape[] AGE_TO_EAST_SHAPE_2 = new VoxelShape[]{Block.createCuboidShape(12.0, 2.0, 2.0, 16.0, 7.0, 12.0), Block.createCuboidShape(12.0, 2.0, 1.0, 16.0, 7.0, 13.0), Block.createCuboidShape(10.0, 2.0, 0.0, 16.0, 7.0, 14.0)};
+    protected static final VoxelShape[] AGE_TO_WEST_SHAPE_2 = new VoxelShape[]{Block.createCuboidShape(0.0, 2.0, 4.0, 4.0, 7.0, 14.0), Block.createCuboidShape(0.0, 2.0, 3.0, 4.0, 7.0, 15.0), Block.createCuboidShape(0.0, 2.0, 2.0, 6.0, 7.0, 16.0)};
+    protected static final VoxelShape[] AGE_TO_NORTH_SHAPE_2 = new VoxelShape[]{Block.createCuboidShape(2.0, 2.0, 0.0, 12.0, 7.0, 4.0), Block.createCuboidShape(1.0, 2.0, 0.0, 13.0, 7.0, 4.0), Block.createCuboidShape(0.0, 2.0, 0.0, 14.0, 7.0, 6.0)};
+    protected static final VoxelShape[] AGE_TO_SOUTH_SHAPE_2 = new VoxelShape[]{Block.createCuboidShape(4.0, 2.0, 12.0, 14.0, 7.0, 16.0), Block.createCuboidShape(3.0, 2.0, 12.0, 15.0, 7.0, 16.0), Block.createCuboidShape(2.0, 2.0, 10.0, 16.0, 7.0, 16.0)};
+    // COUNT 3 AGE 1-3
+    protected static final VoxelShape[] AGE_TO_EAST_SHAPE_3 = new VoxelShape[]{Block.createCuboidShape(12.0, 2.0, 2.0, 16.0, 15.0, 12.0), Block.createCuboidShape(12.0, 2.0, 1.0, 16.0, 15.0, 13.0), Block.createCuboidShape(10.0, 2.0, 0.0, 16.0, 15.0, 14.0)};
+    protected static final VoxelShape[] AGE_TO_WEST_SHAPE_3 = new VoxelShape[]{Block.createCuboidShape(0.0, 2.0, 4.0, 4.0, 15.0, 14.0), Block.createCuboidShape(0.0, 2.0, 3.0, 4.0, 15.0, 15.0), Block.createCuboidShape(0.0, 2.0, 2.0, 6.0, 15.0, 16.0)};
+    protected static final VoxelShape[] AGE_TO_NORTH_SHAPE_3 = new VoxelShape[]{Block.createCuboidShape(2.0, 2.0, 0.0, 12.0, 15.0, 4.0), Block.createCuboidShape(3.0, 2.0, 0.0, 13.0, 15.0, 4.0), Block.createCuboidShape(0.0, 2.0, 0.0, 14.0, 15.0, 6.0)};
+    protected static final VoxelShape[] AGE_TO_SOUTH_SHAPE_3 = new VoxelShape[]{Block.createCuboidShape(4.0, 2.0, 12.0, 14.0, 15.0, 16.0), Block.createCuboidShape(3.0, 2.0, 12.0, 15.0, 15.0, 16.0), Block.createCuboidShape(2.0, 2.0, 10.0, 16.0, 15.0, 16.0)};
+    // COUNT 4 AGE 1-3
+    protected static final VoxelShape[] AGE_TO_EAST_SHAPE_4 = new VoxelShape[]{Block.createCuboidShape(12.0, 2.0, 2.0, 16.0, 15.0, 12.0), Block.createCuboidShape(12.0, 2.0, 1.0, 16.0, 15.0, 13.0), Block.createCuboidShape(10.0, 2.0, 0.0, 16.0, 15.0, 14.0)};
+    protected static final VoxelShape[] AGE_TO_WEST_SHAPE_4 = new VoxelShape[]{Block.createCuboidShape(0.0, 2.0, 4.0, 4.0, 15.0, 14.0), Block.createCuboidShape(0.0, 2.0, 3.0, 4.0, 15.0, 15.0), Block.createCuboidShape(0.0, 2.0, 2.0, 6.0, 15.0, 16.0)};
+    protected static final VoxelShape[] AGE_TO_NORTH_SHAPE_4 = new VoxelShape[]{Block.createCuboidShape(2.0, 2.0, 0.0, 12.0, 15.0, 4.0), Block.createCuboidShape(3.0, 2.0, 0.0, 13.0, 15.0, 4.0), Block.createCuboidShape(0.0, 2.0, 0.0, 14.0, 15.0, 6.0)};
+    protected static final VoxelShape[] AGE_TO_SOUTH_SHAPE_4 = new VoxelShape[]{Block.createCuboidShape(4.0, 2.0, 12.0, 14.0, 15.0, 16.0), Block.createCuboidShape(3.0, 2.0, 12.0, 15.0, 15.0, 16.0), Block.createCuboidShape(2.0, 2.0, 10.0, 16.0, 15.0, 16.0)};
 
     public MapCodec<FungiBlock> getCodec() {
         return CODEC;
@@ -56,19 +72,34 @@ public class FungiBlock extends HorizontalFacingBlock implements Fertilizable {
     @Override
     public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         int i = state.get(AGE);
+        int j = state.get(COUNT);
         switch (state.get(FACING)) {
             case SOUTH: {
-                return AGE_TO_SOUTH_SHAPE[i];
+                if (j == 1) return AGE_TO_SOUTH_SHAPE_1[i];
+                if (j == 2) return AGE_TO_SOUTH_SHAPE_2[i];
+                if (j == 3) return AGE_TO_SOUTH_SHAPE_3[i];
+                if (j == 4) return AGE_TO_SOUTH_SHAPE_4[i];
             }
             default: {
-                return AGE_TO_NORTH_SHAPE[i];
+                if (j == 1) return AGE_TO_NORTH_SHAPE_1[i];
+                if (j == 2) return AGE_TO_NORTH_SHAPE_2[i];
+                if (j == 3) return AGE_TO_NORTH_SHAPE_3[i];
+                if (j == 4) return AGE_TO_NORTH_SHAPE_4[i];
             }
             case WEST: {
-                return AGE_TO_WEST_SHAPE[i];
+                if (j == 1) return AGE_TO_WEST_SHAPE_1[i];
+                if (j == 2) return AGE_TO_WEST_SHAPE_2[i];
+                if (j == 3) return AGE_TO_WEST_SHAPE_3[i];
+                if (j == 4) return AGE_TO_WEST_SHAPE_4[i];
             }
-            case EAST:
+            case EAST: {
+                if (j == 1) return AGE_TO_EAST_SHAPE_1[i];
+                if (j == 2) return AGE_TO_EAST_SHAPE_2[i];
+                if (j == 3) return AGE_TO_EAST_SHAPE_3[i];
+                if (j == 4) return AGE_TO_EAST_SHAPE_4[i];
+            }
         }
-        return AGE_TO_EAST_SHAPE[i];
+        return AGE_TO_EAST_SHAPE_1[i];
     }
 
     /*private void breakFungi(World world, BlockPos pos, BlockState state) {
