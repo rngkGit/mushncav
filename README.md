@@ -37,7 +37,9 @@ Items: These new biomes introduce some new strange items. New items include:
 **More of everything coming soon! I am still developing this mod, this is just what I have right now. Explore the game to see what is currently added!**
 
 ## Installation
-Current stable build is in the releases section of the repository.
+Current alpha/beta builds are in the releases section of the repository. I will not be publishing the release builds here, please click the link below.
+
+All versions including alpha/beta builds will be on [Modrinth](https://modrinth.com/mod/mushncav) to download for free.
 
 For a latest but potentially unstable build, Download the source code for the main branch and extract the folder.
 Open the project folder using your IDE (I am using IntelliJ IDEA CE).
