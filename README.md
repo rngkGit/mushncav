@@ -37,7 +37,9 @@ Items: These new biomes introduce some new strange items. New items include:
 **More of everything coming soon! I am still developing this mod, this is just what I have right now. Explore the game to see what is currently added!**
 
 ## Installation
-Download the source code for the main branch and extract the folder.
+Current stable build is in the releases section of the repository.
+
+For a latest but potentially unstable build, Download the source code for the main branch and extract the folder.
 Open the project folder using your IDE (I am using IntelliJ IDEA CE).
 ***Please run Minecraft's Datagen before you run the client!***
 Run the Minecraft Client using gradle.
