@@ -13,6 +13,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.*;
+import net.rngk.mushncav.MushroomsAndCaverns;
+import net.rngk.mushncav.block.ModBlocks;
 import net.rngk.mushncav.util.ModTags;
 import org.jetbrains.annotations.Nullable;
 
@@ -52,15 +54,63 @@ public class FungiBlock extends HorizontalFacingBlock implements Fertilizable {
 
     @Override
     public boolean hasRandomTicks(BlockState state) {
-        return state.get(AGE) < 2;
+        return true;
+        // return state.get(AGE) < 2 || state.get(COUNT) < 4;
     }
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        // Grows the fungi
         int i;
         if (world.random.nextInt(5) == 0 && (i = state.get(AGE).intValue()) < 2) {
             world.setBlockState(pos, (BlockState)state.with(AGE, i + 1), Block.NOTIFY_LISTENERS);
         }
+
+        // Increases the count
+        int j;
+        if (world.random.nextInt(5) == 0 && (j = state.get(COUNT).intValue()) < 4) {
+            world.setBlockState(pos, (BlockState)state.with(COUNT, j + 1), Block.NOTIFY_LISTENERS);
+        }
+
+        // Implements spread
+        if (random.nextFloat() < 0.3f) {
+            spreadFungi(state, world, pos, random);
+        }
+
+        /*if (canSpread(state) && random.nextFloat() < 0.2f) {
+            // Spreads on the horizontal axis
+            for (Direction direction : Direction.Type.HORIZONTAL) {
+                BlockPos blockPos = pos.offset(direction);
+
+                // If the block around it is a fungi block, spread the fungi on that log
+                if (world.getBlockState(blockPos).isIn(ModTags.Blocks.FUNGI_LOGS)) {
+
+                }
+
+                if (!world.getBlockState(blockPos).isAir()) {
+                    continue;
+                }
+
+                if (random.nextFloat() < 0.5f) {
+                    // If the block around it is not a fungi block and can place at the block in a direction where there is a log block facing the outside of fungi block, not directly next to it.
+                    if (!world.getBlockState(blockPos).isOf(this) && canPlaceAt(state, world, blockPos) && world.getBlockState(blockPos.offset(state.get(FACING))).isIn(ModTags.Blocks.FUNGI_LOGS)) {
+                        // Set the block around it to a new fungi block
+                        world.setBlockState(blockPos, (BlockState)state.with(AGE, 0).with(COUNT, 1).with(FACING, state.get(FACING)), Block.NOTIFY_LISTENERS);
+                    }
+                } else {
+                    // If the block around it is not a fungi block and can place at the block directly next to itself facing the same direction
+                    if (!world.getBlockState(blockPos).isOf(this) && canPlaceAt(state, world, blockPos) && world.getBlockState(blockPos.offset(direction)).isIn(ModTags.Blocks.FUNGI_LOGS)) {
+                        // Set the block around it to a new fungi block
+                        world.setBlockState(blockPos, (BlockState)state.with(AGE, 0).with(COUNT, 1).with(FACING, direction), Block.NOTIFY_LISTENERS);
+                    }
+                }
+            }
+
+            // Spreads on the vertical axis
+            for (Direction direction : Direction.Type.VERTICAL) {
+
+            }
+        }*/
     }
 
     @Override
@@ -114,6 +164,71 @@ public class FungiBlock extends HorizontalFacingBlock implements Fertilizable {
         }
     }*/
 
+    public void spreadFungi(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        // Implements spread
+        if (state.isOf(ModBlocks.FUNGI_BLOCK) && canSpread(state)) {
+            // Spreads on the horizontal axis
+            for (Direction direction : Direction.Type.HORIZONTAL) {
+                BlockPos blockPos = pos.offset(direction);
+
+                // If the surrounding block is a fungi block, spread the fungi on that log
+                if (world.getBlockState(blockPos).isIn(ModTags.Blocks.FUNGI_LOGS) && direction == state.get(FACING)) {
+                    // Spreads inside the block
+                    spreadFungiFromLog(world.getBlockState(blockPos), world, blockPos, direction.getOpposite(), random);
+                    continue;
+                }
+
+                if (!world.getBlockState(blockPos).isAir()) {
+                    continue;
+                }
+
+                //placeFungi(state, world, blockPos, direction, random);
+                if (random.nextFloat() < 0.5f) {
+                    // If the block around it is not a fungi block and can place at the block in a direction where there is a log block facing the outside of fungi block, not directly next to it.
+                    if (!world.getBlockState(blockPos).isOf(this) && canPlaceAt(state, world, blockPos) && world.getBlockState(blockPos.offset(state.get(FACING))).isIn(ModTags.Blocks.FUNGI_LOGS)) {
+                        // Set the block around it to a new fungi block
+                        world.setBlockState(blockPos, (BlockState)state.with(AGE, 0).with(COUNT, 1).with(FACING, state.get(FACING)), Block.NOTIFY_LISTENERS);
+                        break;
+                    }
+                } else {
+                    // If the block around it is not a fungi block and can place at the block directly next to itself facing the same direction
+                    if (!world.getBlockState(blockPos).isOf(this) && canPlaceAt(state, world, blockPos) && world.getBlockState(blockPos.offset(direction)).isIn(ModTags.Blocks.FUNGI_LOGS)) {
+                        // Set the block around it to a new fungi block
+                        world.setBlockState(blockPos, (BlockState)state.with(AGE, 0).with(COUNT, 1).with(FACING, direction), Block.NOTIFY_LISTENERS);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    public void spreadFungiFromLog(BlockState state, ServerWorld world, BlockPos pos, Direction directionFrom, Random random) {
+        // Check all 4 blocks around the wood and check if those blocks are air. If it is, then spread the fungi block.
+        for (Direction direction : Direction.Type.HORIZONTAL) {
+            if (direction == directionFrom){continue;}
+            BlockPos blockPos = pos.offset(direction);
+
+            // If the surrounding block is a fungi block, spread the fungi on that log
+            if (world.getBlockState(blockPos).isIn(ModTags.Blocks.FUNGI_LOGS)) {
+                spreadFungiFromLog(world.getBlockState(blockPos), world, blockPos, direction.getOpposite(), random);
+                continue;
+            }
+
+            if (!world.getBlockState(blockPos).isAir()) {
+                continue;
+            }
+
+            BlockState newState = ModBlocks.FUNGI_BLOCK.getDefaultState()
+                    .with(AGE, 0)
+                    .with(COUNT, 1)
+                    .with(FACING, direction.getOpposite());
+
+            //placeFungi(newState, world, blockPos, direction, random);
+            world.setBlockState(blockPos, newState, Block.NOTIFY_LISTENERS);
+            break;
+        }
+    }
+
     @Override
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -151,7 +266,7 @@ public class FungiBlock extends HorizontalFacingBlock implements Fertilizable {
 
     @Override
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
-        return state.get(AGE) < 2;
+        return state.get(AGE) < 2 || state.get(COUNT) < 4;
     }
 
     @Override
@@ -161,7 +276,12 @@ public class FungiBlock extends HorizontalFacingBlock implements Fertilizable {
 
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        world.setBlockState(pos, (BlockState)state.with(AGE, state.get(AGE) + 1), Block.NOTIFY_LISTENERS);
+        if (state.get(AGE) < 2) {
+            world.setBlockState(pos, (BlockState)state.with(AGE, state.get(AGE) + 1), Block.NOTIFY_LISTENERS);
+        }
+        if (state.get(COUNT) < 4) {
+            world.setBlockState(pos, (BlockState)state.with(COUNT, state.get(COUNT) + 1), Block.NOTIFY_LISTENERS);
+        }
     }
 
     @Override
@@ -172,5 +292,9 @@ public class FungiBlock extends HorizontalFacingBlock implements Fertilizable {
     @Override
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;
+    }
+
+    public boolean canSpread(BlockState state) {
+        return state.get(AGE) == 2;
     }
 }
