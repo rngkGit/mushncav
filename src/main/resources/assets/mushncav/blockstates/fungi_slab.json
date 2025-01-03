@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mushncav:block/fungi_slab"
+    },
+    "type=double": {
+      "model": "mushncav:block/fungi_planks"
+    },
+    "type=top": {
+      "model": "mushncav:block/fungi_slab_top"
+    }
+  }
+}

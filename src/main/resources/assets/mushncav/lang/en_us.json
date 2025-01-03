@@ -4,7 +4,22 @@
   "item.mushncav.magic_stone": "§bMagic Stone",
 
   "block.mushncav.fungi_tree_log": "Fungi Tree Log",
+  "block.mushncav.stripped_fungi_tree_log": "Stripped Fungi Tree Log",
   "block.mushncav.fungi_tree_wood": "Fungi Tree Wood",
+  "block.mushncav.stripped_fungi_tree_wood": "Stripped Fungi Tree Wood",
+  "block.mushncav.fungi_planks": "Fungi Planks",
+  "block.mushncav.fungi_slab": "Fungi Slab",
+  "block.mushncav.fungi_stairs": "Fungi Stairs",
+  "block.mushncav.fungi_button": "Fungi Button",
+  "block.mushncav.fungi_fence": "Fungi Fence",
+  "block.mushncav.fungi_fence_gate": "Fungi Fence Gate",
+  "block.mushncav.fungi_door": "Fungi Door",
+  "block.mushncav.fungi_trapdoor": "Fungi Trapdoor",
+  "block.mushncav.fungi_sign": "Fungi Sign",
+  "block.mushncav.fungi_hanging_sign": "Fungi Hanging Sign",
+
+  "item.mushncav.fungi_axe": "Fungi Axe",
+
   "block.mushncav.fungi_tree_leaves": "Fungi Tree Leaves",
   "block.mushncav.fungi_tree_sapling": "Fungi Tree Sapling",
   "block.mushncav.fungi_mushroom_stem": "Fungi Mushroom Stem",
@@ -26,11 +41,23 @@
   "block.mushncav.glowing_tall_grass": "Glowing Tall Grass",
   "block.mushncav.glowing_mushroom_block": "Glowing Mushroom Block",
   "block.mushncav.glowing_mushroom_stem": "Glowing Mushroom Stem",
+
   "item.mushncav.glowing_grapes": "Glowing Grapes",
   "item.mushncav.glowing_blueberry": "Glowing Blueberry",
   "item.mushncav.glowing_mushroom_stick": "Glowing Mushroom Stick",
   "item.mushncav.glowing_sapphire_shard": "Glowing Sapphire Shard",
   "item.mushncav.glowing_sapphire_stone": "Glowing Sapphire Stone",
+
+  "item.mushncav.glowing_sapphire_sword": "Glowing Sapphire Sword",
+  "item.mushncav.glowing_sapphire_pickaxe": "Glowing Sapphire Pickaxe",
+  "item.mushncav.glowing_sapphire_axe": "Glowing Sapphire Axe",
+  "item.mushncav.glowing_sapphire_shovel": "Glowing Sapphire Shovel",
+  "item.mushncav.glowing_sapphire_hoe": "Glowing Sapphire Hoe",
+
+  "item.mushncav.glowing_sapphire_helmet": "Glowing Sapphire Helmet",
+  "item.mushncav.glowing_sapphire_chestplate": "Glowing Sapphire Chestplate",
+  "item.mushncav.glowing_sapphire_leggings": "Glowing Sapphire Leggings",
+  "item.mushncav.glowing_sapphire_boots": "Glowing Sapphire Boots",
 
   "item.mushncav.amethyst_mushroom_stick": "Amethyst Mushroom Stick"
 }

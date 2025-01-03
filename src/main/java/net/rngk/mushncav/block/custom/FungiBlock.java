@@ -152,18 +152,6 @@ public class FungiBlock extends HorizontalFacingBlock implements Fertilizable {
         return AGE_TO_EAST_SHAPE_1[i];
     }
 
-    /*private void breakFungi(World world, BlockPos pos, BlockState state) {
-        world.playSound(null, pos, SoundEvents.ENTITY_TURTLE_EGG_BREAK, SoundCategory.BLOCKS, 0.7f, 0.9f + world.random.nextFloat() * 0.2f);
-        int i = state.get(COUNT);
-        if (i <= 1) {
-            world.breakBlock(pos, false);
-        } else {
-            world.setBlockState(pos, (BlockState)state.with(COUNT, i - 1), Block.NOTIFY_LISTENERS);
-            world.emitGameEvent(GameEvent.BLOCK_DESTROY, pos, GameEvent.Emitter.of(state));
-            world.syncWorldEvent(WorldEvents.BLOCK_BROKEN, pos, Block.getRawIdFromState(state));
-        }
-    }*/
-
     public void spreadFungi(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         // Implements spread
         if (state.isOf(ModBlocks.FUNGI_BLOCK) && canSpread(state)) {

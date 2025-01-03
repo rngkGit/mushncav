@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "mushncav:block/fungi_dirt",
+    "particle": "mushncav:block/fungi_dirt",
+    "side": "mushncav:block/fungi_grass_block_snow",
+    "top": "mushncav:block/fungi_grass_block_top"
+  }
+}

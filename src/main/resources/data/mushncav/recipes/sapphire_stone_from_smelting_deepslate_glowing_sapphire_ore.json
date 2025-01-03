@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "mushncav:deepslate_glowing_sapphire_ore"
+  },
+  "result": "mushncav:glowing_sapphire_stone"
+}

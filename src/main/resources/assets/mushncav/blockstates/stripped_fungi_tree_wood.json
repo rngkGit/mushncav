@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mushncav:block/stripped_fungi_tree_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "mushncav:block/stripped_fungi_tree_wood"
+    },
+    "axis=z": {
+      "model": "mushncav:block/stripped_fungi_tree_wood",
+      "x": 90
+    }
+  }
+}

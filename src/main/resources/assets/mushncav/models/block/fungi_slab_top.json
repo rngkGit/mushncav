@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "mushncav:block/fungi_planks",
+    "side": "mushncav:block/fungi_planks",
+    "top": "mushncav:block/fungi_planks"
+  }
+}

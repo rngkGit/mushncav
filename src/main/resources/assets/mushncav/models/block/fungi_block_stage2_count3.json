@@ -1,8 +1,8 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "particle": "mushncav:block/fungi_block_stage0",
-        "cocoa": "mushncav:block/fungi_block_stage0"
+        "particle": "mushncav:block/fungi_block_stage2",
+        "cocoa": "mushncav:block/fungi_block_stage2"
     },
     "elements": [
         {

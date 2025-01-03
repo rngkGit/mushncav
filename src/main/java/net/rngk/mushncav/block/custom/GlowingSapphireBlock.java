@@ -8,6 +8,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.rngk.mushncav.MushroomsAndCaverns;
 
 public class GlowingSapphireBlock extends Block {
     public GlowingSapphireBlock(Settings settings) {

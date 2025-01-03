@@ -1,4 +1,4 @@
-// 1.20.4	2024-10-28T00:16:52.289583	Mushrooms and Caverns/null
+// 1.20.4	2024-12-13T21:46:36.679822	Mushrooms and Caverns/null
 e58cc2525f7c6e4cb821fae77c25d6c1429fc629 data/mushncav/worldgen/configured_feature/glowing_mushroom_vines.json
 e7d984fd0a8a469c7ac557dfa4f5c596b70c9cb1 data/mushncav/worldgen/configured_feature/fungi_tree.json
 27b34f574cbfc92da6c9655dbd5d99d155b13c1c data/mushncav/worldgen/placed_feature/glowing_mushroom_placed.json
@@ -20,6 +20,6 @@ b157b99c0fbcc9e5d4733f010c77b670f4196519 data/mushncav/worldgen/configured_featu
 cae7255d69b0c855d17b85dfb114b1f70db5b893 data/mushncav/worldgen/configured_feature/glowing_mushroom_vegetation.json
 1beceb90760d28d887be76f5c130571022a4df6c data/mushncav/worldgen/configured_feature/glowing_blueberry_bush.json
 86999c72477a8f43f6bafccbb2b427d9a9e24a6e data/mushncav/worldgen/placed_feature/fungi_mushroom_placed.json
-f9b71928bc8d1afff82cc8f514c6d7c9ee07d3d1 data/mushncav/worldgen/placed_feature/glowing_sapphire_ore_placed.json
+aa1a61bf97730342fe21cd03ee5b1e9ce50a54cb data/mushncav/worldgen/placed_feature/glowing_sapphire_ore_placed.json
 27b34f574cbfc92da6c9655dbd5d99d155b13c1c data/mushncav/worldgen/placed_feature/glowing_mushroom_placed_2.json
 0d4f980bafcfcc462095b4d41ca6fe0e5d11c5f8 data/mushncav/worldgen/placed_feature/fungi_tree_placed.json

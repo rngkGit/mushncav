@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "mushncav:item/glowing_sapphire_axe"
+  }
+}

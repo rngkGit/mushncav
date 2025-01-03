@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "mushncav:fungi_planks"
+    }
+  ],
+  "result": {
+    "item": "mushncav:fungi_button"
+  }
+}

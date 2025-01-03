@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "mushncav:block/fungi_planks",
+    "side": "mushncav:block/fungi_planks",
+    "top": "mushncav:block/fungi_planks"
+  }
+}

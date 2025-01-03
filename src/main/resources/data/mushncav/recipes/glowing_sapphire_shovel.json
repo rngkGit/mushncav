@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "mushncav:fungi_stick"
+    },
+    "X": {
+      "item": "mushncav:glowing_sapphire_stone"
+    }
+  },
+  "pattern": [
+    "X",
+    "#",
+    "#"
+  ],
+  "result": {
+    "item": "mushncav:glowing_sapphire_shovel"
+  }
+}

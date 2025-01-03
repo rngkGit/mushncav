@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_left",
+  "textures": {
+    "bottom": "mushncav:block/fungi_door_bottom",
+    "top": "mushncav:block/fungi_door_top"
+  }
+}

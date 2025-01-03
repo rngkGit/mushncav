@@ -2,7 +2,16 @@ package net.rngk.mushncav;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.block.entity.SignBlockEntityRenderer;
+import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.util.Identifier;
 import net.rngk.mushncav.block.ModBlocks;
+import net.rngk.mushncav.block.entity.ModBlockEntities;
+import net.rngk.mushncav.block.type.ModBlockSetTypes;
+import net.rngk.mushncav.block.type.ModWoodTypes;
 import net.rngk.mushncav.item.ModItemGroups;
 import net.rngk.mushncav.item.ModItems;
 import net.rngk.mushncav.world.gen.ModWorldGeneration;
@@ -32,6 +41,11 @@ public class MushroomsAndCaverns implements ModInitializer {
 
 		ModTrunkPlacerTypes.register();
 		ModTreeDecoratorTypes.register();
+
+		ModBlockSetTypes.registerBlockSetTypes();
+		ModWoodTypes.registerWoodTypes();
+
+		ModBlockEntities.registerBlockEntities();
 
 		ModWorldGeneration.generateModWorldGen();
 	}
