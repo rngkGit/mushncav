@@ -3,11 +3,11 @@ Welcome to the Mushrooms and Caverns Mod! This Minecraft mod for version 1.20.4 
 
 The mod will be updated to later versions of Minecraft once a full version comes out.
 
-# ⚠Disclaimer:
-**⚠⚠THIS MOD IS STILL IN DEVELOPMENT! I AM NOT DONE YET!⚠⚠**
+# ⚠Disclaimer⚠
+**⚠⚠THIS MOD IS STILL IN DEVELOPMENT⚠⚠**
 
 ## Features (w/ Upcoming Features)
-Note: Your version may not have some of these featuers as I am still developing this mod.
+Note: Your version may not have some of these featuers as I am still developing this mod. You may see some features in-game not listed here as well.
 ### New Surface Biomes
 * Fungi Forest: Near the scapes of the water, the Fungi Forest appears! Explore new trees, mushrooms, mobs, and more.
 ![2024-10-10_22 56 37](https://github.com/user-attachments/assets/adb5d8a6-b3cf-4d54-bd49-c7e1edd38b75)
@@ -23,7 +23,7 @@ Blocks/Ores: With new biomes comes new blocks to discover! New blocks and ores i
 * Glowing Sapphire Ore: Mine this new rare ore perfect for crafting new unique gear and items.
 
 Items: These new biomes introduce some new strange items. New items include:
-* Mushroom Sticks: With these strange flexible sticks, you will need these to make the new tools.
+* Fungi Stick: With these strange flexible sticks, you will need these to make new tools and blocks.
 * Glowing Sapphire Tools & Armor: Speaking of new tools, new glowing sapphire armor and tools can help aid you in the mines or on your next adventure!
 * Fungi: Found on the sides of the fungi trees, these strange mushrooms may benifit your next adventure.
 * Magic Stone: I wonder what this does... :)
@@ -32,7 +32,7 @@ Items: These new biomes introduce some new strange items. New items include:
 * Coming Soon!
 
 ### New Structures
-* Hidden in the Glowing Mushroom biome, you may find a lost home. I wonder what they left behind.
+* Hidden in the Glowing Mushroom biome, you may find a lost home. They may have left some gear behind.
 
 **More of everything coming soon! I am still developing this mod, this is just what I have right now. Explore the game to see what is currently added!**
 
