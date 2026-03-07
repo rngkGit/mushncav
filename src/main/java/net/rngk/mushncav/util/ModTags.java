@@ -13,14 +13,14 @@ public class ModTags {
         public static final TagKey<Block> FUNGI_LOGS = createTag("fungi_logs");
 
         private static TagKey<Block> createTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, new Identifier(MushroomsAndCaverns.MOD_ID, name));
+            return TagKey.of(RegistryKeys.BLOCK, Identifier.of(MushroomsAndCaverns.MOD_ID, name));
         }
     }
     public static class Items {
 
 
         private static TagKey<Item> createTag(String name) {
-            return TagKey.of(RegistryKeys.ITEM, new Identifier(MushroomsAndCaverns.MOD_ID, name));
+            return TagKey.of(RegistryKeys.ITEM, Identifier.of(MushroomsAndCaverns.MOD_ID, name));
         }
     }
 }

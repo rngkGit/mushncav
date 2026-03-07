@@ -2,7 +2,6 @@ package net.rngk.mushncav.block.custom;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.mojang.datafixers.kinds.Applicative;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.*;
@@ -29,7 +28,6 @@ import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.rngk.mushncav.block.entity.ModBlockEntities;
 import net.rngk.mushncav.block.entity.ModHangingSignBlockEntity;
@@ -38,19 +36,18 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Map;
 import java.util.Optional;
 
-public class ModHangingSignBlock extends AbstractSignBlock {
-    public static final MapCodec<ModHangingSignBlock> CODEC = RecordCodecBuilder.mapCodec(instance ->
+public class ModHangingSignBlock extends HangingSignBlock {
+    public static final MapCodec<HangingSignBlock> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     WoodType.CODEC.fieldOf("wood_type").forGetter(modSignBlock -> modSignBlock.getWoodType()),
                     createSettingsCodec()
             ).apply(instance, ModHangingSignBlock::new));
     public static final IntProperty ROTATION = Properties.ROTATION;
     public static final BooleanProperty ATTACHED = Properties.ATTACHED;
-    protected static final float field_40302 = 5.0f;
     protected static final VoxelShape DEFAULT_SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
     private static final Map<Integer, VoxelShape> SHAPES_FOR_ROTATION = Maps.newHashMap(ImmutableMap.of(0, Block.createCuboidShape(1.0, 0.0, 7.0, 15.0, 10.0, 9.0), 4, Block.createCuboidShape(7.0, 0.0, 1.0, 9.0, 10.0, 15.0), 8, Block.createCuboidShape(1.0, 0.0, 7.0, 15.0, 10.0, 9.0), 12, Block.createCuboidShape(7.0, 0.0, 1.0, 9.0, 10.0, 15.0)));
 
-    public MapCodec<ModHangingSignBlock> getCodec() {
+    public MapCodec<HangingSignBlock> getCodec() {
         return CODEC;
     }
 
@@ -60,14 +57,17 @@ public class ModHangingSignBlock extends AbstractSignBlock {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack itemStack;
-        SignBlockEntity signBlockEntity;
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        Hand hand = Hand.MAIN_HAND;
+        ItemStack itemStack = player.getStackInHand(hand);
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof SignBlockEntity && this.shouldTryAttaching(player, hit, signBlockEntity = (SignBlockEntity)blockEntity, itemStack = player.getStackInHand(hand))) {
-            return ActionResult.PASS;
+
+        if (blockEntity instanceof SignBlockEntity signBlockEntity) {
+            if (this.shouldTryAttaching(player, hit, signBlockEntity, itemStack)) {
+                return ActionResult.PASS;
+            }
         }
-        return super.onUse(state, world, pos, player, hand, hit);
+        return super.onUse(state, world, pos, player, hit);
     }
 
     private boolean shouldTryAttaching(PlayerEntity player, BlockHitResult hitResult, SignBlockEntity sign, ItemStack stack) {
@@ -81,14 +81,17 @@ public class ModHangingSignBlock extends AbstractSignBlock {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        boolean bl2;
         World world = ctx.getWorld();
         FluidState fluidState = world.getFluidState(ctx.getBlockPos());
         BlockPos blockPos = ctx.getBlockPos().up();
         BlockState blockState = world.getBlockState(blockPos);
         boolean bl = blockState.isIn(BlockTags.ALL_HANGING_SIGNS);
-        Direction direction = Direction.fromRotation(ctx.getPlayerYaw());
-        boolean bl3 = bl2 = !Block.isFaceFullSquare(blockState.getCollisionShape(world, blockPos), Direction.DOWN) || ctx.shouldCancelInteraction();
+        // Convert yaw to horizontal direction (NORTH, EAST, SOUTH, WEST)
+        int horizontalIndex = Math.floorMod((int)Math.floor((double)(ctx.getPlayerYaw() * 4.0F / 360.0F) + 0.5), 4);
+        Direction[] horizontals = new Direction[]{Direction.SOUTH, Direction.WEST, Direction.NORTH, Direction.EAST};
+        Direction direction = horizontals[horizontalIndex];
+        boolean bl2 = !Block.isFaceFullSquare(blockState.getCollisionShape(world, blockPos), Direction.DOWN) || ctx.shouldCancelInteraction();
+
         if (bl && !ctx.shouldCancelInteraction()) {
             Optional<Direction> optional;
             if (blockState.contains(ModWallHangingSignBlock.FACING)) {
@@ -101,7 +104,10 @@ public class ModHangingSignBlock extends AbstractSignBlock {
             }
         }
         int i = !bl2 ? RotationPropertyHelper.fromDirection(direction.getOpposite()) : RotationPropertyHelper.fromYaw(ctx.getPlayerYaw() + 180.0f);
-        return (BlockState)((BlockState)((BlockState)this.getDefaultState().with(ATTACHED, bl2)).with(ROTATION, i)).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+        return this.getDefaultState()
+                .with(ATTACHED, bl2)
+                .with(ROTATION, i)
+                .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
     }
 
     @Override
@@ -115,13 +121,7 @@ public class ModHangingSignBlock extends AbstractSignBlock {
         return this.getOutlineShape(state, world, pos, ShapeContext.absent());
     }
 
-    @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (direction == Direction.UP && !this.canPlaceAt(state, world, pos)) {
-            return Blocks.AIR.getDefaultState();
-        }
-        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-    }
+    // getStateForNeighborUpdate signature changed to use ScheduledTickView - parent implementation handles breaking
 
     @Override
     public float getRotationDegrees(BlockState state) {
@@ -130,12 +130,12 @@ public class ModHangingSignBlock extends AbstractSignBlock {
 
     @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState)state.with(ROTATION, rotation.rotate(state.get(ROTATION), 16));
+        return state.with(ROTATION, rotation.rotate(state.get(ROTATION), 16));
     }
 
     @Override
     public BlockState mirror(BlockState state, BlockMirror mirror) {
-        return (BlockState)state.with(ROTATION, mirror.mirror(state.get(ROTATION), 16));
+        return state.with(ROTATION, mirror.mirror(state.get(ROTATION), 16));
     }
 
     @Override

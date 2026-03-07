@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "equipment",
+    "pattern": [
+        "# #",
+        "###",
+        "###"
+    ],
+    "key": {
+        "#": "mushncav:glowing_sapphire_stone"
+    },
+    "result": {
+        "count": 1,
+        "id": "mushncav:glowing_sapphire_chestplate"
+    }
+}

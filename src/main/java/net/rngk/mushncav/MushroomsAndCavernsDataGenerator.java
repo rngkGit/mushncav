@@ -3,7 +3,6 @@ package net.rngk.mushncav;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.registry.RegistryBuilder;
-import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.rngk.mushncav.datagen.*;
 import net.rngk.mushncav.world.ModConfiguredFeatures;
@@ -15,13 +14,7 @@ public class MushroomsAndCavernsDataGenerator implements DataGeneratorEntrypoint
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
-		//If I ever feel like using data gen for the silly things again
-
-		/*pack.addProvider(ModBlockTagProvider::new);
-		pack.addProvider(ModItemTagProvider::new);
-		pack.addProvider(ModLootTableProvider::new);
-		pack.addProvider(ModModelProvider::new);
-		pack.addProvider(ModRecipeProvider::new);*/
+		// Models are loaded directly from assets/mushncav/models/item/*.json and textures
 
 		pack.addProvider(ModWorldGenerator::new);
 	}

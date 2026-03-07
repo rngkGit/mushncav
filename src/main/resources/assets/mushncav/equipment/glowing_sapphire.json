@@ -1,0 +1,24 @@
+{
+  "layers": {
+    "wolf_body": [
+      {
+        "texture": "mushncav:glowing_sapphire"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "mushncav:glowing_sapphire"
+      }
+    ],
+    "humanoid": [
+      {
+        "texture": "mushncav:glowing_sapphire"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mushncav:glowing_sapphire"
+      }
+    ]
+  }
+}

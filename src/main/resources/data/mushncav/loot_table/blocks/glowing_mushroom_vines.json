@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "mushncav:glowing_mushroom_vines",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "berries": "true"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "mushncav:glowing_grapes"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "mushncav:blocks/glowing_mushroom_vines"
+}
+

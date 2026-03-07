@@ -3,6 +3,7 @@ package net.rngk.mushncav.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCollisionHandler;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -41,11 +42,11 @@ public class GlowingBlueberryBushBlock extends PlantBlock implements Fertilizabl
 
     public GlowingBlueberryBushBlock(AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(AGE, 0));
+        this.setDefaultState(this.stateManager.getDefaultState().with(AGE, 0));
     }
 
     @Override
-    public ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state) {
+    protected ItemStack getPickStack(WorldView world, BlockPos pos, BlockState state, boolean includeData) {
         return new ItemStack(ModItems.GLOWING_BLUEBERRY);
     }
 
@@ -68,46 +69,57 @@ public class GlowingBlueberryBushBlock extends PlantBlock implements Fertilizabl
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         int i = state.get(AGE);
-        if (i < 3 && random.nextInt(5) == 0 && world.getBaseLightLevel(pos.up(), 0) >= 9) {
-            BlockState blockState = (BlockState)state.with(AGE, i + 1);
+        // Sweet berry pacing, but without the >=9 light requirement so cave bushes regrow.
+        if (i < 3 && random.nextInt(5) == 0) {
+            BlockState blockState = state.with(AGE, i + 1);
             world.setBlockState(pos, blockState, Block.NOTIFY_LISTENERS);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(blockState));
         }
     }
 
     @Override
-    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        /*if (!(entity instanceof LivingEntity) || entity.getType() == EntityType.FOX || entity.getType() == EntityType.BEE) {
+    protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity, EntityCollisionHandler handler, boolean bl) {
+        if (!(entity instanceof LivingEntity) || entity.getType() == EntityType.FOX || entity.getType() == EntityType.BEE) {
             return;
         }
+
         entity.slowMovement(state, new Vec3d(0.8f, 0.75, 0.8f));
-        if (!(world.isClient || state.get(AGE) <= 0 || entity.lastRenderX == entity.getX() && entity.lastRenderZ == entity.getZ())) {
-            double d = Math.abs(entity.getX() - entity.lastRenderX);
-            double e = Math.abs(entity.getZ() - entity.lastRenderZ);
-            if (d >= (double)0.003f || e >= (double)0.003f) {
-                entity.damage(world.getDamageSources().sweetBerryBush(), 1.0f);
-            }
-        }*/
+        if (world.isClient() || state.get(AGE) <= 0 || !(world instanceof ServerWorld serverWorld)) {
+            return;
+        }
+
+        double deltaX = Math.abs(entity.getX() - entity.lastRenderX);
+        double deltaZ = Math.abs(entity.getZ() - entity.lastRenderZ);
+        if (deltaX >= MIN_MOVEMENT_FOR_DAMAGE || deltaZ >= MIN_MOVEMENT_FOR_DAMAGE) {
+            entity.damage(serverWorld, serverWorld.getDamageSources().sweetBerryBush(), 1.0f);
+        }
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        boolean bl;
-        int i = state.get(AGE);
-        boolean bl2 = bl = i == 3;
-        if (!bl && player.getStackInHand(hand).isOf(Items.BONE_MEAL)) {
+    protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (state.get(AGE) != MAX_AGE && stack.isOf(Items.BONE_MEAL)) {
             return ActionResult.PASS;
         }
-        if (i > 1) {
-            int j = 1 + world.random.nextInt(2);
-            GlowingBlueberryBushBlock.dropStack(world, pos, new ItemStack(ModItems.GLOWING_BLUEBERRY, j + (bl ? 1 : 0)));
+
+        return super.onUseWithItem(stack, state, world, pos, player, hand, hit);
+    }
+
+    @Override
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+        int age = state.get(AGE);
+        boolean fullyGrown = age == MAX_AGE;
+
+        if (age > 1) {
+            int count = 1 + world.random.nextInt(2);
+            dropStack(world, pos, new ItemStack(ModItems.GLOWING_BLUEBERRY, count + (fullyGrown ? 1 : 0)));
             world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat() * 0.4f);
-            BlockState blockState = (BlockState)state.with(AGE, 1);
-            world.setBlockState(pos, blockState, Block.NOTIFY_LISTENERS);
-            world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
-            return ActionResult.success(world.isClient);
+            BlockState pickedState = state.with(AGE, 1);
+            world.setBlockState(pos, pickedState, Block.NOTIFY_LISTENERS);
+            world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, pickedState));
+            return ActionResult.SUCCESS;
         }
-        return super.onUse(state, world, pos, player, hand, hit);
+
+        return super.onUse(state, world, pos, player, hit);
     }
 
     @Override
@@ -128,6 +140,6 @@ public class GlowingBlueberryBushBlock extends PlantBlock implements Fertilizabl
     @Override
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         int i = Math.min(3, state.get(AGE) + 1);
-        world.setBlockState(pos, (BlockState)state.with(AGE, i), Block.NOTIFY_LISTENERS);
+        world.setBlockState(pos, state.with(AGE, i), Block.NOTIFY_LISTENERS);
     }
 }

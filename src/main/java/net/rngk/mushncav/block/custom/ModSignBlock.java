@@ -19,18 +19,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.RotationPropertyHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import net.rngk.mushncav.MushroomsAndCaverns;
 import net.rngk.mushncav.block.entity.ModBlockEntities;
 
-public class ModSignBlock extends AbstractSignBlock {
+public class ModSignBlock extends SignBlock {
     /*public static final MapCodec<ModSignBlock> CODEC = RecordCodecBuilder.mapCodec((instance) ->
             instance.group(
                     WoodType.CODEC.fieldOf("wood_type").forGetter(modSignBlock -> modSignBlock.getWoodType()),
                     createSettingsCodec()
             ).apply(instance, ModSignBlock::new));*/
-    public static final MapCodec<ModSignBlock> CODEC = RecordCodecBuilder.mapCodec(instance ->
+    public static final MapCodec<SignBlock> CODEC = RecordCodecBuilder.mapCodec(instance ->
             instance.group(
                     WoodType.CODEC.fieldOf("wood_type").forGetter(modSignBlock -> modSignBlock.getWoodType()),
                     createSettingsCodec()
@@ -38,7 +36,7 @@ public class ModSignBlock extends AbstractSignBlock {
     
     public static final IntProperty ROTATION = Properties.ROTATION;
 
-    public MapCodec<ModSignBlock> getCodec() {
+    public MapCodec<SignBlock> getCodec() {
         return CODEC;
     }
 
@@ -49,22 +47,27 @@ public class ModSignBlock extends AbstractSignBlock {
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        return world.getBlockState(pos.down()).isSolid();
+        BlockPos below = pos.down();
+        BlockState belowState = world.getBlockState(below);
+        return belowState.isSideSolid(world, below, Direction.UP, SideShapeType.RIGID);
     }
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
+        // Standing signs should only be placed when clicking on the top of a block
+        if (ctx.getSide() != Direction.UP) {
+            return null;
+        }
+
         FluidState fluidState = ctx.getWorld().getFluidState(ctx.getBlockPos());
-        return (this.getDefaultState().with(ROTATION, RotationPropertyHelper.fromYaw(ctx.getPlayerYaw() + 180.0f))).with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+        BlockState state = this.getDefaultState()
+                .with(ROTATION, RotationPropertyHelper.fromYaw(ctx.getPlayerYaw() + 180.0f))
+                .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+
+        return state.canPlaceAt(ctx.getWorld(), ctx.getBlockPos()) ? state : null;
     }
 
-    @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (direction == Direction.DOWN && !this.canPlaceAt(state, world, pos)) {
-            return Blocks.AIR.getDefaultState();
-        }
-        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-    }
+    // getStateForNeighborUpdate signature changed to use ScheduledTickView - parent implementation handles breaking
 
     @Override
     public float getRotationDegrees(BlockState state) {
@@ -73,12 +76,12 @@ public class ModSignBlock extends AbstractSignBlock {
 
     @Override
     public BlockState rotate(BlockState state, BlockRotation rotation) {
-        return (BlockState)state.with(ROTATION, rotation.rotate(state.get(ROTATION), 16));
+        return state.with(ROTATION, rotation.rotate(state.get(ROTATION), 16));
     }
 
     @Override
     public BlockState mirror(BlockState state, BlockMirror mirror) {
-        return (BlockState)state.with(ROTATION, mirror.mirror(state.get(ROTATION), 16));
+        return state.with(ROTATION, mirror.mirror(state.get(ROTATION), 16));
     }
 
     @Override

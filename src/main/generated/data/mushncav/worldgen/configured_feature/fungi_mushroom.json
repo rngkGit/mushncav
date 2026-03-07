@@ -19,17 +19,13 @@
       "height": 4,
       "offset": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 2,
-          "min_inclusive": 0
-        }
+        "max_inclusive": 2,
+        "min_inclusive": 0
       },
       "radius": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 6,
-          "min_inclusive": 4
-        }
+        "max_inclusive": 6,
+        "min_inclusive": 4
       },
       "wide_bottom_layer_hole_chance": 0.8
     },
@@ -87,10 +83,8 @@
       },
       "trunk_offset_y": {
         "type": "minecraft:uniform",
-        "value": {
-          "max_inclusive": 3,
-          "min_inclusive": 1
-        }
+        "max_inclusive": 3,
+        "min_inclusive": 1
       }
     },
     "trunk_placer": {

@@ -8,7 +8,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
-import net.rngk.mushncav.block.ModBlocks;
 
 public class GlowingMushroomGrassBlock extends GrassBlock{
     public GlowingMushroomGrassBlock(Settings settings) {
@@ -23,8 +22,9 @@ public class GlowingMushroomGrassBlock extends GrassBlock{
         if (blockState.getFluidState().getLevel() == 8) {
             return false;
         }
-        int i = ChunkLightProvider.getRealisticOpacity(world, state, pos, blockState, blockPos, Direction.UP, blockState.getOpacity(world, blockPos));
-        return i < world.getMaxLightLevel();
+        // In 1.21.11, getRealisticOpacity signature: (currentState, neighborState, Direction, opacity)
+        int i = ChunkLightProvider.getRealisticOpacity(state, blockState, Direction.UP, blockState.getOpacity());
+        return i < 15; // Max light level in Minecraft
     }
     private static boolean canSpread(BlockState state, WorldView world, BlockPos pos) {
         BlockPos blockPos = pos.up();

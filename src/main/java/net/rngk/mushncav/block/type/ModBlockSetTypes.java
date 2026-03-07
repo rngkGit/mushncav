@@ -7,10 +7,11 @@ import net.rngk.mushncav.MushroomsAndCaverns;
 
 public class ModBlockSetTypes {
 
-    public static final BlockSetType FUNGI = BlockSetTypeBuilder.copyOf(BlockSetType.OAK).register(new Identifier(MushroomsAndCaverns.MOD_ID, "fungi"));
+    public static BlockSetType FUNGI;
 
     public static void registerBlockSetTypes() {
         MushroomsAndCaverns.LOGGER.info("Registering Block Set Types for " + MushroomsAndCaverns.MOD_ID);
+        FUNGI = BlockSetTypeBuilder.copyOf(BlockSetType.OAK).register(Identifier.of(MushroomsAndCaverns.MOD_ID, "fungi"));
     }
 
 }

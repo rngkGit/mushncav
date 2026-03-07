@@ -23,7 +23,7 @@ public class ModAxeItem extends AxeItem {
 
     protected static final Map<Block, Block> STRIPPED_BLOCKS = new ImmutableMap.Builder<Block, Block>().put(ModBlocks.FUNGI_TREE_WOOD, ModBlocks.STRIPPED_FUNGI_TREE_WOOD).put(ModBlocks.FUNGI_TREE_LOG, ModBlocks.STRIPPED_FUNGI_TREE_LOG).build();
 
-    public ModAxeItem(ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings) {
+    public ModAxeItem(net.minecraft.item.ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings) {
         super(material, attackDamage, attackSpeed, settings);
     }
 
@@ -43,9 +43,9 @@ public class ModAxeItem extends AxeItem {
         world.setBlockState(blockPos, optional.get(), Block.NOTIFY_ALL_AND_REDRAW);
         world.emitGameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Emitter.of(playerEntity, optional.get()));
         if (playerEntity != null) {
-            itemStack.damage(1, playerEntity, p -> p.sendToolBreakStatus(context.getHand()));
+            itemStack.damage(1, playerEntity, context.getHand().equals(net.minecraft.util.Hand.MAIN_HAND) ? net.minecraft.entity.EquipmentSlot.MAINHAND : net.minecraft.entity.EquipmentSlot.OFFHAND);
         }
-        return ActionResult.success(world.isClient);
+        return ActionResult.SUCCESS;
     }
 
     private Optional<BlockState> tryStrip(World world, BlockPos pos, @Nullable PlayerEntity player, BlockState state) {

@@ -7,7 +7,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 
 public class ModHangingSignBlockEntity extends SignBlockEntity {
-private static final int MAX_TEXT_WIDTH = 60;
+    private static final int MAX_TEXT_WIDTH = 60;
     private static final int TEXT_LINE_HEIGHT = 9;
 
     public ModHangingSignBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -16,12 +16,12 @@ private static final int MAX_TEXT_WIDTH = 60;
 
     @Override
     public int getTextLineHeight() {
-        return 9;
+        return TEXT_LINE_HEIGHT;
     }
 
     @Override
     public int getMaxTextWidth() {
-        return 60;
+        return MAX_TEXT_WIDTH;
     }
 
     @Override

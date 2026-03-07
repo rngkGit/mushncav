@@ -1,7 +1,7 @@
 package net.rngk.mushncav.world.tree;
 
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -14,11 +14,10 @@ import net.rngk.mushncav.block.custom.FungiBlock;
 import net.rngk.mushncav.world.tree.custom.ModTreeDecoratorTypes;
 
 public class FungiTreeDecorator extends TreeDecorator {
-    public static final Codec<FungiTreeDecorator> CODEC =
+    public static final MapCodec<FungiTreeDecorator> CODEC =
             Codec.floatRange(0.0f, 1.0f)
-            .fieldOf("probability")
-            .xmap(FungiTreeDecorator::new, decorator -> decorator.probability)
-            .codec();
+                    .fieldOf("probability")
+                    .xmap(FungiTreeDecorator::new, decorator -> decorator.probability);
     /*public static final Codec<FungiTreeDecorator> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Codec.floatRange(0.0f, 1.0f)
                     .fieldOf("probability")

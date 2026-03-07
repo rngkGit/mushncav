@@ -1,7 +1,7 @@
 package net.rngk.mushncav.world.tree;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 
 public class FungiTreeTrunkPlacer extends TrunkPlacer {
-    public static final Codec<FungiTreeTrunkPlacer> CODEC = RecordCodecBuilder.create(objectInstance ->
+    public static final MapCodec<FungiTreeTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(objectInstance ->
             fillTrunkPlacerFields(objectInstance).apply(objectInstance, FungiTreeTrunkPlacer::new));
 
     public FungiTreeTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
