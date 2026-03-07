@@ -8,12 +8,14 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldView;
+import net.rngk.mushncav.block.ModBlocks;
 import net.rngk.mushncav.util.ModTags;
 
 public class ModSaplingBlock extends SaplingBlock {
     @Override
     public boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isIn(BlockTags.DIRT) || floor.isIn(ModTags.Blocks.DIRT) || floor.isOf(Blocks.FARMLAND);
+        return floor.isIn(BlockTags.DIRT) || floor.isIn(ModTags.Blocks.DIRT) || floor.isOf(Blocks.FARMLAND)
+            || floor.isOf(ModBlocks.FUNGI_DIRT) || floor.isOf(ModBlocks.FUNGI_GRASS_BLOCK);
     }
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {

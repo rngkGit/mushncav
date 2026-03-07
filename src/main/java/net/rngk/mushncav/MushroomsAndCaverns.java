@@ -29,21 +29,17 @@ public class MushroomsAndCaverns implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
-
 		LOGGER.info("Mushrooms and Caverns mod successfully initialized");
-		ModItems.registerModItems();
-		ModBlocks.registerModBlocks();
 
+		ModBlockSetTypes.registerBlockSetTypes();
+		ModWoodTypes.registerWoodTypes();
+
+		ModBlocks.registerModBlocks();
+		ModItems.registerModItems();
 		ModItemGroups.registerItemGroups();
 
 		ModTrunkPlacerTypes.register();
 		ModTreeDecoratorTypes.register();
-
-		ModBlockSetTypes.registerBlockSetTypes();
-		ModWoodTypes.registerWoodTypes();
 
 		ModBlockEntities.registerBlockEntities();
 

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "building",
+    "group": "bark",
+    "pattern": [
+        "##",
+        "##"
+    ],
+    "key": {
+        "#": "mushncav:fungi_tree_log"
+    },
+    "result": {
+        "count": 3,
+        "id": "mushncav:fungi_tree_wood"
+    }
+}

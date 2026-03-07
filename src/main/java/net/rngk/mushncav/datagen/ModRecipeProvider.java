@@ -2,22 +2,30 @@ package net.rngk.mushncav.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.minecraft.data.server.recipe.RecipeExporter;
-import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.recipe.book.RecipeCategory;
-import net.rngk.mushncav.block.ModBlocks;
-import net.rngk.mushncav.item.ModItems;
+import net.minecraft.data.recipe.RecipeExporter;
+import net.minecraft.data.recipe.RecipeGenerator;
+import net.minecraft.registry.RegistryWrapper;
 
-import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
-    //private static final List<ItemConvertible> NAME = List.of(ModItems., ModBlocks.,...);
-    public ModRecipeProvider(FabricDataOutput output) {
-        super(output);
+    public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+        super(output, registriesFuture);
     }
-    @Override
-    public void generate(RecipeExporter exporter) {
 
+    @Override
+    public RecipeGenerator getRecipeGenerator(RegistryWrapper.WrapperLookup registries, RecipeExporter exporter) {
+        // TODO 1.21.11: Implement recipe generation using new RecipeGenerator API
+        return new RecipeGenerator(registries, exporter) {
+            @Override
+            public void generate() {
+                // TODO: Add recipe generation here
+            }
+        };
+    }
+
+    @Override
+    public String getName() {
+        return "Mushrooms and Caverns Recipes";
     }
 }

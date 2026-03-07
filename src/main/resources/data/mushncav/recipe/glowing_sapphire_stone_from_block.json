@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+        "mushncav:glowing_sapphire_block"
+    ],
+    "result": {
+        "count": 9,
+        "id": "mushncav:glowing_sapphire_stone"
+    }
+}

@@ -11,7 +11,7 @@ import net.rngk.mushncav.MushroomsAndCaverns;
 import net.rngk.mushncav.block.ModBlocks;
 
 public class ModItemGroups {
-    public static final ItemGroup MUSHNCAV_GROUP = Registry.register(Registries.ITEM_GROUP, new Identifier(MushroomsAndCaverns.MOD_ID, "mushncav"),
+    public static final ItemGroup MUSHNCAV_GROUP = Registry.register(Registries.ITEM_GROUP, Identifier.of(MushroomsAndCaverns.MOD_ID, "mushncav"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.mushncav"))
                     .icon(() -> new ItemStack(ModItems.MAGIC_STONE)).entries((displayContext, entries) -> {
                         //In order
@@ -38,17 +38,16 @@ public class ModItemGroups {
                         entries.add(ModBlocks.FUNGI_BUTTON);
                         entries.add(ModItems.FUNGI_SIGN);
                         entries.add(ModItems.FUNGI_HANGING_SIGN);
-
-                        entries.add(ModBlocks.FUNGI_MUSHROOM_STEM);
-                        entries.add(ModBlocks.FUNGI_MUSHROOM_BLOCK);
-                        entries.add(ModBlocks.FUNGI_MUSHROOM);
-                        entries.add(ModBlocks.FUNGI_GRASS_BLOCK);
-                        entries.add(ModBlocks.FUNGI_DIRT);
+                        entries.add(ModItems.FUNGI_APPLE);
                         entries.add(ModItems.FUNGI);
 
-                        entries.add(ModItems.FUNGI_APPLE);
-
                         entries.add(ModItems.FUNGI_AXE);
+
+                        entries.add(ModBlocks.FUNGI_MUSHROOM);
+                        entries.add(ModBlocks.FUNGI_MUSHROOM_STEM);
+                        entries.add(ModBlocks.FUNGI_MUSHROOM_BLOCK);
+                        entries.add(ModBlocks.FUNGI_GRASS_BLOCK);
+                        entries.add(ModBlocks.FUNGI_DIRT);
 
                         entries.add(ModBlocks.GLOWING_MUSHROOM);
                         entries.add(ModBlocks.GLOWING_MUSHROOM_STEM);

@@ -1,55 +1,95 @@
 package net.rngk.mushncav.item;
 
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-//import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroupEntries;
-//import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.*;
-//import net.minecraft.item.ItemGroups;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.rngk.mushncav.MushroomsAndCaverns;
 import net.rngk.mushncav.block.ModBlocks;
-import net.rngk.mushncav.item.custom.MagicStone;
+import net.rngk.mushncav.item.custom.*;
 
 public class ModItems {
-    public static final Item FUNGI_STICK = registerItem("fungi_stick", new Item(new FabricItemSettings()));
-    //public static final Item AMETHYST_MUSHROOM_STICK = registerItem("amethyst_mushroom_stick", new Item(new FabricItemSettings()));
-    //public static final Item FUNGI_BONE = registerItem("fungi_bone", new Item(new FabricItemSettings()));
-    //public static final Item MUSHROOM_BONE = registerItem("mushroom_bone", new Item(new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_SHARD = registerItem("glowing_sapphire_shard", new Item(new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_STONE = registerItem("glowing_sapphire_stone", new Item(new FabricItemSettings()));
-    public static final Item MAGIC_STONE = registerItem("magic_stone", new MagicStone(new FabricItemSettings()));
-    public static final Item FUNGI_APPLE = registerItem("fungi_apple", new Item(new FabricItemSettings().food(ModFoodComponents.FUNGI_APPLE)));
-    public static final Item FUNGI = registerItem("fungi", new AliasedBlockItem(ModBlocks.FUNGI_BLOCK, new FabricItemSettings().food(ModFoodComponents.FUNGI)));
+    // All items - initialized lazily in registerModItems()
+    public static Item FUNGI_STICK;
+    public static Item GLOWING_SAPPHIRE_SHARD;
+    public static Item GLOWING_SAPPHIRE_STONE;
+    public static Item MAGIC_STONE;
+    public static Item FUNGI_APPLE;
+    public static Item FUNGI;
+    public static Item FUNGI_SIGN;
+    public static Item FUNGI_HANGING_SIGN;
+    public static Item GLOWING_GRAPES;
+    public static Item GLOWING_BLUEBERRY;
 
-    public static final Item FUNGI_AXE = registerItem("fungi_axe", new ModAxeItem(ToolMaterials.WOOD, 3.0F, -3.0F, new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_SWORD = registerItem("glowing_sapphire_sword", new SwordItem(ModToolMaterial.GLOWING_SAPPHIRE, 4, -2.1F, new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_PICKAXE = registerItem("glowing_sapphire_pickaxe", new PickaxeItem(ModToolMaterial.GLOWING_SAPPHIRE, 1, -2.8F, new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_SHOVEL = registerItem("glowing_sapphire_shovel", new ShovelItem(ModToolMaterial.GLOWING_SAPPHIRE, 1.5F, -3.0F, new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_AXE = registerItem("glowing_sapphire_axe", new AxeItem(ModToolMaterial.GLOWING_SAPPHIRE, 5.5F, -3.0F, new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_HOE = registerItem("glowing_sapphire_hoe", new HoeItem(ModToolMaterial.GLOWING_SAPPHIRE, 1, 0.0F, new FabricItemSettings()));
+    // Tool items
+    public static Item FUNGI_AXE;
+    public static Item GLOWING_SAPPHIRE_SWORD;
+    public static Item GLOWING_SAPPHIRE_PICKAXE;
+    public static Item GLOWING_SAPPHIRE_SHOVEL;
+    public static Item GLOWING_SAPPHIRE_AXE;
+    public static Item GLOWING_SAPPHIRE_HOE;
 
-    public static final Item GLOWING_SAPPHIRE_HELMET = registerItem("glowing_sapphire_helmet", new ArmorItem(ModArmorMaterials.GLOWING_SAPPHIRE, ArmorItem.Type.HELMET, new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_CHESTPLATE = registerItem("glowing_sapphire_chestplate", new ArmorItem(ModArmorMaterials.GLOWING_SAPPHIRE, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_LEGGINGS = registerItem("glowing_sapphire_leggings", new ArmorItem(ModArmorMaterials.GLOWING_SAPPHIRE, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
-    public static final Item GLOWING_SAPPHIRE_BOOTS = registerItem("glowing_sapphire_boots", new ArmorItem(ModArmorMaterials.GLOWING_SAPPHIRE, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+    // Armor items
+    public static Item GLOWING_SAPPHIRE_HELMET;
+    public static Item GLOWING_SAPPHIRE_CHESTPLATE;
+    public static Item GLOWING_SAPPHIRE_LEGGINGS;
+    public static Item GLOWING_SAPPHIRE_BOOTS;
 
-    public static final Item FUNGI_SIGN = registerItem("fungi_sign", new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.FUNGI_SIGN, ModBlocks.FUNGI_WALL_SIGN));
-    public static final Item FUNGI_HANGING_SIGN = registerItem("fungi_hanging_sign", new HangingSignItem(ModBlocks.FUNGI_HANGING_SIGN, ModBlocks.FUNGI_WALL_HANGING_SIGN, new FabricItemSettings().maxCount(16)));
+    private static Item.Settings itemSettings(String name) {
+        Identifier id = Identifier.of(MushroomsAndCaverns.MOD_ID, name);
+        return new Item.Settings().registryKey(RegistryKey.of(RegistryKeys.ITEM, id));
+    }
 
-    // Glowing Mushroom Stuff
-    //public static final Item GLOWING_MUSHROOM_STICK = registerItem("glowing_mushroom_stick", new Item(new FabricItemSettings()));
-    public static final Item GLOWING_GRAPES = registerItem("glowing_grapes", new AliasedBlockItem(ModBlocks.GLOWING_MUSHROOM_VINES, new FabricItemSettings().food(ModFoodComponents.GLOWING_GRAPES)));
-    public static final Item GLOWING_BLUEBERRY = registerItem("glowing_blueberry", new AliasedBlockItem(ModBlocks.GLOWING_BLUEBERRY_BUSH, new FabricItemSettings().food(ModFoodComponents.GLOWING_BLUEBERRY)));
-
-    private static Item registerItem(String name, Item item){
-        return Registry.register(Registries.ITEM, new Identifier(MushroomsAndCaverns.MOD_ID, name), item);
+    private static Item registerItem(String name, java.util.function.Function<Item.Settings, Item> factory){
+        Identifier id = Identifier.of(MushroomsAndCaverns.MOD_ID, name);
+        return Registry.register(Registries.ITEM, id, factory.apply(itemSettings(name)));
     }
 
     public static void registerModItems(){
         MushroomsAndCaverns.LOGGER.info("Registering mod items for " + MushroomsAndCaverns.MOD_ID);
+
+        // Register deterministically; fail fast if anything is invalid.
+        FUNGI_STICK = registerItem("fungi_stick", Item::new);
+        GLOWING_SAPPHIRE_SHARD = registerItem("glowing_sapphire_shard", Item::new);
+        GLOWING_SAPPHIRE_STONE = registerItem("glowing_sapphire_stone", Item::new);
+        MAGIC_STONE = registerItem("magic_stone", MagicStone::new);
+
+        // Food items with custom status effects
+        FUNGI_APPLE = registerItem("fungi_apple", settings -> new FungiAppleItem(settings.food(ModFoodComponents.FUNGI_APPLE)));
+        FUNGI = registerItem("fungi", settings -> new FungiItem(ModBlocks.FUNGI_BLOCK, settings.food(ModFoodComponents.FUNGI)));
+
+        FUNGI_SIGN = registerItem("fungi_sign", settings -> new SignItem(ModBlocks.FUNGI_SIGN, ModBlocks.FUNGI_WALL_SIGN, settings.maxCount(16)));
+        FUNGI_HANGING_SIGN = registerItem("fungi_hanging_sign", settings -> new HangingSignItem(ModBlocks.FUNGI_HANGING_SIGN, ModBlocks.FUNGI_WALL_HANGING_SIGN, settings.maxCount(16)));
+
+        GLOWING_GRAPES = registerItem("glowing_grapes", settings -> new GlowingGrapesItem(ModBlocks.GLOWING_MUSHROOM_VINES, settings.food(ModFoodComponents.GLOWING_GRAPES)));
+        GLOWING_BLUEBERRY = registerItem("glowing_blueberry", settings -> new GlowingBlueberryItem(ModBlocks.GLOWING_BLUEBERRY_BUSH, settings.food(ModFoodComponents.GLOWING_BLUEBERRY)));
+
+        // Tool items - Fungi Axe registered as custom Item
+        FUNGI_AXE = registerItem("fungi_axe", FungiAxeItem::new);
+
+        // Glowing Sapphire tools - 1.21.11 pattern
+        GLOWING_SAPPHIRE_SWORD = registerItem("glowing_sapphire_sword",
+                settings -> new Item(settings.sword(ModToolMaterials.GLOWING_SAPPHIRE, 3, -2.4f)));
+        GLOWING_SAPPHIRE_PICKAXE = registerItem("glowing_sapphire_pickaxe",
+                settings -> new Item(settings.pickaxe(ModToolMaterials.GLOWING_SAPPHIRE, 1, -2.8f)));
+        GLOWING_SAPPHIRE_SHOVEL = registerItem("glowing_sapphire_shovel",
+                settings -> new ShovelItem(ModToolMaterials.GLOWING_SAPPHIRE, 1.5f, -3.0f, settings));
+        GLOWING_SAPPHIRE_AXE = registerItem("glowing_sapphire_axe",
+                settings -> new AxeItem(ModToolMaterials.GLOWING_SAPPHIRE, 5.0f, -3.0f, settings));
+        GLOWING_SAPPHIRE_HOE = registerItem("glowing_sapphire_hoe",
+                settings -> new HoeItem(ModToolMaterials.GLOWING_SAPPHIRE, -3.0f, 0.0f, settings));
+
+        // Armor items - 1.21.11 pattern
+        GLOWING_SAPPHIRE_HELMET = registerItem("glowing_sapphire_helmet",
+                settings -> new Item(settings.armor(ModArmorMaterials.GLOWING_SAPPHIRE, EquipmentType.HELMET)));
+        GLOWING_SAPPHIRE_CHESTPLATE = registerItem("glowing_sapphire_chestplate",
+                settings -> new Item(settings.armor(ModArmorMaterials.GLOWING_SAPPHIRE, EquipmentType.CHESTPLATE)));
+        GLOWING_SAPPHIRE_LEGGINGS = registerItem("glowing_sapphire_leggings",
+                settings -> new Item(settings.armor(ModArmorMaterials.GLOWING_SAPPHIRE, EquipmentType.LEGGINGS)));
+        GLOWING_SAPPHIRE_BOOTS = registerItem("glowing_sapphire_boots",
+                settings -> new Item(settings.armor(ModArmorMaterials.GLOWING_SAPPHIRE, EquipmentType.BOOTS)));
     }
 }

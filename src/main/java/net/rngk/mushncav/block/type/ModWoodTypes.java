@@ -7,10 +7,11 @@ import net.rngk.mushncav.MushroomsAndCaverns;
 
 public class ModWoodTypes {
 
-    public static final WoodType FUNGI = WoodTypeBuilder.copyOf(WoodType.OAK).register(new Identifier(MushroomsAndCaverns.MOD_ID, "fungi"), ModBlockSetTypes.FUNGI);
+    public static WoodType FUNGI;
 
     public static void registerWoodTypes() {
         MushroomsAndCaverns.LOGGER.info("Registering Wood Types for " + MushroomsAndCaverns.MOD_ID);
+        FUNGI = WoodTypeBuilder.copyOf(WoodType.OAK).register(Identifier.of(MushroomsAndCaverns.MOD_ID, "fungi"), ModBlockSetTypes.FUNGI);
     }
 
 }

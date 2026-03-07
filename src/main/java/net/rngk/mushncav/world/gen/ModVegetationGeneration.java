@@ -9,6 +9,6 @@ import net.rngk.mushncav.world.biome.ModBiomes;
 public class ModVegetationGeneration {
     public static void generateVegetation() {
         //Glowing Mushrooms
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.GLOWING_MUSHROOMS), GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_BLUEBERRY_BUSH_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.GLOWING_MUSHROOMS), GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_BLUEBERRY_BUSH_PLACED_KEY);;
     }
 }

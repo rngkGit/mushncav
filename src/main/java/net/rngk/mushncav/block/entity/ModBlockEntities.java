@@ -11,27 +11,32 @@ import net.rngk.mushncav.block.ModBlocks;
 
 public class ModBlockEntities {
 
-    public static final BlockEntityType<SignBlockEntity> MODSIGN = Registry.register(
-            Registries.BLOCK_ENTITY_TYPE,
-            new Identifier(MushroomsAndCaverns.MOD_ID, "mod_sign"),
-            FabricBlockEntityTypeBuilder.create(
-                    SignBlockEntity::new,
-                    ModBlocks.FUNGI_SIGN,
-                    ModBlocks.FUNGI_WALL_SIGN
-            ).build()
-    );
-
-    public static final BlockEntityType<SignBlockEntity> MODHANGINGSIGN = Registry.register(
-            Registries.BLOCK_ENTITY_TYPE,
-            new Identifier(MushroomsAndCaverns.MOD_ID, "mod_hanging_sign"),
-            FabricBlockEntityTypeBuilder.create(
-                    SignBlockEntity::new,
-                    ModBlocks.FUNGI_HANGING_SIGN,
-                    ModBlocks.FUNGI_WALL_HANGING_SIGN
-            ).build()
-    );
+    // Lazy-initialized block entity types
+    public static BlockEntityType<SignBlockEntity> MODSIGN;
+    public static BlockEntityType<ModHangingSignBlockEntity> MODHANGINGSIGN;
 
     public static void registerBlockEntities() {
         MushroomsAndCaverns.LOGGER.info("Registering Block Entities for " + MushroomsAndCaverns.MOD_ID);
+
+        // Register block entity types after blocks are initialized
+        MODSIGN = Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                Identifier.of(MushroomsAndCaverns.MOD_ID, "mod_sign"),
+                FabricBlockEntityTypeBuilder.create(
+                        SignBlockEntity::new,
+                        ModBlocks.FUNGI_SIGN,
+                        ModBlocks.FUNGI_WALL_SIGN
+                ).build()
+        );
+
+        MODHANGINGSIGN = Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                Identifier.of(MushroomsAndCaverns.MOD_ID, "mod_hanging_sign"),
+                FabricBlockEntityTypeBuilder.create(
+                        ModHangingSignBlockEntity::new,
+                        ModBlocks.FUNGI_HANGING_SIGN,
+                        ModBlocks.FUNGI_WALL_HANGING_SIGN
+                ).build()
+        );
     }
 }

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": "mushncav:fungi_stick",
+    "X": "mushncav:fungi_planks"
+  },
+  "pattern": [
+    "XX",
+    "X#",
+    " #"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mushncav:fungi_axe"
+  }
+}

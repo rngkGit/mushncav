@@ -6,6 +6,6 @@ public class ModWorldGeneration {
 
         ModTreeGeneration.generateTrees();
 
-        //ModVegetationGeneration.generateVegetation();
+        ModVegetationGeneration.generateVegetation();
     }
 }

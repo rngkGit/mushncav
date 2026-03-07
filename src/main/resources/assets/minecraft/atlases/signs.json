@@ -1,0 +1,9 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "mushncav:entity/signs/fungi"
+    }
+  ]
+}
+
