@@ -1,43 +1,49 @@
 package net.rngk.mushncav.block.custom;
 
-import net.minecraft.block.*;
-import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.chunk.light.ChunkLightProvider;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.GrassBlock;
+import net.minecraft.world.level.block.SnowLayerBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.lighting.LightEngine;
 
-public class GlowingMushroomGrassBlock extends GrassBlock{
-    public GlowingMushroomGrassBlock(Settings settings) {
-        super(settings);
+public class GlowingMushroomGrassBlock extends GrassBlock {
+    public GlowingMushroomGrassBlock(BlockBehaviour.Properties properties) {
+        super(properties);
     }
-    private static boolean canSurvive(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos blockPos = pos.up();
-        BlockState blockState = world.getBlockState(blockPos);
-        if (blockState.isOf(Blocks.SNOW) && blockState.get(SnowBlock.LAYERS) == 1) {
+
+    private static boolean canGrassSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockPos above = pos.above();
+        BlockState aboveState = level.getBlockState(above);
+        if (aboveState.is(Blocks.SNOW) && aboveState.getValue(SnowLayerBlock.LAYERS) == 1) {
             return true;
         }
-        if (blockState.getFluidState().getLevel() == 8) {
+        if (aboveState.getFluidState().getAmount() == 8) {
             return false;
         }
-        // In 1.21.11, getRealisticOpacity signature: (currentState, neighborState, Direction, opacity)
-        int i = ChunkLightProvider.getRealisticOpacity(state, blockState, Direction.UP, blockState.getOpacity());
-        return i < 15; // Max light level in Minecraft
+        int dampening = LightEngine.getLightDampeningInto(state, aboveState, Direction.UP, aboveState.getLightDampening());
+        return dampening < 15;
     }
-    private static boolean canSpread(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos blockPos = pos.up();
-        return GlowingMushroomGrassBlock.canSurvive(state, world, pos) && !world.getFluidState(blockPos).isIn(FluidTags.WATER);
+
+    private static boolean canSpread(BlockState state, LevelReader level, BlockPos pos) {
+        BlockPos above = pos.above();
+        return canGrassSurvive(state, level, pos) && !level.getFluidState(above).is(FluidTags.WATER);
     }
+
     @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (world.getLightLevel(pos.up()) >= 9) {
-            BlockState blockState = this.getDefaultState();
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (level.getMaxLocalRawBrightness(pos.above()) >= 9) {
+            BlockState blockState = this.defaultBlockState();
             for (int i = 0; i < 4; ++i) {
-                BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                if (!world.getBlockState(blockPos).isOf(Blocks.DIRT) || canSpread(blockState, world, blockPos)) continue;
-                world.setBlockState(blockPos, (BlockState)blockState.with(SNOWY, world.getBlockState(blockPos.up()).isOf(Blocks.SNOW)));
+                BlockPos targetPos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+                if (!level.getBlockState(targetPos).is(Blocks.DIRT) || !canSpread(blockState, level, targetPos)) continue;
+                level.setBlockAndUpdate(targetPos, blockState.setValue(SNOWY, level.getBlockState(targetPos.above()).is(Blocks.SNOW)));
             }
         }
     }

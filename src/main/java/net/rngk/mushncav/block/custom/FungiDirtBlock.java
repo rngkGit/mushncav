@@ -1,34 +1,33 @@
 package net.rngk.mushncav.block.custom;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Fertilizable;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.rngk.mushncav.block.ModBlocks;
 
-public class FungiDirtBlock extends Block implements Fertilizable {
-    public FungiDirtBlock(Settings settings) {
-        super(settings);
+public class FungiDirtBlock extends Block implements BonemealableBlock {
+    public FungiDirtBlock(BlockBehaviour.Properties properties) {
+        super(properties);
     }
 
     @Override
-    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
-        return world.getBlockState(pos.up()).isAir();
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+        return level.getBlockState(pos.above()).isAir();
     }
 
     @Override
-    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        world.setBlockState(pos, ModBlocks.FUNGI_GRASS_BLOCK.getDefaultState());
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+        level.setBlockAndUpdate(pos, ModBlocks.FUNGI_GRASS_BLOCK.defaultBlockState());
     }
 }
-
-

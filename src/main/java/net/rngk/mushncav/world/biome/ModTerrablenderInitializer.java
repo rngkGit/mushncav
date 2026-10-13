@@ -20,7 +20,6 @@ public class ModTerrablenderInitializer {
 
         // Register custom surface rules for terrain generation
         // This applies custom terrain materials to the biomes
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MushroomsAndCaverns.MOD_ID, ModMaterialRules.makeRules());
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MushroomsAndCaverns.MOD_ID, ModMaterialRules::makeRules);
     }
 }
-

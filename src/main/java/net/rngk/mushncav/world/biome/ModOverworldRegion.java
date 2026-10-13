@@ -1,12 +1,12 @@
 package net.rngk.mushncav.world.biome;
 
 import com.mojang.datafixers.util.Pair;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeKeys;
-import net.minecraft.world.biome.source.util.MultiNoiseUtil;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.Climate;
 import terrablender.api.Region;
 import terrablender.api.RegionType;
 
@@ -18,11 +18,10 @@ public class ModOverworldRegion extends Region {
     }
 
     @Override
-    public void addBiomes(Registry<Biome> registry, Consumer<Pair<MultiNoiseUtil.NoiseHypercube, RegistryKey<Biome>>> mapper) {
+    public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
         addModifiedVanillaOverworldBiomes(mapper, modifiedVanillaOverworldBuilder -> {
-            modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.SWAMP, ModBiomes.FUNGI_FOREST);
-            modifiedVanillaOverworldBuilder.replaceBiome(BiomeKeys.LUSH_CAVES, ModBiomes.GLOWING_MUSHROOMS);
-            }
-        );
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.SWAMP, ModBiomes.FUNGI_FOREST);
+            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.LUSH_CAVES, ModBiomes.GLOWING_MUSHROOMS);
+        });
     }
 }

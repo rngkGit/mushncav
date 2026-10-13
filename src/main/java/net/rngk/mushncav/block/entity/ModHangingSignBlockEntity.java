@@ -1,10 +1,10 @@
 package net.rngk.mushncav.block.entity;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.SignBlockEntity;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.block.entity.SignBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class ModHangingSignBlockEntity extends SignBlockEntity {
     private static final int MAX_TEXT_WIDTH = 60;
@@ -20,12 +20,12 @@ public class ModHangingSignBlockEntity extends SignBlockEntity {
     }
 
     @Override
-    public int getMaxTextWidth() {
+    public int getMaxTextLineWidth() {
         return MAX_TEXT_WIDTH;
     }
 
     @Override
-    public SoundEvent getInteractionFailSound() {
-        return SoundEvents.BLOCK_HANGING_SIGN_WAXED_INTERACT_FAIL;
+    public SoundEvent getSignInteractionFailedSoundEvent() {
+        return SoundEvents.WAXED_HANGING_SIGN_INTERACT_FAIL;
     }
 }
