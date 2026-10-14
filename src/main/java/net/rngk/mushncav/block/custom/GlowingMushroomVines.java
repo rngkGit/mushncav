@@ -1,53 +1,45 @@
 package net.rngk.mushncav.block.custom;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.state.property.BooleanProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.World;
-import net.minecraft.world.event.GameEvent;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.rngk.mushncav.item.ModItems;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.ToIntFunction;
 
 public interface GlowingMushroomVines {
-    VoxelShape SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-    BooleanProperty BERRIES = Properties.BERRIES;
+    VoxelShape SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+    BooleanProperty BERRIES = BlockStateProperties.BERRIES;
 
-    static ActionResult pickBerries(@Nullable Entity picker, BlockState state, World world, BlockPos pos) {
-        if (state.get(BERRIES)) {
-            Block.dropStack(world, pos, new ItemStack(ModItems.GLOWING_GRAPES, 1));
-            float f = MathHelper.nextBetween(world.random, 0.8f, 1.2f);
-            world.playSound(null, pos, SoundEvents.BLOCK_CAVE_VINES_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, f);
-            BlockState blockState = state.with(BERRIES, false);
-            world.setBlockState(pos, blockState, Block.NOTIFY_LISTENERS);
-            world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(picker, blockState));
-            return ActionResult.SUCCESS;
+    static InteractionResult pickBerries(@Nullable Entity picker, BlockState state, Level level, BlockPos pos) {
+        if (state.getValue(BERRIES)) {
+            if (level instanceof ServerLevel serverLevel) {
+                Block.popResource(serverLevel, pos, new ItemStack(ModItems.GLOWING_GRAPES, 1));
+                float f = Mth.randomBetween(serverLevel.getRandom(), 0.8f, 1.2f);
+                level.playSound(null, pos, SoundEvents.CAVE_VINES_PICK_BERRIES, SoundSource.BLOCKS, 1.0f, f);
+                BlockState blockState = state.setValue(BERRIES, false);
+                level.setBlock(pos, blockState, 2);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(picker, blockState));
+            }
+            return InteractionResult.SUCCESS;
         }
-        return ActionResult.PASS;
+        return InteractionResult.PASS;
     }
 
-    /**
-     * {@return a function that receives a {@link BlockState} and returns the luminance for the state}
-     * If there are no berries, it supplies the value 0.
-     *
-     * @apiNote The return value is meant to be passed to
-     * {@link AbstractBlock.Settings#luminance(java.util.function.ToIntFunction)} builder method.
-     *
-     * @param luminance luminance supplied when the block has berries
-     */
-    @SuppressWarnings("unused")
     static ToIntFunction<BlockState> getLuminanceSupplier(int luminance) {
-        return state -> state.get(Properties.BERRIES) ? luminance : 0;
+        return state -> state.getValue(BERRIES) ? luminance : 0;
     }
 }

@@ -1,16 +1,15 @@
 package net.rngk.mushncav.world.tree;
 
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.TestableWorld;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
-import net.minecraft.world.gen.foliage.FoliagePlacer;
-import net.minecraft.world.gen.trunk.TrunkPlacer;
-import net.minecraft.world.gen.trunk.TrunkPlacerType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
+import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacer;
+import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import net.rngk.mushncav.world.tree.custom.ModTrunkPlacerTypes;
 
 import java.util.List;
@@ -18,23 +17,25 @@ import java.util.function.BiConsumer;
 
 public class FungiTreeTrunkPlacer extends TrunkPlacer {
     public static final MapCodec<FungiTreeTrunkPlacer> CODEC = RecordCodecBuilder.mapCodec(objectInstance ->
-            fillTrunkPlacerFields(objectInstance).apply(objectInstance, FungiTreeTrunkPlacer::new));
+            trunkPlacerParts(objectInstance).apply(objectInstance, FungiTreeTrunkPlacer::new));
 
-    public FungiTreeTrunkPlacer(int baseHeight, int firstRandomHeight, int secondRandomHeight) {
-        super(baseHeight, firstRandomHeight, secondRandomHeight);
+    public FungiTreeTrunkPlacer(int baseHeight, int heightRandA, int heightRandB) {
+        super(baseHeight, heightRandA, heightRandB);
     }
+
     @Override
-    protected TrunkPlacerType<?> getType() {
+    protected TrunkPlacerType<?> type() {
         return ModTrunkPlacerTypes.FUNGI_TREE_PLACER;
     }
-    @Override
-    public List<FoliagePlacer.TreeNode> generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, int height, BlockPos startPos, TreeFeatureConfig config) {
-        int height_ = height + random.nextBetween(firstRandomHeight, firstRandomHeight + 2) + random.nextBetween(secondRandomHeight - 1, secondRandomHeight +  1);
 
-        for(int i = 0; i < height_; i++){
-            getAndSetState(world, replacer, random, startPos.up(i), config);
+    @Override
+    public List<FoliagePlacer.FoliageAttachment> placeTrunk(WorldGenLevel level, BiConsumer<BlockPos, BlockState> replacer, RandomSource random, int height, BlockPos startPos, TreeConfiguration config) {
+        int height_ = height + random.nextInt(3) + heightRandA + random.nextInt(3) - 1 + heightRandB;
+
+        for (int i = 0; i < height_; i++) {
+            placeLog(level, replacer, random, startPos.above(i), config);
         }
 
-        return ImmutableList.of(new FoliagePlacer.TreeNode(startPos.up(height_), 0, false));
+        return List.of(new FoliagePlacer.FoliageAttachment(startPos.above(height_), 0, false));
     }
 }

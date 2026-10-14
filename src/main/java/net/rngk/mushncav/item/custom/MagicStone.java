@@ -1,13 +1,15 @@
 package net.rngk.mushncav.item.custom;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public class MagicStone extends Item {
-    public MagicStone(Settings settings) {
-        super(settings);
+    public MagicStone(Properties properties) {
+        super(properties);
     }
 
     @Override
-    public boolean hasGlint(ItemStack stack) { return true; }
+    public boolean isFoil(ItemStack stack) {
+        return true;
+    }
 }

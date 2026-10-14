@@ -1,33 +1,31 @@
 package net.rngk.mushncav.item.custom;
 
-import net.minecraft.block.Block;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 
 /**
  * Glowing Grapes - applies Night Vision effect (90% chance, 30 seconds) when consumed
  */
 public class GlowingGrapesItem extends BlockItem {
-    public GlowingGrapesItem(Block block, Item.Settings settings) {
-        super(block, settings);
+    public GlowingGrapesItem(Block block, Item.Properties properties) {
+        super(block, properties);
     }
 
     @Override
-    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        ItemStack result = super.finishUsing(stack, world, user);
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity) {
+        ItemStack result = super.finishUsingItem(stack, level, livingEntity);
 
         // Apply night vision effect with 90% chance
-        if (!world.isClient() && world.random.nextFloat() < 0.9f) {
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 600, 0));
+        if (!level.isClientSide() && level.getRandom().nextFloat() < 0.9f) {
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION, 600, 0));
         }
 
         return result;
     }
 }
-
-

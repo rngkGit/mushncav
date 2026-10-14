@@ -1,28 +1,31 @@
 package net.rngk.mushncav.block.custom;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.SaplingBlock;
-import net.minecraft.block.SaplingGenerator;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.WorldView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.grower.TreeGrower;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.rngk.mushncav.block.ModBlocks;
 import net.rngk.mushncav.util.ModTags;
 
 public class ModSaplingBlock extends SaplingBlock {
-    @Override
-    public boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isIn(BlockTags.DIRT) || floor.isIn(ModTags.Blocks.DIRT) || floor.isOf(Blocks.FARMLAND)
-            || floor.isOf(ModBlocks.FUNGI_DIRT) || floor.isOf(ModBlocks.FUNGI_GRASS_BLOCK);
+    public ModSaplingBlock(TreeGrower treeGrower, BlockBehaviour.Properties properties) {
+        super(treeGrower, properties);
     }
+
     @Override
-    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos blockPos = pos.down();
-        return canPlantOnTop(world.getBlockState(blockPos), world, blockPos);
+    protected boolean mayPlaceOn(BlockState floor, BlockGetter level, BlockPos pos) {
+        return floor.is(BlockTags.DIRT) || floor.is(ModTags.Blocks.DIRT) || floor.is(Blocks.FARMLAND)
+                || floor.is(ModBlocks.FUNGI_DIRT) || floor.is(ModBlocks.FUNGI_GRASS_BLOCK);
     }
-    public ModSaplingBlock(SaplingGenerator generator, Settings settings) {
-        super(generator, settings);
+
+    @Override
+    protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockPos below = pos.below();
+        return this.mayPlaceOn(level.getBlockState(below), level, below);
     }
 }

@@ -1,8 +1,8 @@
 package net.rngk.mushncav.item;
 
-import net.minecraft.item.ToolMaterial;
-import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.ToolMaterial;
 
 public class ModToolMaterials {
     public static final ToolMaterial WOOD = new ToolMaterial(
@@ -23,4 +23,3 @@ public class ModToolMaterials {
             ItemTags.REPAIRS_NETHERITE_ARMOR  // repair ingredient tag
     );
 }
-

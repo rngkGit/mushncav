@@ -1,79 +1,77 @@
 package net.rngk.mushncav.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.block.*;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.StateManager;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.GrowingPlantBodyBlock;
+import net.minecraft.world.level.block.GrowingPlantHeadBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.phys.BlockHitResult;
 import net.rngk.mushncav.block.ModBlocks;
+import net.rngk.mushncav.item.ModItems;
 
-public class GlowingMushroomVinesBodyBlock extends AbstractPlantBlock implements Fertilizable, GlowingMushroomVines{
-    public static final MapCodec<GlowingMushroomVinesBodyBlock> CODEC = GlowingMushroomVinesBodyBlock.createCodec(GlowingMushroomVinesBodyBlock::new);
+public class GlowingMushroomVinesBodyBlock extends GrowingPlantBodyBlock implements BonemealableBlock, GlowingMushroomVines {
+    public static final MapCodec<GlowingMushroomVinesBodyBlock> CODEC = simpleCodec(GlowingMushroomVinesBodyBlock::new);
 
-    public MapCodec<GlowingMushroomVinesBodyBlock> getCodec() {
+    @Override
+    public MapCodec<GlowingMushroomVinesBodyBlock> codec() {
         return CODEC;
     }
 
-    public GlowingMushroomVinesBodyBlock(AbstractBlock.Settings settings) {
-        super(settings, Direction.DOWN, SHAPE, false);
-        this.setDefaultState(this.stateManager.getDefaultState().with(BERRIES, false));
+    public GlowingMushroomVinesBodyBlock(BlockBehaviour.Properties properties) {
+        super(properties, Direction.DOWN, SHAPE, false);
+        this.registerDefaultState(this.stateDefinition.any().setValue(BERRIES, false));
     }
 
     @Override
-    protected AbstractPlantStemBlock getStem() {
-        return (AbstractPlantStemBlock)ModBlocks.GLOWING_MUSHROOM_VINES;
+    protected GrowingPlantHeadBlock getHeadBlock() {
+        return (GrowingPlantHeadBlock) ModBlocks.GLOWING_MUSHROOM_VINES;
     }
 
     @Override
-    protected BlockState copyState(BlockState from, BlockState to) {
-        return to.with(BERRIES, from.get(BERRIES));
+    protected BlockState updateHeadAfterConvertedFromBody(BlockState body, BlockState head) {
+        return head.setValue(BERRIES, body.getValue(BERRIES));
     }
 
     @Override
-    public boolean hasRandomTicks(BlockState state) {
-        return true;
+    protected ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean bl) {
+        return new ItemStack(ModItems.GLOWING_GRAPES);
     }
 
     @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!state.get(BERRIES) && random.nextFloat() < 0.11f) {
-            world.setBlockState(pos, state.with(BERRIES, true), Block.NOTIFY_LISTENERS);
-        }
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        return GlowingMushroomVines.pickBerries(player, state, level, pos);
     }
 
     @Override
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        return GlowingMushroomVines.pickBerries(player, state, world, pos);
-    }
-
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        super.createBlockStateDefinition(builder);
         builder.add(BERRIES);
     }
 
     @Override
-    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state) {
-        return !state.get(BERRIES);
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+        return !state.getValue(BERRIES);
     }
 
     @Override
-    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
         return true;
     }
 
     @Override
-    public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-        // Try to extend the vine downward
-        BlockPos downPos = pos.down();
-        if (world.getBlockState(downPos).isAir()) {
-            world.setBlockState(downPos, ModBlocks.GLOWING_MUSHROOM_VINES_PLANT.getDefaultState().with(BERRIES, false), Block.NOTIFY_LISTENERS);
-        }
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+        level.setBlock(pos, state.setValue(BERRIES, true), 2);
     }
 }

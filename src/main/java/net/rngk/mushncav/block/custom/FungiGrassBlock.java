@@ -1,60 +1,55 @@
 package net.rngk.mushncav.block.custom;
 
-import net.minecraft.block.*;
-import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.chunk.light.ChunkLightProvider;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.FluidTags;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.GrassBlock;
+import net.minecraft.world.level.block.SnowLayerBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.lighting.LightEngine;
 import net.rngk.mushncav.block.ModBlocks;
 
-public class FungiGrassBlock extends GrassBlock{
-    public FungiGrassBlock(Settings settings) {
-        super(settings);
+public class FungiGrassBlock extends GrassBlock {
+    public FungiGrassBlock(BlockBehaviour.Properties properties) {
+        super(properties);
     }
 
-    private static boolean canSurvive(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos blockPos = pos.up();
-        BlockState blockState = world.getBlockState(blockPos);
-        if (blockState.isOf(Blocks.SNOW) && blockState.get(SnowBlock.LAYERS) == 1) {
+    private static boolean canGrassSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockPos above = pos.above();
+        BlockState aboveState = level.getBlockState(above);
+        if (aboveState.is(Blocks.SNOW) && aboveState.getValue(SnowLayerBlock.LAYERS) == 1) {
             return true;
         }
-        if (blockState.getFluidState().getLevel() == 8) {
+        if (aboveState.getFluidState().getAmount() == 8) {
             return false;
         }
-        // In 1.21.11, getRealisticOpacity signature: (currentState, neighborState, Direction, opacity)
-        int i = ChunkLightProvider.getRealisticOpacity(state, blockState, Direction.UP, blockState.getOpacity());
-        return i < 15; // Max light level in Minecraft
+        int dampening = LightEngine.getLightDampeningInto(state, aboveState, Direction.UP, aboveState.getLightDampening());
+        return dampening < 15;
     }
-    private static boolean canSpread(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos blockPos = pos.up();
-        return FungiGrassBlock.canSurvive(state, world, pos) && !world.getFluidState(blockPos).isIn(FluidTags.WATER);
+
+    private static boolean canSpread(BlockState state, LevelReader level, BlockPos pos) {
+        BlockPos above = pos.above();
+        return canGrassSurvive(state, level, pos) && !level.getFluidState(above).is(FluidTags.WATER);
     }
+
     @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!FungiGrassBlock.canSurvive(state, world, pos)) {
-            world.setBlockState(pos, ModBlocks.FUNGI_DIRT.getDefaultState());
+    protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (!canGrassSurvive(state, level, pos)) {
+            level.setBlockAndUpdate(pos, ModBlocks.FUNGI_DIRT.defaultBlockState());
             return;
         }
 
         for (int i = 0; i < 4; ++i) {
-            BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-            BlockState targetBlockState = world.getBlockState(blockPos);
-            if ((targetBlockState.isOf(Blocks.DIRT) || targetBlockState.isOf(ModBlocks.FUNGI_DIRT)) && FungiGrassBlock.canSpread(state, world, blockPos)) {
-                world.setBlockState(blockPos, state.with(SNOWY, world.getBlockState(blockPos.up()).isOf(Blocks.SNOW)));
+            BlockPos targetPos = pos.offset(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+            BlockState targetState = level.getBlockState(targetPos);
+            if ((targetState.is(Blocks.DIRT) || targetState.is(ModBlocks.FUNGI_DIRT)) && canSpread(state, level, targetPos)) {
+                level.setBlockAndUpdate(targetPos, state.setValue(SNOWY, level.getBlockState(targetPos.above()).is(Blocks.SNOW)));
             }
         }
-
-        // COMMENT OUT IF YOU WANT IT TO SURVIVE IN A CAVE stupid
-        /*if (world.getLightLevel(pos.up()) >= 9) {
-            BlockState blockState = this.getDefaultState();
-            for (int i = 0; i < 4; ++i) {
-                BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-                if (!world.getBlockState(blockPos).isOf(Blocks.DIRT) || !FungiGrassBlock.canSpread(blockState, world, blockPos)) continue;
-                world.setBlockState(blockPos, blockState.with(SNOWY, world.getBlockState(blockPos.up()).isOf(Blocks.SNOW)));
-            }
-        }*/
     }
 }

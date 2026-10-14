@@ -1,123 +1,101 @@
 package net.rngk.mushncav.world.biome;
 
-import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.GenerationSettings;
-import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.GenerationStep;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
-import net.minecraft.world.gen.feature.VegetationPlacedFeatures;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.data.worldgen.BiomeDefaultFeatures;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.BiomeGenerationSettings;
+import net.minecraft.world.level.biome.BiomeSpecialEffects;
+import net.minecraft.world.level.biome.MobSpawnSettings;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.rngk.mushncav.MushroomsAndCaverns;
 import net.rngk.mushncav.world.ModPlacedFeatures;
 
 public class ModBiomes {
-    public static final RegistryKey<Biome> FUNGI_FOREST = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(MushroomsAndCaverns.MOD_ID, "fungi_forest"));
-    public static final RegistryKey<Biome> GLOWING_MUSHROOMS = RegistryKey.of(RegistryKeys.BIOME, Identifier.of(MushroomsAndCaverns.MOD_ID, "glowing_mushrooms"));
+    public static final ResourceKey<Biome> FUNGI_FOREST = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(MushroomsAndCaverns.MOD_ID, "fungi_forest"));
+    public static final ResourceKey<Biome> GLOWING_MUSHROOMS = ResourceKey.create(Registries.BIOME, Identifier.fromNamespaceAndPath(MushroomsAndCaverns.MOD_ID, "glowing_mushrooms"));
 
-    public static void boostrap(Registerable<Biome> context) {
+    public static void bootstrap(BootstrapContext<Biome> context) {
         context.register(FUNGI_FOREST, fungiForest(context));
         context.register(GLOWING_MUSHROOMS, glowingMushrooms(context));
     }
 
-    public static void globalOverworldGeneration(GenerationSettings.LookupBackedBuilder builder) {
-        DefaultBiomeFeatures.addLandCarvers(builder);
-        DefaultBiomeFeatures.addAmethystGeodes(builder);
-        DefaultBiomeFeatures.addDungeons(builder);
-        DefaultBiomeFeatures.addMineables(builder);
-        DefaultBiomeFeatures.addSprings(builder);
-        DefaultBiomeFeatures.addFrozenTopLayer(builder);
+    public static void globalOverworldGeneration(BiomeGenerationSettings.Builder builder) {
+        BiomeDefaultFeatures.addDefaultCarversAndLakes(builder);
+        BiomeDefaultFeatures.addDefaultCrystalFormations(builder);
+        BiomeDefaultFeatures.addDefaultMonsterRoom(builder);
+        BiomeDefaultFeatures.addDefaultUndergroundVariety(builder);
+        BiomeDefaultFeatures.addDefaultSprings(builder);
+        BiomeDefaultFeatures.addSurfaceFreezing(builder);
     }
 
-    public static Biome fungiForest(Registerable<Biome> context) {
-        SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
-        //spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.PORCUPINE, 2, 3, 5)); not yet
+    public static Biome fungiForest(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
+        BiomeDefaultFeatures.farmAnimals(spawnBuilder);
 
-        // TODO 1.21.11: SpawnEntry constructor signature unclear from errors - temporarily disabled
-        // spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.WOLF, 5, 4));
+        HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
+        HolderGetter<ConfiguredWorldCarver<?>> carvers = context.lookup(Registries.CONFIGURED_CARVER);
 
-        DefaultBiomeFeatures.addFarmAnimals(spawnBuilder);
-        // TODO 1.21.11: addBatsAndMonsters removed - add spawns manually if needed
-
-        GenerationSettings.LookupBackedBuilder biomeBuilder =
-                new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
-                        context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
-
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
         globalOverworldGeneration(biomeBuilder);
-        DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addForestFlowers(biomeBuilder);
+        BiomeDefaultFeatures.addFerns(biomeBuilder);
 
-        //biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.TREES_PLAINS); adds oak trees
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_PLAIN);
 
-        DefaultBiomeFeatures.addForestFlowers(biomeBuilder);
-        DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder, false);
 
-        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.PATCH_GRASS_PLAIN);
-
-        DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
-        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder, false);
-
-        //biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.GRASS_BONEMEAL);
-
-        return new Biome.Builder()
-                .precipitation(true)
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
                 .downfall(0.4f)
                 .temperature(0.7f)
                 .generationSettings(biomeBuilder.build())
-                .spawnSettings(spawnBuilder.build())
-                .effects((new BiomeEffects.Builder())
+                .mobSpawnSettings(spawnBuilder.build())
+                .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x33237d)
-                        .grassColor(0x47167a)
-                        .foliageColor(0x47167a)
-                        /*.music(MusicType.createIngameMusic(RegistryEntry.of(ModSounds.BAR_BRAWL)))*/.build())
+                        .grassColorOverride(0x47167a)
+                        .foliageColorOverride(0x47167a)
+                        .build())
                 .build();
     }
 
-    public static Biome glowingMushrooms(Registerable<Biome> context) {
-        SpawnSettings.Builder spawnBuilder = new SpawnSettings.Builder();
-        //spawnBuilder.spawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(ModEntities.PORCUPINE, 2, 3, 5)); not yet
+    public static Biome glowingMushrooms(BootstrapContext<Biome> context) {
+        MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        //DefaultBiomeFeatures.addFarmAnimals(spawnBuilder); no need
-        // TODO 1.21.11: addBatsAndMonsters removed - add spawns manually if needed
+        HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
+        HolderGetter<ConfiguredWorldCarver<?>> carvers = context.lookup(Registries.CONFIGURED_CARVER);
 
-        GenerationSettings.LookupBackedBuilder biomeBuilder =
-                new GenerationSettings.LookupBackedBuilder(context.getRegistryLookup(RegistryKeys.PLACED_FEATURE),
-                        context.getRegistryLookup(RegistryKeys.CONFIGURED_CARVER));
-
+        BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
         globalOverworldGeneration(biomeBuilder);
-        DefaultBiomeFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
+        BiomeDefaultFeatures.addForestFlowers(biomeBuilder);
+        BiomeDefaultFeatures.addFerns(biomeBuilder);
 
-        //biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, VegetationPlacedFeatures.TREES_PLAINS); adds oak trees
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_MUSHROOM_VEGETATION_PLACED_KEY);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_MUSHROOM_VEGETATION_CEILING_PLACED_KEY);
 
-        //DefaultBiomeFeatures.addLushCavesDecoration(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
+        BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder, false);
 
-        DefaultBiomeFeatures.addForestFlowers(biomeBuilder);
-        DefaultBiomeFeatures.addLargeFerns(biomeBuilder);
-
-        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_MUSHROOM_VEGETATION_PLACED_KEY);
-        biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_MUSHROOM_VEGETATION_CEILING_PLACED_KEY);
-
-        //biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_BLUEBERRY_BUSH_PLACED_KEY);
-
-        DefaultBiomeFeatures.addDefaultMushrooms(biomeBuilder);
-        DefaultBiomeFeatures.addDefaultVegetation(biomeBuilder, false);
-
-
-        //biomeBuilder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GLOWING_MUSHROOM_PLACED_KEY);
-
-        return new Biome.Builder()
-                .precipitation(true)
+        return new Biome.BiomeBuilder()
+                .hasPrecipitation(true)
                 .downfall(0.5f)
                 .temperature(0.5f)
                 .generationSettings(biomeBuilder.build())
-                .spawnSettings(spawnBuilder.build())
-                .effects((new BiomeEffects.Builder())
+                .mobSpawnSettings(spawnBuilder.build())
+                .specialEffects(new BiomeSpecialEffects.Builder()
                         .waterColor(0x152aeb)
-                        .grassColor(0x152aeb)
-                        .foliageColor(0x152aeb)
-                        /*.music(MusicType.createIngameMusic(RegistryEntry.of(ModSounds.BAR_BRAWL)))*/.build())
+                        .grassColorOverride(0x152aeb)
+                        .foliageColorOverride(0x152aeb)
+                        .build())
                 .build();
     }
 }
